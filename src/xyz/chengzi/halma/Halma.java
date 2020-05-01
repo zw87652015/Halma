@@ -18,6 +18,7 @@ public class Halma {
             mainFrame.add(chessBoardComponent);
             mainFrame.setVisible(true);
             System.out.println("cgf");
+            System.out.println("jiangluojia");
         });
     }
 }
