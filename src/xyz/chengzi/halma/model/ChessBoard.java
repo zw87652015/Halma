@@ -1,8 +1,17 @@
 package xyz.chengzi.halma.model;
 
 import java.awt.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public class ChessBoard {
+public class ChessBoard implements Serializable{
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1546070631726276643L;
     private Square[][] grid;
     private int dimension;
 
@@ -12,6 +21,13 @@ public class ChessBoard {
 
         initGrid();
         initPieces();
+    }
+
+    public ChessBoard(ChessBoard meow) {
+        this.grid = new Square[meow.getDimension()][meow.getDimension()];
+        this.dimension = meow.getDimension();
+        initGrid();
+        initPieces(meow);
     }
 
     private void initGrid() {
@@ -30,6 +46,14 @@ public class ChessBoard {
         grid[dimension - 1][dimension - 1].setPiece(new ChessPiece(Color.GREEN));
         grid[dimension - 1][dimension - 2].setPiece(new ChessPiece(Color.GREEN));
         grid[dimension - 2][dimension - 1].setPiece(new ChessPiece(Color.GREEN));
+    }
+
+    private void initPieces(ChessBoard meow) {
+        this.grid=meow.getGrid();
+    }
+
+    public Square[][] getGrid() {
+        return grid;
     }
 
     public Square getGridAt(ChessBoardLocation location) {
@@ -74,5 +98,13 @@ public class ChessBoard {
             return true;
         }
         return false;
+    }
+
+    public void save() {
+        try{
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("cundang.save"));
+            oos.writeObject(this);
+            oos.close();
+        } catch (IOException e) {}
     }
 }

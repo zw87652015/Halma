@@ -2,6 +2,7 @@ package xyz.chengzi.halma.view;
 
 import xyz.chengzi.halma.controller.GameController;
 import xyz.chengzi.halma.model.ChessBoard;
+import xyz.chengzi.halma.controller.DuDang;
 
 import javax.swing.*;
 
@@ -19,7 +20,10 @@ public class GameFrame extends JFrame {
         add(statusLabel);
 
         JButton button = new JButton("...");
-        button.addActionListener((e) -> JOptionPane.showMessageDialog(this, "Button clicked!"));
+        button.addActionListener((e) -> {
+            JOptionPane.showMessageDialog(this, "Game loaded!");
+            DuDang.load();
+        });
         button.setLocation(740, 760);
         button.setSize(20, 12);
         add(button);

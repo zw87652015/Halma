@@ -53,6 +53,7 @@ public class GameController implements GameListener {
             view.repaint();
             selectedPiece = null;
             selectedLocation = null;
+            model.save();
             nextPlayer();
         }
     }
