@@ -61,7 +61,7 @@ public class GameController implements GameListener {
     @Override
     public void onPlayerClickChessPiece(ChessBoardLocation location, ChessComponent component) {
         ChessPiece piece = model.getChessPieceAt(location);
-        if (piece.getColor() == currentPlayer && (selectedPiece == piece || selectedPiece == null)) {
+        if (piece.getColor().equals(currentPlayer) && (selectedPiece == piece || selectedPiece == null)) {
             if (selectedPiece == null) {
                 selectedPiece = piece;
                 selectedLocation = location;

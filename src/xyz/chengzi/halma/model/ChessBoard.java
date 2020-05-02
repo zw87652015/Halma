@@ -23,7 +23,7 @@ public class ChessBoard implements Serializable{
     public ChessBoard(ChessBoard meow) {
         this.grid = new Square[meow.getDimension()][meow.getDimension()];
         this.dimension = meow.getDimension();
-        // initGrid();
+        initGrid();
         initPieces(meow);
     }
 

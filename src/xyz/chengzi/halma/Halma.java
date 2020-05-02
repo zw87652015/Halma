@@ -22,5 +22,20 @@ public class Halma {
             mainFrame.add(chessBoardComponent);
             mainFrame.setVisible(true);
         });
+        /*try{
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("cundang.save"));
+            ChessBoard temp = (ChessBoard) ois.readObject();
+            ois.close();
+            SwingUtilities.invokeLater(() -> {
+                ChessBoardComponent chessBoardComponent = new ChessBoardComponent(760, 19);
+                ChessBoard chessBoard = new ChessBoard(temp);
+                GameController controller = new GameController(chessBoardComponent, chessBoard);
+    
+                GameFrame mainFrame = new GameFrame();
+                mainFrame.add(chessBoardComponent);
+                mainFrame.setVisible(true);
+                
+            });
+        } catch (IOException | ClassNotFoundException e) {}*/
     }
 }
