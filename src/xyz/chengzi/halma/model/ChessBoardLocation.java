@@ -1,6 +1,8 @@
 package xyz.chengzi.halma.model;
 
-public class ChessBoardLocation {
+import java.io.Serializable;
+
+public class ChessBoardLocation implements Serializable{
     private int row, column;
 
     public ChessBoardLocation(int row, int column) {

@@ -5,6 +5,10 @@ import xyz.chengzi.halma.model.ChessBoard;
 import xyz.chengzi.halma.view.ChessBoardComponent;
 import xyz.chengzi.halma.view.GameFrame;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
 import javax.swing.*;
 
 public class Halma {
@@ -17,8 +21,6 @@ public class Halma {
             GameFrame mainFrame = new GameFrame();
             mainFrame.add(chessBoardComponent);
             mainFrame.setVisible(true);
-            System.out.println("cgf");
-            System.out.println("cgf");
         });
     }
 }

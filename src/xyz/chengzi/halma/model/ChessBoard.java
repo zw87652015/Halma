@@ -8,9 +8,6 @@ import java.io.Serializable;
 
 public class ChessBoard implements Serializable{
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1546070631726276643L;
     private Square[][] grid;
     private int dimension;
@@ -26,7 +23,7 @@ public class ChessBoard implements Serializable{
     public ChessBoard(ChessBoard meow) {
         this.grid = new Square[meow.getDimension()][meow.getDimension()];
         this.dimension = meow.getDimension();
-        initGrid();
+        // initGrid();
         initPieces(meow);
     }
 

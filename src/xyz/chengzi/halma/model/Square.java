@@ -1,6 +1,8 @@
 package xyz.chengzi.halma.model;
 
-public class Square {
+import java.io.Serializable;
+
+public class Square implements Serializable{
     private ChessBoardLocation location;
     private ChessPiece piece;
 

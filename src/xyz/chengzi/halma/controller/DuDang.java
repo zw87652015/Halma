@@ -19,7 +19,7 @@ public class DuDang {
             SwingUtilities.invokeLater(() -> {
                 ChessBoardComponent chessBoardComponent = new ChessBoardComponent(760, 19);
                 ChessBoard chessBoard = new ChessBoard(temp);
-                GameController controller = new GameController(chessBoardComponent, chessBoard);
+                GameController controller = new GameController(chessBoardComponent, temp);
     
                 GameFrame mainFrame = new GameFrame();
                 mainFrame.add(chessBoardComponent);
