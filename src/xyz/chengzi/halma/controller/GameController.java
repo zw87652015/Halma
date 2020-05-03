@@ -13,6 +13,7 @@ import java.awt.*;
 public class GameController implements GameListener {
     private ChessBoardComponent view;
     private ChessBoard model;
+    public static ChessBoard mod;
 
     private Color currentPlayer;
     private ChessPiece selectedPiece;
@@ -53,7 +54,7 @@ public class GameController implements GameListener {
             view.repaint();
             selectedPiece = null;
             selectedLocation = null;
-            model.save();
+            mod=model;
             nextPlayer();
         }
     }
@@ -74,7 +75,7 @@ public class GameController implements GameListener {
         }
     }
 
-    public void save() {
-        model.save();
+    public static ChessBoard getChessBoard() {
+        return mod;
     }
 }

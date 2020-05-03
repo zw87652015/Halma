@@ -17,7 +17,7 @@ public class Halma {
             ChessBoardComponent chessBoardComponent = new ChessBoardComponent(760, 19);
             ChessBoard chessBoard = new ChessBoard(19);
             GameController controller = new GameController(chessBoardComponent, chessBoard);
-
+            
             GameFrame mainFrame = new GameFrame();
             mainFrame.add(chessBoardComponent);
             mainFrame.setVisible(true);

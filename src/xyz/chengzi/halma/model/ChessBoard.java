@@ -96,12 +96,4 @@ public class ChessBoard implements Serializable{
         }
         return false;
     }
-
-    public void save() {
-        try{
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("cundang.save"));
-            oos.writeObject(this);
-            oos.close();
-        } catch (IOException e) {}
-    }
 }

@@ -32,5 +32,11 @@ public class GameFrame extends JFrame {
             DuDang.load();
         });
         menu_Game.add(menuItem_load);
+        
+        JMenuItem menuItem_save = new JMenuItem("存档");
+        menuItem_save.addActionListener((e) -> {
+            DuDang.save(GameController.getChessBoard());
+        });
+        menu_Game.add(menuItem_save);
     }
 }
