@@ -73,4 +73,8 @@ public class GameController implements GameListener {
             component.repaint();
         }
     }
+
+    public void save() {
+        model.save();
+    }
 }
