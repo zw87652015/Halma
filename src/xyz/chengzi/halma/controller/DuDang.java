@@ -1,5 +1,6 @@
 package xyz.chengzi.halma.controller;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,9 +15,9 @@ import xyz.chengzi.halma.view.ChessBoardComponent;
 import xyz.chengzi.halma.view.GameFrame;
 
 public class DuDang {
-    public static void load() {
+    public static void load(File file) {
         try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("cundang.save"));
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
             ChessBoard temp = (ChessBoard) ois.readObject();
             ois.close();
             SwingUtilities.invokeLater(() -> {

@@ -4,6 +4,8 @@ import xyz.chengzi.halma.controller.GameController;
 import xyz.chengzi.halma.model.ChessBoard;
 import xyz.chengzi.halma.controller.DuDang;
 
+import java.io.File;
+
 import javax.swing.*;
 import javax.swing.plaf.MenuItemUI;
 
@@ -29,7 +31,11 @@ public class GameFrame extends JFrame {
 
         JMenuItem menuItem_load = new JMenuItem("读档");
         menuItem_load.addActionListener((e) -> {
-            DuDang.load();
+            JFileChooser jfc = new JFileChooser();
+            jfc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES );
+            jfc.showDialog(new JLabel(), "选择");
+		    File file=jfc.getSelectedFile();
+            DuDang.load(file);
         });
         menu_Game.add(menuItem_load);
         
