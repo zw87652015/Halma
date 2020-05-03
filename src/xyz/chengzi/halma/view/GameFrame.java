@@ -7,6 +7,7 @@ import xyz.chengzi.halma.controller.DuDang;
 import java.io.File;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.plaf.MenuItemUI;
 
 public class GameFrame extends JFrame {
@@ -32,16 +33,20 @@ public class GameFrame extends JFrame {
         JMenuItem menuItem_load = new JMenuItem("读档");
         menuItem_load.addActionListener((e) -> {
             JFileChooser jfc = new JFileChooser();
-            jfc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES );
-            jfc.showDialog(new JLabel(), "选择");
-		    File file=jfc.getSelectedFile();
+            jfc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+            jfc.showOpenDialog(new JLabel());
+		    File file = jfc.getSelectedFile();
             DuDang.load(file);
         });
         menu_Game.add(menuItem_load);
         
         JMenuItem menuItem_save = new JMenuItem("存档");
         menuItem_save.addActionListener((e) -> {
-            DuDang.save(GameController.getChessBoard());
+            JFileChooser jfc = new JFileChooser();
+            jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            jfc.showSaveDialog(new JLabel());
+            File file = jfc.getSelectedFile();
+            DuDang.save(GameController.getChessBoard(), file.getPath());
         });
         menu_Game.add(menuItem_save);
     }

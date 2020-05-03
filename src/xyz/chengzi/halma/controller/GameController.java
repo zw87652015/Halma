@@ -19,11 +19,10 @@ public class GameController implements GameListener {
     private ChessPiece selectedPiece;
     private ChessBoardLocation selectedLocation;
 
-    public GameController(ChessBoardComponent boardComponent, ChessBoard chessBoard) {
+    public GameController(ChessBoardComponent boardComponent, ChessBoard chessBoard, Color nextPlayer) {
         this.view = boardComponent;
         this.model = chessBoard;
-
-        this.currentPlayer = Color.RED;
+        this.currentPlayer = nextPlayer;
         view.registerListener(this);
         initGameState();
     }

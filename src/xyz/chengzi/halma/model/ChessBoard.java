@@ -11,6 +11,7 @@ public class ChessBoard implements Serializable{
     private static final long serialVersionUID = 1546070631726276643L;
     private Square[][] grid;
     private int dimension;
+    private int steps = 0;
 
     public ChessBoard(int dimension) {
         this.grid = new Square[dimension][dimension];
@@ -76,10 +77,15 @@ public class ChessBoard implements Serializable{
             throw new IllegalArgumentException("Illegal halma move");
         }
         setChessPieceAt(dest, removeChessPieceAt(src));
+        steps++;
     }
 
     public int getDimension() {
         return dimension;
+    }
+
+    public int getSteps() {
+        return this.steps;
     }
 
     public boolean isValidMove(ChessBoardLocation src, ChessBoardLocation dest) {

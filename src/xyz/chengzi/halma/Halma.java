@@ -5,6 +5,7 @@ import xyz.chengzi.halma.model.ChessBoard;
 import xyz.chengzi.halma.view.ChessBoardComponent;
 import xyz.chengzi.halma.view.GameFrame;
 
+import java.awt.Color;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -16,7 +17,7 @@ public class Halma {
         SwingUtilities.invokeLater(() -> {
             ChessBoardComponent chessBoardComponent = new ChessBoardComponent(760, 19);
             ChessBoard chessBoard = new ChessBoard(19);
-            GameController controller = new GameController(chessBoardComponent, chessBoard);
+            GameController controller = new GameController(chessBoardComponent, chessBoard, Color.RED);
             
             GameFrame mainFrame = new GameFrame();
             mainFrame.add(chessBoardComponent);

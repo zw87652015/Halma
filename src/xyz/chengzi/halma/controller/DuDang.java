@@ -1,11 +1,14 @@
 package xyz.chengzi.halma.controller;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.sql.Time;
+import java.util.Calendar;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -22,8 +25,13 @@ public class DuDang {
             ois.close();
             SwingUtilities.invokeLater(() -> {
                 ChessBoardComponent chessBoardComponent = new ChessBoardComponent(760, 19);
-                ChessBoard chessBoard = new ChessBoard(temp);
-                GameController controller = new GameController(chessBoardComponent, temp);
+                Color nextPlayer;
+                if(temp.getSteps() %2 == 0) {
+                    nextPlayer = Color.RED;
+                } else {
+                    nextPlayer = Color.GREEN;
+                }
+                GameController controller = new GameController(chessBoardComponent, temp, nextPlayer);
 
                 GameFrame mainFrame = new GameFrame();
                 mainFrame.add(chessBoardComponent);
@@ -35,9 +43,9 @@ public class DuDang {
         }
     }
 
-    public static void save(ChessBoard currentChessBoard) {
+    public static void save(ChessBoard currentChessBoard, String path) {
         try{
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("cundang.save"));
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path + "\\" + "cundang.save"));
             oos.writeObject(currentChessBoard);
             oos.close();
             JOptionPane.showMessageDialog(null, "存档成功！");
