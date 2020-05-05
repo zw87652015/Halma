@@ -53,7 +53,7 @@
       <recent name="xyz.chengzi.halma.listener" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Halma (1)">
+  <component name="RunManager" selected="Application.Halma">
     <configuration name="GameFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="xyz.chengzi.halma.view.GameFrame" />
       <module name="Halma" />
@@ -100,11 +100,23 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Halma (1)" />
         <item itemvalue="Application.Halma" />
+        <item itemvalue="Application.Halma (1)" />
         <item itemvalue="JAR Application.Halma.jar" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -117,6 +129,7 @@
       <option name="presentableId" value="Default" />
       <updated>1585382886319</updated>
       <workItem from="1585382889276" duration="15497000" />
+      <workItem from="1588496914416" duration="29266000" />
     </task>
     <servers />
   </component>
@@ -144,38 +157,60 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585395139700" />
-    <state x="620" y="309" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1588389281368">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state x="517" y="252" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1588497172067">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="517" y="252" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1588497172067" />
     <state x="620" y="309" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.834@0.0.1536.834" timestamp="1588389281368" />
     <state x="714" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585389620799">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="714" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585389620799" />
-    <state x="549" y="175" key="FileChooserDialogImpl" timestamp="1588474887166">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state x="458" y="143" key="FileChooserDialogImpl" timestamp="1588554537478">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="458" y="143" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1588554537478" />
     <state x="549" y="175" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1588474887166" />
-    <state width="1342" height="198" key="GridCell.Tab.0.bottom" timestamp="1585643052309">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state width="1237" height="204" key="GridCell.Tab.0.bottom" timestamp="1588653216599">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state width="1237" height="204" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1588653216599" />
     <state width="1342" height="198" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1585643052309" />
     <state width="1877" height="262" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585399409885" />
-    <state width="1342" height="198" key="GridCell.Tab.0.center" timestamp="1585643052308">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state width="1237" height="204" key="GridCell.Tab.0.center" timestamp="1588653216599">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state width="1237" height="204" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1588653216599" />
     <state width="1342" height="198" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1585643052308" />
     <state width="1877" height="262" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585399409885" />
-    <state width="1342" height="198" key="GridCell.Tab.0.left" timestamp="1585643052308">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state width="1237" height="204" key="GridCell.Tab.0.left" timestamp="1588653216599">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state width="1237" height="204" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1588653216599" />
     <state width="1342" height="198" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1585643052308" />
     <state width="1877" height="262" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585399409885" />
-    <state width="1342" height="198" key="GridCell.Tab.0.right" timestamp="1585643052309">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state width="1237" height="204" key="GridCell.Tab.0.right" timestamp="1588653216599">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state width="1237" height="204" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1588653216599" />
     <state width="1342" height="198" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1585643052309" />
     <state width="1877" height="262" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585399409885" />
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1588653216600">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1588653216600" />
+    <state width="1237" height="204" key="GridCell.Tab.1.center" timestamp="1588653216599">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1588653216599" />
+    <state width="1237" height="204" key="GridCell.Tab.1.left" timestamp="1588653216599">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1588653216599" />
+    <state width="1237" height="204" key="GridCell.Tab.1.right" timestamp="1588653216599">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1588653216599" />
     <state x="540" y="262" key="IDE.errors.dialog" timestamp="1585398785373">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -188,9 +223,28 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="477" y="245" key="com.intellij.ide.util.TipDialog/0.0.1536.834@0.0.1536.834" timestamp="1586217570677" />
+    <state x="28" y="48" key="new project wizard" timestamp="1588554544454">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="28" y="48" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1588554544454" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1585396338568">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585396338568" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1588598240263">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1588598240263" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/xyz/chengzi/halma/controller/GameController.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

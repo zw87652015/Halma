@@ -1,9 +1,6 @@
 package xyz.chengzi.halma.model;
 
 import java.awt.*;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class ChessBoard implements Serializable{
@@ -12,6 +9,7 @@ public class ChessBoard implements Serializable{
     private Square[][] grid;
     private int dimension;
     private int steps = 0;
+
 
     public ChessBoard(int dimension) {
         this.grid = new Square[dimension][dimension];
@@ -89,7 +87,7 @@ public class ChessBoard implements Serializable{
     }
 
     public boolean isValidMove(ChessBoardLocation src, ChessBoardLocation dest) {
-        if (getChessPieceAt(src) == null || getChessPieceAt(dest) != null) {
+        /*if (getChessPieceAt(src) == null || getChessPieceAt(dest) != null) {
             return false;
         }
         int srcRow = src.getRow(), srcCol = src.getColumn(), destRow = dest.getRow(), destCol = dest.getColumn();
@@ -100,6 +98,27 @@ public class ChessBoard implements Serializable{
         if (Math.abs(rowDistance) <= 1 && Math.abs(colDistance) <= 1) {
             return true;
         }
+        return false;*/
+        return true;
+    }
+    public boolean isjumpmove(ChessBoardLocation src, ChessBoardLocation dest){
+        int srcRow = src.getRow(), srcCol = src.getColumn(), destRow = dest.getRow(), destCol = dest.getColumn();
+        int rowDistance = destRow - srcRow, colDistance = destCol - srcCol;
+        if (Math.abs( rowDistance )>1||Math.abs( colDistance )>1){
+            return true;
+        }
         return false;
+    }
+    public boolean jumpdistance(int x){if(Math.abs( x )==0){return true;}if (Math.abs( x )==2){return true;}return false;}
+    public boolean isjumpcanmove(ChessBoardLocation src, ChessBoardLocation dest){
+        int srcRow = src.getRow(), srcCol = src.getColumn(), destRow = dest.getRow(), destCol = dest.getColumn();
+        int rowDistance = destRow - srcRow, colDistance = destCol - srcCol;
+        if (jumpdistance( rowDistance )&&jumpdistance( colDistance )){
+            ChessBoardLocation k=new ChessBoardLocation( (src.getRow()+dest.getRow())/2,(src.getColumn()+dest.getColumn())/2 );
+            if (getChessPieceAt( k )!=null){
+            return true;}else {return false;}
+        }else{
+            return false;
+        }
     }
 }
