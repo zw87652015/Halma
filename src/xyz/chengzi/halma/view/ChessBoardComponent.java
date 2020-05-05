@@ -3,11 +3,11 @@ package xyz.chengzi.halma.view;
 import xyz.chengzi.halma.listener.GameListener;
 import xyz.chengzi.halma.model.ChessBoardLocation;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.*;
-import java.awt.*;
 
 public class ChessBoardComponent extends JComponent {
     private static final Color BOARD_COLOR_1 = new Color(255, 255, 204);
