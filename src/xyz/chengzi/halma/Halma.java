@@ -5,6 +5,8 @@ import xyz.chengzi.halma.model.ChessBoard;
 import xyz.chengzi.halma.view.ChessBoardComponent;
 import xyz.chengzi.halma.view.GameFrame;
 
+import java.awt.Color;
+
 import javax.swing.*;
 
 public class Halma {
