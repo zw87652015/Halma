@@ -39,7 +39,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Assignments/hw5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -130,6 +130,7 @@
       <updated>1585382886319</updated>
       <workItem from="1585382889276" duration="15497000" />
       <workItem from="1588496914416" duration="29266000" />
+      <workItem from="1588681436469" duration="47000" />
     </task>
     <servers />
   </component>
@@ -219,9 +220,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585396372853" />
-    <state x="477" y="245" key="com.intellij.ide.util.TipDialog" timestamp="1586217570677">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state x="398" y="200" key="com.intellij.ide.util.TipDialog" timestamp="1588682056602">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="398" y="200" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1588682056602" />
     <state x="477" y="245" key="com.intellij.ide.util.TipDialog/0.0.1536.834@0.0.1536.834" timestamp="1586217570677" />
     <state x="28" y="48" key="new project wizard" timestamp="1588554544454">
       <screen x="0" y="0" width="1280" height="680" />
@@ -241,7 +243,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/xyz/chengzi/halma/controller/GameController.java</url>
-          <line>66</line>
+          <line>65</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

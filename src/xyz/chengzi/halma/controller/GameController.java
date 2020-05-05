@@ -84,12 +84,13 @@ public class GameController implements GameListener {
             mod=model;
             jumpcontinue=true;
             }else {
+                if(jumpcontinue){
                 selectedLocation = null;
                 selectedPiece=null;
                 mod=model;
                 jumpcontinue=false;
                 nextPlayer();
-            }
+            }}
         }
     }
 
