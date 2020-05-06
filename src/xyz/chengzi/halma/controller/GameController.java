@@ -25,6 +25,7 @@ public class GameController implements GameListener {
         this.view = boardComponent;
         this.model = chessBoard;
         this.currentPlayer = nextPlayer;
+        mod = model;
         view.registerListener(this);
         initGameState();
     }
@@ -56,6 +57,7 @@ public class GameController implements GameListener {
                 view.setChessAtGrid(location, selectedPiece.getColor());
                 view.removeChessAtGrid(selectedLocation);
                 view.repaint();
+                mod = model;
                 selectedLocation=null;
                 selectedPiece=null;
                 jumpcontinue=false;
@@ -72,7 +74,7 @@ public class GameController implements GameListener {
             view.repaint();
             selectedPiece = null;
             selectedLocation = null;
-            mod=model;
+            mod = model;
             nextPlayer();}}
         }else {
             if (model.isjumpcanmove( selectedLocation,location )){
@@ -81,13 +83,13 @@ public class GameController implements GameListener {
             view.removeChessAtGrid(selectedLocation);
             view.repaint();
             selectedLocation = location;
-            mod=model;
+            mod = model;
             jumpcontinue=true;
             }else {
                 if(jumpcontinue){
                 selectedLocation = null;
                 selectedPiece=null;
-                mod=model;
+                mod = model;
                 jumpcontinue=false;
                 nextPlayer();
             }}
@@ -98,8 +100,8 @@ public class GameController implements GameListener {
     public void onPlayerClickChessPiece(ChessBoardLocation location, ChessComponent component) {
         if (jumpcontinue==false){
         ChessPiece piece = model.getChessPieceAt(location);
+        DuDang.save(GameController.getChessBoard());
         if (piece.getColor().equals(currentPlayer) && (selectedPiece == piece || selectedPiece == null)) {
-
             if (selectedPiece == null) {
                 selectedPiece = piece;
                 selectedLocation = location;
@@ -115,5 +117,4 @@ public class GameController implements GameListener {
     public static ChessBoard getChessBoard() {
         return mod;
     }
-
 }
