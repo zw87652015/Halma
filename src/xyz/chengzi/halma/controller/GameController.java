@@ -44,8 +44,25 @@ public class GameController implements GameListener {
     }
 
     public Color nextPlayer() {
-        return currentPlayer = currentPlayer == model.color1 ? model.color2 : model.color1;
-    }
+
+        if (model.color1.equals( currentPlayer )) {
+            if(model.fourman){
+            currentPlayer=model.color2;return currentPlayer;}
+            else {currentPlayer=model.color3;}
+
+        } else if (model.color2.equals( currentPlayer )) {
+
+            currentPlayer=model.color3;return currentPlayer;
+
+
+        } else if (model.color3.equals( currentPlayer )) {
+            if(model.fourman){
+            currentPlayer=model.color4;return currentPlayer;}
+            else {currentPlayer=model.color1;return currentPlayer;}
+        } else if (model.color4.equals( currentPlayer )) {
+            currentPlayer=model.color1;return currentPlayer;
+        }
+    return currentPlayer;}
 
     public boolean isjump(ChessBoardLocation location){
         return model.isjumpmove( selectedLocation,location ); }

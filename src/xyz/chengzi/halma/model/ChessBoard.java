@@ -14,7 +14,7 @@ public class ChessBoard implements Serializable{
     public Color color3=Color.yellow;
     public Color color4=Color.blue;
     private int pricenumber=4;
-    private boolean fourman=true;
+    public boolean fourman=true;
     public ChessBoard(int dimension,int pricenumber,boolean fourman) {
         this.grid = new Square[dimension][dimension];
         this.dimension = dimension;
@@ -42,10 +42,10 @@ public class ChessBoard implements Serializable{
             for (int j=0;j<pricenumber;j++){
                 if(i+j<pricenumber)
                 {grid[i][j].setPiece(new ChessPiece(color1));
-                grid[dimension-i-1][dimension-j-1].setPiece(new ChessPiece(color2));
+                grid[dimension-i-1][dimension-j-1].setPiece(new ChessPiece(color3));
                 if(fourman){
-                    grid[i][dimension-j-1].setPiece(new ChessPiece(color3));
-                    grid[dimension-i-1][j].setPiece(new ChessPiece(color4));
+                    grid[i][dimension-j-1].setPiece(new ChessPiece(color4));
+                    grid[dimension-i-1][j].setPiece(new ChessPiece(color2));
                 }
                 }
             }
