@@ -43,7 +43,7 @@ public class GameController implements GameListener {
     }
 
     public Color nextPlayer() {
-        return currentPlayer = currentPlayer == Color.RED ? Color.GREEN : Color.RED;
+        return currentPlayer = currentPlayer == model.color1 ? model.color2 : model.color1;
     }
 
     public boolean isjump(ChessBoardLocation location){
@@ -93,7 +93,6 @@ public class GameController implements GameListener {
             }}
         }
     }
-
     @Override
     public void onPlayerClickChessPiece(ChessBoardLocation location, ChessComponent component) {
         if (jumpcontinue==false){

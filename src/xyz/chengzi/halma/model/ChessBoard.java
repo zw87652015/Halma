@@ -9,7 +9,8 @@ public class ChessBoard implements Serializable{
     private Square[][] grid;
     private int dimension;
     private int steps = 0;
-
+    public Color color1=Color.green;
+    public Color color2=Color.RED;
 
     public ChessBoard(int dimension) {
         this.grid = new Square[dimension][dimension];
@@ -36,12 +37,12 @@ public class ChessBoard implements Serializable{
 
     private void initPieces() {
         // TODO: This is only a demo implementation.
-        grid[0][0].setPiece(new ChessPiece(Color.RED));
-        grid[0][1].setPiece(new ChessPiece(Color.RED));
-        grid[1][0].setPiece(new ChessPiece(Color.RED));
-        grid[dimension - 1][dimension - 1].setPiece(new ChessPiece(Color.GREEN));
-        grid[dimension - 1][dimension - 2].setPiece(new ChessPiece(Color.GREEN));
-        grid[dimension - 2][dimension - 1].setPiece(new ChessPiece(Color.GREEN));
+        grid[0][0].setPiece(new ChessPiece(color2));
+        grid[0][1].setPiece(new ChessPiece(color2));
+        grid[1][0].setPiece(new ChessPiece(color2));
+        grid[dimension - 1][dimension - 1].setPiece(new ChessPiece(color1));
+        grid[dimension - 1][dimension - 2].setPiece(new ChessPiece(color1));
+        grid[dimension - 2][dimension - 1].setPiece(new ChessPiece(color1));
     }
 
     private void initPieces(ChessBoard meow) {

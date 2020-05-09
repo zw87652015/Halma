@@ -39,7 +39,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../assigement5" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -131,6 +131,7 @@
       <workItem from="1585382889276" duration="15497000" />
       <workItem from="1588496914416" duration="29266000" />
       <workItem from="1588681436469" duration="47000" />
+      <workItem from="1588682017665" duration="2960000" />
     </task>
     <servers />
   </component>
@@ -167,33 +168,33 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="714" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585389620799" />
-    <state x="458" y="143" key="FileChooserDialogImpl" timestamp="1588554537478">
+    <state x="458" y="143" key="FileChooserDialogImpl" timestamp="1588682913272">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="458" y="143" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1588554537478" />
+    <state x="458" y="143" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1588682913272" />
     <state x="549" y="175" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1588474887166" />
-    <state width="1237" height="204" key="GridCell.Tab.0.bottom" timestamp="1588653216599">
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1588685002827">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1588653216599" />
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1588685002827" />
     <state width="1342" height="198" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1585643052309" />
     <state width="1877" height="262" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585399409885" />
-    <state width="1237" height="204" key="GridCell.Tab.0.center" timestamp="1588653216599">
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1588685002826">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1588653216599" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1588685002826" />
     <state width="1342" height="198" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1585643052308" />
     <state width="1877" height="262" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585399409885" />
-    <state width="1237" height="204" key="GridCell.Tab.0.left" timestamp="1588653216599">
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1588685002826">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1588653216599" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1588685002826" />
     <state width="1342" height="198" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1585643052308" />
     <state width="1877" height="262" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585399409885" />
-    <state width="1237" height="204" key="GridCell.Tab.0.right" timestamp="1588653216599">
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1588685002826">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1588653216599" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1588685002826" />
     <state width="1342" height="198" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1585643052309" />
     <state width="1877" height="262" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585399409885" />
     <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1588653216600">
@@ -237,16 +238,5 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1588598240263" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/xyz/chengzi/halma/controller/GameController.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

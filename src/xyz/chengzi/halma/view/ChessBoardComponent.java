@@ -80,7 +80,6 @@ public class ChessBoardComponent extends JComponent {
         listenerList.add(listener);
     }
 
-    public void unregisterListener(GameListener listener) {
-        listenerList.remove(listener);
+    public void unregisterListener(GameListener listener) { listenerList.remove(listener);
     }
 }
