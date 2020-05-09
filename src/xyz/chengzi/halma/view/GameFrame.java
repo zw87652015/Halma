@@ -1,14 +1,11 @@
 package xyz.chengzi.halma.view;
 
 import xyz.chengzi.halma.controller.GameController;
-import xyz.chengzi.halma.model.ChessBoard;
 import xyz.chengzi.halma.controller.DuDang;
 
 import java.io.File;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.plaf.MenuItemUI;
 
 public class GameFrame extends JFrame {
     public GameFrame() {
@@ -30,7 +27,7 @@ public class GameFrame extends JFrame {
         JMenu menu_Game = new JMenu("游戏");
         menuBar.add(menu_Game);
 
-        JMenuItem menuItem_load = new JMenuItem("读档");
+        JMenuItem menuItem_load = new JMenuItem("读取存档...");
         menuItem_load.addActionListener((e) -> {
             JFileChooser jfc = new JFileChooser();
             jfc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
@@ -40,7 +37,7 @@ public class GameFrame extends JFrame {
         });
         menu_Game.add(menuItem_load);
         
-        JMenuItem menuItem_save = new JMenuItem("存档");
+        JMenuItem menuItem_save = new JMenuItem("保存游戏...");
         menuItem_save.addActionListener((e) -> {
             JFileChooser jfc = new JFileChooser();
             jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -49,5 +46,14 @@ public class GameFrame extends JFrame {
             DuDang.save(GameController.getChessBoard(), file.getPath());
         });
         menu_Game.add(menuItem_save);
+        
+        JMenuItem menuItem_huiQi = new JMenuItem("悔棋");
+        menuItem_huiQi.addActionListener((e) -> {
+            try{
+                DuDang.huiQi();
+            } catch (Exception ex) {
+            }
+        });
+        menu_Game.add(menuItem_huiQi);
     }
 }
