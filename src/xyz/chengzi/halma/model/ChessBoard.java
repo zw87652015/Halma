@@ -9,24 +9,26 @@ public class ChessBoard implements Serializable{
     private Square[][] grid;
     private int dimension;
     private int steps = 0;
-    public Color color1=Color.green;
-    public Color color2=Color.RED;
-
-    public ChessBoard(int dimension) {
+    public Color color1=Color.RED;
+    public Color color2=Color.GREEN;
+    public Color color3=Color.yellow;
+    public Color color4=Color.blue;
+    private int pricenumber=4;
+    private boolean fourman=true;
+    public ChessBoard(int dimension,int pricenumber,boolean fourman) {
         this.grid = new Square[dimension][dimension];
         this.dimension = dimension;
-
+        this.fourman=fourman;
+        this.pricenumber=pricenumber;
         initGrid();
         initPieces();
     }
-
     public ChessBoard(ChessBoard meow) {
         this.grid = new Square[meow.getDimension()][meow.getDimension()];
         this.dimension = meow.getDimension();
         initGrid();
         initPieces(meow);
     }
-
     private void initGrid() {
         for (int i = 0; i < dimension; i++) {
             for (int j = 0; j < dimension; j++) {
@@ -34,15 +36,22 @@ public class ChessBoard implements Serializable{
             }
         }
     }
-
     private void initPieces() {
         // TODO: This is only a demo implementation.
-        grid[0][0].setPiece(new ChessPiece(color2));
-        grid[0][1].setPiece(new ChessPiece(color2));
-        grid[1][0].setPiece(new ChessPiece(color2));
-        grid[dimension - 1][dimension - 1].setPiece(new ChessPiece(color1));
-        grid[dimension - 1][dimension - 2].setPiece(new ChessPiece(color1));
-        grid[dimension - 2][dimension - 1].setPiece(new ChessPiece(color1));
+        for(int i=0;i<pricenumber;i++){
+            for (int j=0;j<pricenumber;j++){
+                if(i+j<pricenumber)
+                {grid[i][j].setPiece(new ChessPiece(color1));
+                grid[dimension-i-1][dimension-j-1].setPiece(new ChessPiece(color2));
+                if(fourman){
+                    grid[i][dimension-j-1].setPiece(new ChessPiece(color3));
+                    grid[dimension-i-1][j].setPiece(new ChessPiece(color4));
+                }
+                }
+            }
+        }
+
+
     }
 
     private void initPieces(ChessBoard meow) {
