@@ -10,14 +10,9 @@ import java.awt.*;
 
 public class Halma {
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            ChessBoardComponent chessBoardComponent = new ChessBoardComponent(500, 19);
-            ChessBoard chessBoard = new ChessBoard(19,4,false);
-            GameController controller = new GameController(chessBoardComponent, chessBoard, Color.RED);
-            
-            GameFrame mainFrame = new GameFrame();
-            mainFrame.add(chessBoardComponent);
-            mainFrame.setVisible(true);
+        SwingUtilities.invokeLater(() -> {            
+            GameFrame starterFrame = new GameFrame("starterFrame");
+            starterFrame.setVisible(true);
         });
     }
 }

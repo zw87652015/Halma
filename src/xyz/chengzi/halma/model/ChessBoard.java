@@ -37,7 +37,6 @@ public class ChessBoard implements Serializable{
         }
     }
     private void initPieces() {
-        // TODO: This is only a demo implementation.
         for(int i=0;i<pricenumber;i++){
             for (int j=0;j<pricenumber;j++){
                 if(i+j<pricenumber)
@@ -50,8 +49,6 @@ public class ChessBoard implements Serializable{
                 }
             }
         }
-
-
     }
 
     private void initPieces(ChessBoard meow) {
