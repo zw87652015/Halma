@@ -1,16 +1,14 @@
 package xyz.chengzi.halma.view;
 
+import xyz.chengzi.halma.controller.DuDang;
 import xyz.chengzi.halma.controller.GameController;
 import xyz.chengzi.halma.model.ChessBoard;
-import xyz.chengzi.halma.controller.DuDang;
-
-import java.io.File;
 
 import javax.swing.*;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.*;
+import java.io.File;
 
 public class GameFrame extends JFrame {
 
@@ -117,6 +115,7 @@ public class GameFrame extends JFrame {
         RadioButtonListener listener = new RadioButtonListener();
         setSize(300, 400);
         this.setLocationRelativeTo(null);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         jp = new JPanel();
         jp.setLayout(new GridLayout(0,1));
