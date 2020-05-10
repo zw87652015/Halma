@@ -24,12 +24,24 @@ public class DuDang {
             ChessBoard temp = (ChessBoard) ois.readObject();
             ois.close();
             SwingUtilities.invokeLater(() -> {
-                ChessBoardComponent chessBoardComponent = new ChessBoardComponent(760, 19);
+                ChessBoardComponent chessBoardComponent = new ChessBoardComponent(760, temp.getDimension());
                 Color nextPlayer;
-                if(temp.getSteps() %2 == 0) {
-                    nextPlayer = Color.RED;
+                if(temp.fourman) {
+                    if(temp.getSteps() %4 == 0) {
+                        nextPlayer = ChessBoard.color1;
+                    } else if(temp.getSteps() %4 == 1){
+                        nextPlayer = ChessBoard.color2;
+                    } else if(temp.getSteps() %4 == 2){
+                        nextPlayer = ChessBoard.color3;
+                    } else {
+                        nextPlayer = ChessBoard.color4;
+                    }
                 } else {
-                    nextPlayer = Color.GREEN;
+                    if(temp.getSteps() %2 == 0) {
+                        nextPlayer = ChessBoard.color1;
+                    } else {
+                        nextPlayer = ChessBoard.color2;
+                    }
                 }
                 GameController controller = new GameController(chessBoardComponent, temp, nextPlayer);
 
@@ -70,12 +82,24 @@ public class DuDang {
             ois.close();
             //GameController.setChessBoard(temp);
             SwingUtilities.invokeLater(() -> {
-                ChessBoardComponent chessBoardComponent = new ChessBoardComponent(760, 19);
+                ChessBoardComponent chessBoardComponent = new ChessBoardComponent(760, temp.getDimension());
                 Color nextPlayer;
-                if(temp.getSteps() %2 == 0) {
-                    nextPlayer = Color.RED;
+                if(temp.fourman) {
+                    if(temp.getSteps() %4 == 0) {
+                        nextPlayer = ChessBoard.color1;
+                    } else if(temp.getSteps() %4 == 1){
+                        nextPlayer = ChessBoard.color2;
+                    } else if(temp.getSteps() %4 == 2){
+                        nextPlayer = ChessBoard.color3;
+                    } else {
+                        nextPlayer = ChessBoard.color4;
+                    }
                 } else {
-                    nextPlayer = Color.GREEN;
+                    if(temp.getSteps() %2 == 0) {
+                        nextPlayer = ChessBoard.color1;
+                    } else {
+                        nextPlayer = ChessBoard.color2;
+                    }
                 }
                 GameController controller = new GameController(chessBoardComponent, temp, nextPlayer);
 
