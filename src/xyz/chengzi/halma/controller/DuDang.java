@@ -24,7 +24,7 @@ public class DuDang {
             ChessBoard temp = (ChessBoard) ois.readObject();
             ois.close();
             SwingUtilities.invokeLater(() -> {
-                ChessBoardComponent chessBoardComponent = new ChessBoardComponent(760, temp.getDimension());
+                ChessBoardComponent chessBoardComponent = new ChessBoardComponent(507, temp.getDimension());
                 Color nextPlayer;
                 if(temp.fourman) {
                     if(temp.getSteps() %4 == 0) {
@@ -82,7 +82,7 @@ public class DuDang {
             ois.close();
             //GameController.setChessBoard(temp);
             SwingUtilities.invokeLater(() -> {
-                ChessBoardComponent chessBoardComponent = new ChessBoardComponent(760, temp.getDimension());
+                ChessBoardComponent chessBoardComponent = new ChessBoardComponent(507, temp.getDimension());
                 Color nextPlayer;
                 if(temp.fourman) {
                     if(temp.getSteps() %4 == 0) {

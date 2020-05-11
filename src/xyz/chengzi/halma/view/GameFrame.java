@@ -30,7 +30,7 @@ public class GameFrame extends JFrame {
 
     public GameFrame() {
         setTitle("2020 CS102A Project Demo");
-        setSize(776, 830);
+        setSize(507, 554);
         setLocationRelativeTo(null); // Center the window.
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(null);
