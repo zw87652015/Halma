@@ -1,21 +1,12 @@
 package xyz.chengzi.halma.controller;
 
-import java.awt.Color;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.sql.Time;
-import java.util.Calendar;
-
-import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
-
 import xyz.chengzi.halma.model.ChessBoard;
 import xyz.chengzi.halma.view.ChessBoardComponent;
 import xyz.chengzi.halma.view.GameFrame;
+
+import javax.swing.*;
+import java.awt.*;
+import java.io.*;
 
 public class DuDang {
     public static void load(File file) {

@@ -128,4 +128,8 @@ public class ChessBoard implements Serializable{
             return false;
         }
     }
+
+    public int getPricenumber() {
+        return pricenumber;
+    }
 }

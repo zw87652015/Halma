@@ -10,12 +10,14 @@ import xyz.chengzi.halma.view.SquareComponent;
 
 import java.awt.*;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+
 public class GameController implements GameListener {
     private ChessBoardComponent view;
     private ChessBoard model;
     private static ChessComponent chessComponent;
     public static ChessBoard mod;
-    private boolean jumpcontinue=false;
+    private boolean jumpcontinue = false;
 
     private Color currentPlayer;
     private ChessPiece selectedPiece;
@@ -26,17 +28,17 @@ public class GameController implements GameListener {
         this.model = chessBoard;
         this.currentPlayer = nextPlayer;
         mod = model;
-        view.registerListener(this);
+        view.registerListener( this );
         initGameState();
     }
 
     public void initGameState() {
         for (int row = 0; row < model.getDimension(); row++) {
             for (int col = 0; col < model.getDimension(); col++) {
-                ChessBoardLocation location = new ChessBoardLocation(row, col);
-                ChessPiece piece = model.getChessPieceAt(location);
+                ChessBoardLocation location = new ChessBoardLocation( row, col );
+                ChessPiece piece = model.getChessPieceAt( location );
                 if (piece != null) {
-                    view.setChessAtGrid(location, piece.getColor());
+                    view.setChessAtGrid( location, piece.getColor() );
                 }
             }
         }
@@ -44,93 +46,162 @@ public class GameController implements GameListener {
     }
 
     public Color nextPlayer() {
-
+        isVictory();
         if (model.color1.equals( currentPlayer )) {
-            if(model.fourman){
-            currentPlayer=model.color2;return currentPlayer;}
-            else {currentPlayer=model.color3;}
+            if (model.fourman) {
+                currentPlayer = model.color2;
+                return currentPlayer;
+            } else {
+                currentPlayer = model.color3;
+            }
 
         } else if (model.color2.equals( currentPlayer )) {
 
-            currentPlayer=model.color3;return currentPlayer;
+            currentPlayer = model.color3;
+            return currentPlayer;
 
 
         } else if (model.color3.equals( currentPlayer )) {
-            if(model.fourman){
-            currentPlayer=model.color4;return currentPlayer;}
-            else {currentPlayer=model.color1;return currentPlayer;}
+            if (model.fourman) {
+                currentPlayer = model.color4;
+                return currentPlayer;
+            } else {
+                currentPlayer = model.color1;
+                return currentPlayer;
+            }
         } else if (model.color4.equals( currentPlayer )) {
-            currentPlayer=model.color1;return currentPlayer;
+            currentPlayer = model.color1;
+            return currentPlayer;
         }
-    return currentPlayer;}
+        return currentPlayer;
+    }
 
-    public boolean isjump(ChessBoardLocation location){
-        return model.isjumpmove( selectedLocation,location ); }
+    public boolean isjump(ChessBoardLocation location) {
+        return model.isjumpmove( selectedLocation, location );
+    }
+
     @Override
     public void onPlayerClickSquare(ChessBoardLocation location, SquareComponent component) {
-        if (jumpcontinue){
-            if (location.equals( selectedLocation )){
-                model.moveChessPiece(selectedLocation, location);
-                view.setChessAtGrid(location, selectedPiece.getColor());
-                view.removeChessAtGrid(selectedLocation);
+        if (jumpcontinue) {
+            if (location.equals( selectedLocation )) {
+                model.moveChessPiece( selectedLocation, location );
+                view.setChessAtGrid( location, selectedPiece.getColor() );
+                view.removeChessAtGrid( selectedLocation );
                 view.repaint();
                 mod = model;
-                selectedLocation=null;
-                selectedPiece=null;
-                jumpcontinue=false;
+                selectedLocation = null;
+                selectedPiece = null;
+                jumpcontinue = false;
                 nextPlayer();
                 return;
             }
         }
-        if (isjump( location )==false){
-            if (jumpcontinue==false){
-        if (selectedLocation != null && model.isValidMove(selectedLocation, location)) {
-            model.moveChessPiece(selectedLocation, location);
-            view.setChessAtGrid(location, selectedPiece.getColor());
-            view.removeChessAtGrid(selectedLocation);
-            view.repaint();
-            selectedPiece = null;
-            selectedLocation = null;
-            mod = model;
-            nextPlayer();}}
-        }else {
-            if (model.isjumpcanmove( selectedLocation,location )){
-            model.moveChessPiece(selectedLocation, location);
-            view.setChessAtGrid(location, selectedPiece.getColor());
-            view.removeChessAtGrid(selectedLocation);
-            view.repaint();
-            selectedLocation = location;
-            mod = model;
-            jumpcontinue=true;
-            }else {
-                if(jumpcontinue){
-                selectedLocation = null;
-                selectedPiece=null;
+        if (isjump( location ) == false) {
+            if (jumpcontinue == false) {
+                if (selectedLocation != null && model.isValidMove( selectedLocation, location )) {
+                    model.moveChessPiece( selectedLocation, location );
+                    view.setChessAtGrid( location, selectedPiece.getColor() );
+                    view.removeChessAtGrid( selectedLocation );
+                    view.repaint();
+                    selectedPiece = null;
+                    selectedLocation = null;
+                    mod = model;
+                    nextPlayer();
+                }
+            }
+        } else {
+            if (model.isjumpcanmove( selectedLocation, location )) {
+                model.moveChessPiece( selectedLocation, location );
+                view.setChessAtGrid( location, selectedPiece.getColor() );
+                view.removeChessAtGrid( selectedLocation );
+                view.repaint();
+                selectedLocation = location;
                 mod = model;
-                jumpcontinue=false;
-                nextPlayer();
-            }}
+                jumpcontinue = true;
+            } else {
+                if (jumpcontinue) {
+                    selectedLocation = null;
+                    selectedPiece = null;
+                    mod = model;
+                    jumpcontinue = false;
+                    nextPlayer();
+                }
+            }
         }
     }
+
     @Override
     public void onPlayerClickChessPiece(ChessBoardLocation location, ChessComponent component) {
-        if (jumpcontinue==false){
-        ChessPiece piece = model.getChessPieceAt(location);
-        DuDang.save(GameController.getChessBoard());
-        if (piece.getColor().equals(currentPlayer) && (selectedPiece == piece || selectedPiece == null)) {
-            if (selectedPiece == null) {
-                selectedPiece = piece;
-                selectedLocation = location;
-            } else {
-                selectedPiece = null;
-                selectedLocation = null;
+        if (jumpcontinue == false) {
+            ChessPiece piece = model.getChessPieceAt( location );
+            DuDang.save( GameController.getChessBoard() );
+            if (piece.getColor().equals( currentPlayer ) && (selectedPiece == piece || selectedPiece == null)) {
+                if (selectedPiece == null) {
+                    selectedPiece = piece;
+                    selectedLocation = location;
+                } else {
+                    selectedPiece = null;
+                    selectedLocation = null;
+                }
+                component.setSelected( !component.isSelected() );
+                component.repaint();
             }
-            component.setSelected(!component.isSelected());
-            component.repaint();
-        }}
+        }
     }
 
     public static ChessBoard getChessBoard() {
         return mod;
+    }
+
+    public void isVictory() {
+        boolean b = true;
+        ChessBoardLocation c;
+        Judge:
+        for (int i = 0; i < model.getPricenumber(); i++) {
+            for (int j = 0; j < model.getPricenumber(); j++) {
+                if (i + j < model.getPricenumber()) {
+                    if (currentPlayer == model.color1) {
+                        c = new ChessBoardLocation( model.getDimension() - i - 1, model.getDimension() - j - 1 );
+                        if(model.getChessPieceAt( c )==null){b=false;break Judge;}
+                        if (model.getChessPieceAt( c ).getColor() != model.color1) {
+                            b = false;
+                            break Judge;
+                        }
+                    }
+                    if (currentPlayer == model.color3) {
+                        c = new ChessBoardLocation( i, j );
+                        if(model.getChessPieceAt( c )==null){b=false;break Judge;}
+                        if (model.getChessPieceAt( c ).getColor() != model.color3) {
+                            b = false;
+                            break Judge;
+                        }
+
+                    }
+                    if (currentPlayer == model.color2) {
+                        c = new ChessBoardLocation( i, model.getDimension() - j - 1 );
+                        if(model.getChessPieceAt( c )==null){b=false;break Judge;}
+                        if (model.getChessPieceAt( c ).getColor() != model.color2) {
+                            b = false;
+                            break Judge;
+                        }
+                    }
+                    if (currentPlayer == model.color4) {
+                        c = new ChessBoardLocation( model.getDimension() - i - 1, j);
+                        if(model.getChessPieceAt( c )==null){b=false;break Judge;}
+                        if (model.getChessPieceAt( c ).getColor() != model.color4) {
+                            b = false;
+                            break Judge;
+                        }
+                    }
+                }
+            }
+        }
+        String winplayer=null;
+        if(b==true){
+            if(currentPlayer==model.color1){winplayer="player1";}
+            if(currentPlayer==model.color2){winplayer="player2";}
+            if(currentPlayer==model.color3){winplayer="player3";}
+            if(currentPlayer==model.color4){winplayer="player4";}
+            showMessageDialog(null,"Congratulation: "+winplayer+"is win!! ");}
     }
 }
