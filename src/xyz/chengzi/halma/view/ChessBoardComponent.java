@@ -1,6 +1,8 @@
 package xyz.chengzi.halma.view;
 
+import xyz.chengzi.halma.controller.GameController;
 import xyz.chengzi.halma.listener.GameListener;
+import xyz.chengzi.halma.model.ChessBoard;
 import xyz.chengzi.halma.model.ChessBoardLocation;
 
 import javax.swing.*;
@@ -18,12 +20,22 @@ public class ChessBoardComponent extends JComponent {
     private int dimension;
     private int gridSize;
 
+    public void setTextField() {
+        String currentPlayer = "";
+        System.out.println(GameController.gc.getCurrentPlayer());
+        if(GameController.gc.getCurrentPlayer() == ChessBoard.color1) {currentPlayer = "RED's turn";}
+        if(GameController.gc.getCurrentPlayer() == ChessBoard.color2) {currentPlayer = "GREEN's turn";}
+        if(GameController.gc.getCurrentPlayer() == ChessBoard.color3) {currentPlayer = "YELLOW's turn";}
+        if(GameController.gc.getCurrentPlayer() == ChessBoard.color4) {currentPlayer = "BLUE's turn";}
+        this.gridComponents[0][dimension].getCurrentPlayerText().setText(currentPlayer);
+    }
+
     public ChessBoardComponent(int size, int dimension) {
         enableEvents(AWTEvent.MOUSE_EVENT_MASK);
         setLayout(null); // Use absolute layout.
-        setSize(size, size);
+        setSize(size+100, size+100);
 
-        this.gridComponents = new SquareComponent[dimension][dimension];
+        this.gridComponents = new SquareComponent[dimension+1][dimension+1];
         this.dimension = dimension;
         this.gridSize = size / dimension;
         initGridComponents();
@@ -38,6 +50,9 @@ public class ChessBoardComponent extends JComponent {
                 add(gridComponents[row][col]);
             }
         }
+        gridComponents[0][dimension] = new SquareComponent(100, Color.WHITE, "");
+        gridComponents[0][dimension].setLocation((dimension)*gridSize, 0);
+        add(gridComponents[0][dimension]);
     }
 
     public SquareComponent getGridAt(ChessBoardLocation location) {

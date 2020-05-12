@@ -6,27 +6,33 @@ import xyz.chengzi.halma.model.ChessBoardLocation;
 import xyz.chengzi.halma.model.ChessPiece;
 import xyz.chengzi.halma.view.ChessBoardComponent;
 import xyz.chengzi.halma.view.ChessComponent;
+import xyz.chengzi.halma.view.GameFrame;
 import xyz.chengzi.halma.view.SquareComponent;
 
 import java.awt.*;
 
 import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.JLabel;
 
 public class GameController implements GameListener {
     private ChessBoardComponent view;
     private ChessBoard model;
     private static ChessComponent chessComponent;
     public static ChessBoard mod;
-    private boolean jumpcontinue = false;
+    private boolean jumpcontinue=false;
+    public static GameController gc;
 
     private Color currentPlayer;
     private ChessPiece selectedPiece;
     private ChessBoardLocation selectedLocation;
 
+    public Color getCurrentPlayer() {return currentPlayer;}
+
     public GameController(ChessBoardComponent boardComponent, ChessBoard chessBoard, Color nextPlayer) {
         this.view = boardComponent;
         this.model = chessBoard;
         this.currentPlayer = nextPlayer;
+        gc=this;
         mod = model;
         view.registerListener( this );
         initGameState();
@@ -73,13 +79,20 @@ public class GameController implements GameListener {
             currentPlayer = model.color1;
             return currentPlayer;
         }
+        /*String currentPlayerString = "";
+        if(GameController.gc.getCurrentPlayer() == ChessBoard.color1) {currentPlayerString = "Player 1's turn";}
+        if(GameController.gc.getCurrentPlayer() == ChessBoard.color2) {currentPlayerString = "Player 2's turn";}
+        if(GameController.gc.getCurrentPlayer() == ChessBoard.color3) {currentPlayerString = "Player 3's turn";}
+        if(GameController.gc.getCurrentPlayer() == ChessBoard.color4) {currentPlayerString = "Player 4's turn";}*/
+        view.setTextField();
+        view.repaint();
         return currentPlayer;
     }
 
     public boolean isjump(ChessBoardLocation location) {
         return model.isjumpmove( selectedLocation, location );
     }
-
+        
     @Override
     public void onPlayerClickSquare(ChessBoardLocation location, SquareComponent component) {
         if (jumpcontinue) {
