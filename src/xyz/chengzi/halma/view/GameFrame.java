@@ -23,21 +23,31 @@ public class GameFrame extends JFrame {
     private ButtonGroup weiDuGroup;
     private JRadioButton seventeen, eighteen, nineteen, twenty, twenty_one;
     private JButton startButton, loadButton;
-
+    
+    public static JLabel statusLabel;
     public static boolean isFourMan = false;
     public static int rowsOfPieces = 3;
     public static int dimension = 17;
 
     public GameFrame() {
         setTitle("2020 CS102A Project Demo");
-        setSize(507, 554);
+        setSize(607, 574);
         setLocationRelativeTo(null); // Center the window.
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
+        /*String currentPlayer = "";
+        if(GameController.gc.getCurrentPlayer() == ChessBoard.color1) {currentPlayer = "Player 1's turn";}
+        if(GameController.gc.getCurrentPlayer() == ChessBoard.color2) {currentPlayer = "Player 2's turn";}
+        if(GameController.gc.getCurrentPlayer() == ChessBoard.color3) {currentPlayer = "Player 3's turn";}
+        if(GameController.gc.getCurrentPlayer() == ChessBoard.color4) {currentPlayer = "Player 4's turn";}
+        statusLabel = new JLabel(currentPlayer);
+        statusLabel.setLocation(0, 500);
+        statusLabel.setSize(200, 10);
+        add(statusLabel);*/
         JLabel statusLabel = new JLabel("Sample label");
-        statusLabel.setLocation(0, 780);
+        statusLabel.setLocation(0, 500);
         statusLabel.setSize(200, 10);
         add(statusLabel);
 
@@ -110,7 +120,7 @@ public class GameFrame extends JFrame {
         }
     }
 
-    public GameFrame(String starterFrame) {
+    public GameFrame(String frameName) {
         super("HHHHHalma");
         RadioButtonListener listener = new RadioButtonListener();
         setSize(300, 400);

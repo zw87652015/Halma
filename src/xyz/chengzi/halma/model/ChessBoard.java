@@ -9,10 +9,10 @@ public class ChessBoard implements Serializable{
     private Square[][] grid;
     private int dimension;
     private int steps = 0;
-    public static Color color1=Color.RED;
-    public static Color color2=Color.GREEN;
-    public static Color color3=Color.yellow;
-    public static Color color4=Color.blue;
+    public static Color color1 = Color.RED;
+    public static Color color2 = Color.GREEN;
+    public static Color color3 = Color.yellow;
+    public static Color color4 = Color.blue;
     private int pricenumber=4;
     public boolean fourman=true;
     public ChessBoard(int dimension,int pricenumber,boolean fourman) {
