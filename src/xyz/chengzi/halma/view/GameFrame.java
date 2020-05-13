@@ -32,7 +32,7 @@ public class GameFrame extends JFrame {
     public GameFrame() {
         setTitle("2020 CS102A Project Demo");
         setSize(707, 574);
-        setLocationRelativeTo(null); // Center the window.
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -44,6 +44,45 @@ public class GameFrame extends JFrame {
 
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
+
+        JMenu menu_about = new JMenu("关于");
+        menuBar.add(menu_about);
+
+        JMenuItem menuItem_rules = new JMenuItem("规则");
+        menuItem_rules.addActionListener((e) -> {
+            JFrame frame = new JFrame();
+            frame.setTitle("规则");
+            frame.setBounds(
+                    new Rectangle(
+                            (int) this.getBounds().getX() + 50,
+                            (int) this.getBounds().getY() + 50,
+                            (int) this.getBounds().getWidth(),
+                            (int) this.getBounds().getHeight()
+                    )
+            );
+            frame.setSize(400,300);
+            JLabel jl = new JLabel();
+            frame.add(jl);
+
+            jl.setText("<html><body>1、游戏人数：" +
+                    "<br />" +
+                    "<br />    2 人或者 4 人,2人时，玩家分别在左上角和右上角，4人时，一人一角。下棋顺序是从左上角玩家开始，顺时针依次进行。" +
+                    "<br />" +
+                    "<br />2、走子规则：" +
+                    "<br />" +
+                    "<br />    棋子的移动可以一步步在格子的八个方向进行,如果相邻位置上有任何方的一个棋子，该位置直线方向下一个位置是空的，则可以直接\"跳\"到该空位上，\"跳\"的过程中，只要相同条件满足就可以连续进行。" +
+                    "<br />" +
+                    "<br />3、获胜条件:" +
+                    "<br />" +
+                    "<br />    玩家所有的棋子占领对角线玩家的所有位置。");
+
+
+            frame.setVisible(true);
+        });
+        menu_about.add(menuItem_rules);
+
+
+
 
         JMenu menu_Game = new JMenu("游戏");
         menuBar.add(menu_Game);
@@ -77,6 +116,7 @@ public class GameFrame extends JFrame {
         });
         menu_Game.add(menuItem_huiQi);
     }
+
 
     private class RadioButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent ae) {
