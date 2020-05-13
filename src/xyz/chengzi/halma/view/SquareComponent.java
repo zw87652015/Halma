@@ -21,10 +21,20 @@ public class SquareComponent extends JPanel {
     }
 
     public SquareComponent(int size, Color color, String text) {
-        setLayout(new GridLayout(1, 1)); // Use 1x1 grid layout.
+        //setLayout(new GridLayout(1, 1)); // Use 1x1 grid layout.
         setSize(size, size);
         this.color = color;
         currentPlayerText = new JTextField("RED's turn");
+        currentPlayerText.setEditable(false);
+        currentPlayerText.setHorizontalAlignment(JTextField.CENTER);
+        this.add(currentPlayerText);
+    }
+    
+    public SquareComponent(int size1, int size2, Color color, String text) {
+        setLayout(new GridLayout(1, 1)); // Use 1x1 grid layout.
+        setSize(size1, size2);
+        this.color = color;
+        currentPlayerText = new JTextField(text);
         currentPlayerText.setEditable(false);
         currentPlayerText.setHorizontalAlignment(JTextField.CENTER);
         this.add(currentPlayerText);

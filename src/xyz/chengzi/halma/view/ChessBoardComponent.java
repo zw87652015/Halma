@@ -20,39 +20,186 @@ public class ChessBoardComponent extends JComponent {
     private int dimension;
     private int gridSize;
 
-    public void setTextField() {
-        String currentPlayer = "";
-        System.out.println(GameController.gc.getCurrentPlayer());
-        if(GameController.gc.getCurrentPlayer() == ChessBoard.color1) {currentPlayer = "RED's turn";}
-        if(GameController.gc.getCurrentPlayer() == ChessBoard.color2) {currentPlayer = "GREEN's turn";}
-        if(GameController.gc.getCurrentPlayer() == ChessBoard.color3) {currentPlayer = "YELLOW's turn";}
-        if(GameController.gc.getCurrentPlayer() == ChessBoard.color4) {currentPlayer = "BLUE's turn";}
-        this.gridComponents[0][dimension].getCurrentPlayerText().setText(currentPlayer);
+    public void setTextField(boolean isFourMan) {
+        if(isFourMan) {
+            if(GameController.gc.getCurrentPlayer() == ChessBoard.color1) {
+                this.gridComponents[0][dimension].getCurrentPlayerText().setText("→");
+                this.gridComponents[1][dimension].getCurrentPlayerText().setText("");
+                this.gridComponents[2][dimension].getCurrentPlayerText().setText("");
+                this.gridComponents[3][dimension].getCurrentPlayerText().setText("");
+
+                this.gridComponents[0][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color1) );
+                this.gridComponents[1][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color2) );
+                this.gridComponents[2][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color3) );
+                this.gridComponents[3][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color4) );
+            }
+            if(GameController.gc.getCurrentPlayer() == ChessBoard.color2) {
+                this.gridComponents[0][dimension].getCurrentPlayerText().setText("");
+                this.gridComponents[1][dimension].getCurrentPlayerText().setText("→");
+                this.gridComponents[2][dimension].getCurrentPlayerText().setText("");
+                this.gridComponents[3][dimension].getCurrentPlayerText().setText("");
+
+                this.gridComponents[0][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color1) );
+                this.gridComponents[1][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color2) );
+                this.gridComponents[2][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color3) );
+                this.gridComponents[3][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color4) );
+            }
+            if(GameController.gc.getCurrentPlayer() == ChessBoard.color3) {
+                this.gridComponents[0][dimension].getCurrentPlayerText().setText("");
+                this.gridComponents[1][dimension].getCurrentPlayerText().setText("");
+                this.gridComponents[2][dimension].getCurrentPlayerText().setText("→");
+                this.gridComponents[3][dimension].getCurrentPlayerText().setText("");
+
+                this.gridComponents[0][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color1) );
+                this.gridComponents[1][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color2) );
+                this.gridComponents[2][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color3) );
+                this.gridComponents[3][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color4) );
+            }
+            if(GameController.gc.getCurrentPlayer() == ChessBoard.color4) {
+                this.gridComponents[0][dimension].getCurrentPlayerText().setText("");
+                this.gridComponents[1][dimension].getCurrentPlayerText().setText("");
+                this.gridComponents[2][dimension].getCurrentPlayerText().setText("");
+                this.gridComponents[3][dimension].getCurrentPlayerText().setText("→");
+
+                this.gridComponents[0][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color1) );
+                this.gridComponents[1][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color2) );
+                this.gridComponents[2][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color3) );
+                this.gridComponents[3][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color4) );
+            }
+        } else {
+            if(GameController.gc.getCurrentPlayer() == ChessBoard.color1) {
+                this.gridComponents[0][dimension].getCurrentPlayerText().setText("→");
+                this.gridComponents[1][dimension].getCurrentPlayerText().setText("");
+
+                this.gridComponents[0][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color1) );
+                this.gridComponents[1][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color3) );
+            }
+            if(GameController.gc.getCurrentPlayer() == ChessBoard.color3) {
+                this.gridComponents[0][dimension].getCurrentPlayerText().setText("");
+                this.gridComponents[1][dimension].getCurrentPlayerText().setText("→");
+
+                this.gridComponents[0][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color1) );
+                this.gridComponents[1][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color3) );
+            }
+        }
+    }
+    
+    public void setNextPlayerFigureField(boolean isFourMan) {
+        if(isFourMan) {
+            ChessBoardLocation lo = new ChessBoardLocation(0, dimension+1);
+            setChessAtGrid(lo, ChessBoard.color1);
+            lo = new ChessBoardLocation(1, dimension+1);
+            setChessAtGrid(lo, ChessBoard.color2);
+            lo = new ChessBoardLocation(2, dimension+1);
+            setChessAtGrid(lo, ChessBoard.color3);
+            lo = new ChessBoardLocation(3, dimension+1);
+            setChessAtGrid(lo, ChessBoard.color4);
+        } else {
+            ChessBoardLocation lo = new ChessBoardLocation(0, dimension+1);
+            setChessAtGrid(lo, ChessBoard.color1);
+            lo = new ChessBoardLocation(1, dimension+1);
+            setChessAtGrid(lo, ChessBoard.color3);
+        }
     }
 
     public ChessBoardComponent(int size, int dimension) {
         enableEvents(AWTEvent.MOUSE_EVENT_MASK);
         setLayout(null); // Use absolute layout.
-        setSize(size+100, size+100);
+        setSize(size+300, size+100);
 
-        this.gridComponents = new SquareComponent[dimension+1][dimension+1];
+        this.gridComponents = new SquareComponent[dimension+3][dimension+3];
         this.dimension = dimension;
         this.gridSize = size / dimension;
-        initGridComponents();
+        initGridComponents(GameFrame.isFourMan);
     }
 
-    private void initGridComponents() {
-        for (int row = 0; row < dimension; row++) {
-            for (int col = 0; col < dimension; col++) {
-                gridComponents[row][col] = new SquareComponent(gridSize,
-                        (row + col) % 2 == 0 ? BOARD_COLOR_1 : BOARD_COLOR_2);
-                gridComponents[row][col].setLocation(row * gridSize, col * gridSize);
-                add(gridComponents[row][col]);
+    private void initGridComponents(boolean isFourMan) {
+        if(isFourMan) {
+            for (int row = 0; row < dimension; row++) {
+                for (int col = 0; col < dimension; col++) {
+                    gridComponents[row][col] = new SquareComponent(gridSize,
+                            (row + col) % 2 == 0 ? BOARD_COLOR_1 : BOARD_COLOR_2);
+                    gridComponents[row][col].setLocation(row * gridSize, col * gridSize);
+                    add(gridComponents[row][col]);
+                }
             }
+
+            //Player 11111111111111111111111111111111111111111111111111111111111111111111111111111111111 status label
+            gridComponents[0][dimension] = new SquareComponent(gridSize, gridSize, Color.WHITE, "→");
+            gridComponents[0][dimension].setLocation((dimension)*gridSize, 0);
+            add(gridComponents[0][dimension]);
+            gridComponents[0][dimension+1] = new SquareComponent(gridSize, Color.WHITE);
+            gridComponents[0][dimension+1].setLocation((dimension+1)*gridSize, 0);
+            add(gridComponents[0][dimension+1]);
+            gridComponents[0][dimension+2] = new SquareComponent(gridSize*3, gridSize, Color.WHITE, "MOVES:0");
+            gridComponents[0][dimension+2].setLocation((dimension+2)*gridSize, 0);
+            add(gridComponents[0][dimension+2]);
+
+            //Player 22222222222222222222222222222222222222222222222222222222222222222222222222222222222 status label
+            gridComponents[1][dimension] = new SquareComponent(gridSize, gridSize, Color.WHITE, "");
+            gridComponents[1][dimension].setLocation((dimension)*gridSize, gridSize);
+            add(gridComponents[1][dimension]);
+            gridComponents[1][dimension+1] = new SquareComponent(gridSize, Color.WHITE);
+            gridComponents[1][dimension+1].setLocation((dimension+1)*gridSize, gridSize);
+            add(gridComponents[1][dimension+1]);
+            gridComponents[1][dimension+2] = new SquareComponent(gridSize*3, gridSize, Color.WHITE, "MOVES:0");
+            gridComponents[1][dimension+2].setLocation((dimension+2)*gridSize, gridSize);
+            add(gridComponents[1][dimension+2]);
+
+            //Player 33333333333333333333333333333333333333333333333333333333333333333333333333333333333 status label
+            gridComponents[2][dimension] = new SquareComponent(gridSize, gridSize, Color.WHITE, "");
+            gridComponents[2][dimension].setLocation((dimension)*gridSize, gridSize*2);
+            add(gridComponents[2][dimension]);
+            gridComponents[2][dimension+1] = new SquareComponent(gridSize, Color.WHITE);
+            gridComponents[2][dimension+1].setLocation((dimension+1)*gridSize, gridSize*2);
+            add(gridComponents[2][dimension+1]);
+            gridComponents[2][dimension+2] = new SquareComponent(gridSize*3, gridSize, Color.WHITE, "MOVES:0");
+            gridComponents[2][dimension+2].setLocation((dimension+2)*gridSize, gridSize*2);
+            add(gridComponents[2][dimension+2]);
+            
+            //Player 44444444444444444444444444444444444444444444444444444444444444444444444444444444444 status label
+            gridComponents[3][dimension] = new SquareComponent(gridSize, gridSize, Color.WHITE, "");
+            gridComponents[3][dimension].setLocation((dimension)*gridSize, gridSize*3);
+            add(gridComponents[3][dimension]);
+            gridComponents[3][dimension+1] = new SquareComponent(gridSize, Color.WHITE);
+            gridComponents[3][dimension+1].setLocation((dimension+1)*gridSize, gridSize*3);
+            add(gridComponents[3][dimension+1]);
+            gridComponents[3][dimension+2] = new SquareComponent(gridSize*3, gridSize, Color.WHITE, "MOVES:0");
+            gridComponents[3][dimension+2].setLocation((dimension+2)*gridSize, gridSize*3);
+            add(gridComponents[3][dimension+2]);
+
+        } else {
+            for (int row = 0; row < dimension; row++) {
+                for (int col = 0; col < dimension; col++) {
+                    gridComponents[row][col] = new SquareComponent(gridSize,
+                            (row + col) % 2 == 0 ? BOARD_COLOR_1 : BOARD_COLOR_2);
+                    gridComponents[row][col].setLocation(row * gridSize, col * gridSize);
+                    add(gridComponents[row][col]);
+                }
+            }
+            //Player 11111111111111111111111111111111111111111111111111111111111111111111111111111111111 status label
+            gridComponents[0][dimension] = new SquareComponent(gridSize, gridSize, Color.WHITE, "→");
+            gridComponents[0][dimension].setLocation((dimension)*gridSize, 0);
+            add(gridComponents[0][dimension]);
+            gridComponents[0][dimension+1] = new SquareComponent(gridSize, Color.WHITE);
+            gridComponents[0][dimension+1].setLocation((dimension+1)*gridSize, 0);
+            add(gridComponents[0][dimension+1]);
+            gridComponents[0][dimension+2] = new SquareComponent(gridSize*3, gridSize, Color.WHITE, "MOVES:0");
+            gridComponents[0][dimension+2].setLocation((dimension+2)*gridSize, 0);
+            add(gridComponents[0][dimension+2]);
+
+            //Player 22222222222222222222222222222222222222222222222222222222222222222222222222222222222 status label
+            gridComponents[1][dimension] = new SquareComponent(gridSize, gridSize, Color.WHITE, "");
+            gridComponents[1][dimension].setLocation((dimension)*gridSize, gridSize);
+            add(gridComponents[1][dimension]);
+            gridComponents[1][dimension+1] = new SquareComponent(gridSize, Color.WHITE);
+            gridComponents[1][dimension+1].setLocation((dimension+1)*gridSize, gridSize);
+            add(gridComponents[1][dimension+1]);
+            gridComponents[1][dimension+2] = new SquareComponent(gridSize*3, gridSize, Color.WHITE, "MOVES:0");
+            gridComponents[1][dimension+2].setLocation((dimension+2)*gridSize, gridSize);
+            add(gridComponents[1][dimension+2]);
         }
-        gridComponents[0][dimension] = new SquareComponent(100, Color.WHITE, "");
-        gridComponents[0][dimension].setLocation((dimension)*gridSize, 0);
-        add(gridComponents[0][dimension]);
+        
     }
 
     public SquareComponent getGridAt(ChessBoardLocation location) {
