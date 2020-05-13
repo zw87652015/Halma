@@ -13,7 +13,6 @@ import java.awt.*;
 import java.util.HashMap;
 
 import static javax.swing.JOptionPane.showMessageDialog;
-import javax.swing.JLabel;
 
 public class GameController implements GameListener {
     private ChessBoardComponent view;
@@ -34,7 +33,7 @@ public class GameController implements GameListener {
     public GameController(ChessBoardComponent boardComponent, ChessBoard chessBoard, Color nextPlayer) {
         this.view = boardComponent;
         this.model = chessBoard;
-        this.currentPlayer = nextPlayer;
+        this.currentPlayer =null;
         gc=this;
         mod = model;
         view.registerListener( this );
@@ -164,6 +163,7 @@ public class GameController implements GameListener {
     public void onPlayerClickChessPiece(ChessBoardLocation location, ChessComponent component) {
         if (jumpcontinue == false) {
             ChessPiece piece = model.getChessPieceAt( location );
+            if(currentPlayer==null){currentPlayer=piece.getColor();}
             DuDang.save( GameController.getChessBoard() );
             if (piece.getColor().equals( currentPlayer ) && (selectedPiece == piece || selectedPiece == null)) {
                 if (selectedPiece == null) {
