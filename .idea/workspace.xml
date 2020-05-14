@@ -7,23 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2aae434c-7040-48e1-8d09-8d878df0c53a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/out/production/Halma/start.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Halma/xyz/chengzi/halma/Halma.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Halma/xyz/chengzi/halma/controller/DuDang.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Halma/xyz/chengzi/halma/controller/GameController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Halma/xyz/chengzi/halma/listener/GameListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Halma/xyz/chengzi/halma/model/ChessBoard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Halma/xyz/chengzi/halma/model/ChessBoardLocation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Halma/xyz/chengzi/halma/model/ChessPiece.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Halma/xyz/chengzi/halma/model/Square.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Halma/xyz/chengzi/halma/view/ChessBoardComponent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Halma/xyz/chengzi/halma/view/ChessComponent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Halma/xyz/chengzi/halma/view/GameFrame$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Halma/xyz/chengzi/halma/view/GameFrame$RadioButtonListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Halma/xyz/chengzi/halma/view/GameFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Halma/xyz/chengzi/halma/view/SquareComponent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/xyz/chengzi/halma/controller/DuDang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/xyz/chengzi/halma/controller/DuDang.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/xyz/chengzi/halma/view/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/xyz/chengzi/halma/view/GameFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,29 +176,29 @@
     </state>
     <state x="458" y="143" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1588682913272" />
     <state x="549" y="175" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1588474887166" />
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1589381220082">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1589469168214">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1589381220082" />
-    <state width="1342" height="198" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1585643052309" />
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1589469168214" />
     <state width="1877" height="262" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585399409885" />
-    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1589381220080">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1493" height="213" key="GridCell.Tab.0.center" timestamp="1589469168214">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1589381220080" />
-    <state width="1342" height="198" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1585643052308" />
+    <state width="1493" height="213" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1589469168214" />
     <state width="1877" height="262" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585399409885" />
-    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1589381220079">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1493" height="213" key="GridCell.Tab.0.left" timestamp="1589469168214">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1589381220079" />
-    <state width="1342" height="198" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1585643052308" />
+    <state width="1493" height="213" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1589469168214" />
     <state width="1877" height="262" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585399409885" />
-    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1589381220081">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1493" height="213" key="GridCell.Tab.0.right" timestamp="1589469168214">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1589381220081" />
-    <state width="1342" height="198" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1585643052309" />
+    <state width="1493" height="213" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1589469168214" />
     <state width="1877" height="262" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585399409885" />
     <state width="1237" height="293" key="GridCell.Tab.1.bottom" timestamp="1589380945296">
       <screen x="0" y="0" width="1280" height="680" />

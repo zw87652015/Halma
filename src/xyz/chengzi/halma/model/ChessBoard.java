@@ -2,6 +2,7 @@ package xyz.chengzi.halma.model;
 
 import java.awt.*;
 import java.io.Serializable;
+import java.util.HashMap;
 
 public class ChessBoard implements Serializable{
 
@@ -10,6 +11,7 @@ public class ChessBoard implements Serializable{
     private int dimension;
     private int steps = 0;
     private Color nextPlayer;
+    private HashMap<Color, Integer> stepsMap = new HashMap<>();
     public static Color color1 = Color.RED;
     public static Color color2 = Color.GREEN;
     public static Color color3 = Color.yellow;
@@ -142,5 +144,11 @@ public class ChessBoard implements Serializable{
     }
     public Color getNextPlayer() {
         return nextPlayer;
+    }
+    public void setStepsMap(HashMap<Color, Integer> stepsMap) {
+        this.stepsMap = stepsMap;
+    }
+    public HashMap<Color, Integer> getStepsMap() {
+        return stepsMap;
     }
 }

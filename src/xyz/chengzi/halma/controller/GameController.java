@@ -53,10 +53,7 @@ public class GameController implements GameListener {
         gc=this;
         mod = model;
         view.registerListener( this );
-        this.stepsMap.put(ChessBoard.color1, 0);
-        this.stepsMap.put(ChessBoard.color2, 0);
-        this.stepsMap.put(ChessBoard.color3, 0);
-        this.stepsMap.put(ChessBoard.color4, 0);
+        this.stepsMap = chessBoard.getStepsMap();
         initGameState();
     }
 
@@ -73,13 +70,15 @@ public class GameController implements GameListener {
         view.repaint();
     }
 
-    public Color nextPlayer() {
+    public Color nextPlayer(boolean isFourMan) {
         isVictory();
         if (model.color1.equals( currentPlayer )) {
             if (model.fourman) {
                 currentPlayer = model.color2;
-                view.setTextField(GameFrame.isFourMan);
-                view.setNextPlayerFigureField(GameFrame.isFourMan);
+                view.setTextField(isFourMan);
+                view.setNextPlayerFigureField(isFourMan);
+                model.setStepsMap(stepsMap);
+                mod.setNextPlayer(currentPlayer);
                 view.repaint();
                 return currentPlayer;
             } else {
@@ -87,35 +86,45 @@ public class GameController implements GameListener {
             }
         } else if (model.color2.equals( currentPlayer )) {
             currentPlayer = model.color3;
-            view.setTextField(GameFrame.isFourMan);
-            view.setNextPlayerFigureField(GameFrame.isFourMan);
+            view.setTextField(isFourMan);
+            view.setNextPlayerFigureField(isFourMan);
+            model.setStepsMap(stepsMap);
+            mod.setNextPlayer(currentPlayer);
             view.repaint();
             return currentPlayer;
         } else if (model.color3.equals( currentPlayer )) {
             if (model.fourman) {
                 currentPlayer = model.color4;
-                view.setTextField(GameFrame.isFourMan);
-                view.setNextPlayerFigureField(GameFrame.isFourMan);
+                view.setTextField(isFourMan);
+                view.setNextPlayerFigureField(isFourMan);
+                model.setStepsMap(stepsMap);
+                mod.setNextPlayer(currentPlayer);
                 view.repaint();
                 return currentPlayer;
             } else {
                 currentPlayer = model.color1;
-                view.setTextField(GameFrame.isFourMan);
-                view.setNextPlayerFigureField(GameFrame.isFourMan);
+                view.setTextField(isFourMan);
+                view.setNextPlayerFigureField(isFourMan);
+                model.setStepsMap(stepsMap);
+                mod.setNextPlayer(currentPlayer);
                 view.repaint();
                 return currentPlayer;
             }
         } else if (model.color4.equals( currentPlayer )) {
             currentPlayer = model.color1;
-            view.setTextField(GameFrame.isFourMan);
-            view.setNextPlayerFigureField(GameFrame.isFourMan);
+            view.setTextField(isFourMan);
+            view.setNextPlayerFigureField(isFourMan);
+            model.setStepsMap(stepsMap);
+            mod.setNextPlayer(currentPlayer);
             view.repaint();
             return currentPlayer;
         }
-        view.setTextField(GameFrame.isFourMan);
-        view.setNextPlayerFigureField(GameFrame.isFourMan);
+        view.setTextField(isFourMan);
+        view.setNextPlayerFigureField(isFourMan);
         //model.setSteps(model.getSteps() + 1);
         model.setNextPlayer(currentPlayer);
+        mod.setNextPlayer(currentPlayer);
+        model.setStepsMap(stepsMap);
         view.repaint();
         return currentPlayer;
     }
@@ -137,7 +146,7 @@ public class GameController implements GameListener {
                 selectedLocation = null;
                 selectedPiece = null;
                 jumpcontinue = false;
-                nextPlayer();
+                nextPlayer(model.fourman);
                 return;
             }
         }
@@ -152,7 +161,7 @@ public class GameController implements GameListener {
                     selectedPiece = null;
                     selectedLocation = null;
                     mod = model;
-                    nextPlayer();
+                    nextPlayer(model.fourman);
                 }
             }
         } else {
@@ -171,7 +180,7 @@ public class GameController implements GameListener {
                     selectedPiece = null;
                     mod = model;
                     jumpcontinue = false;
-                    nextPlayer();
+                    nextPlayer(model.fourman);
                 }
             }
         }
