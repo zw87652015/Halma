@@ -112,6 +112,17 @@ public class ChessBoardComponent extends JComponent {
         this.gridSize = size / dimension;
         initGridComponents(GameFrame.isFourMan);
     }
+    
+    public ChessBoardComponent(int size, int dimension, ChessBoard cb) {
+        enableEvents(AWTEvent.MOUSE_EVENT_MASK);
+        setLayout(null); // Use absolute layout.
+        setSize(size+300, size+100);
+
+        this.gridComponents = new SquareComponent[dimension+3][dimension+3];
+        this.dimension = dimension;
+        this.gridSize = size / dimension;
+        initGridComponents(cb.fourman);
+    }
 
     private void initGridComponents(boolean isFourMan) {
         if(isFourMan) {

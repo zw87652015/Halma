@@ -18,7 +18,7 @@ public class GameFrame extends JFrame {
     private JRadioButton shuangRen, siRen;
     private JTextField xuanZeChuShiQiZiShu;
     private ButtonGroup qiZiShuGroup;
-    private JRadioButton three, four, five;
+    private JRadioButton two, three, four, five;
     private JTextField weiDu;
     private ButtonGroup weiDuGroup;
     private JRadioButton seventeen, eighteen, nineteen, twenty, twenty_one;
@@ -26,7 +26,7 @@ public class GameFrame extends JFrame {
     
     public static JLabel statusLabel;
     public static boolean isFourMan = false;
-    public static int rowsOfPieces = 3;
+    public static int rowsOfPieces = 2;
     public static int dimension = 17;
 
     public GameFrame() {
@@ -82,6 +82,7 @@ public class GameFrame extends JFrame {
         public void actionPerformed(ActionEvent ae) {
             if(ae.getSource() == shuangRen) {isFourMan = false;}
             if(ae.getSource() == siRen) {isFourMan = true;}
+            if(ae.getSource() == two) {rowsOfPieces = 2;}
             if(ae.getSource() == three) {rowsOfPieces = 3;}
             if(ae.getSource() == four) {rowsOfPieces = 4;}
             if(ae.getSource() == five) {rowsOfPieces = 5;}
@@ -143,18 +144,23 @@ public class GameFrame extends JFrame {
         xuanZeChuShiQiZiShu.setBounds(100, 0, 10, 5);
         jp.add(xuanZeChuShiQiZiShu);
         qiZiShuGroup = new ButtonGroup();
-        three = new JRadioButton("3 rows",true);
-        three.setBounds(10, 50, 10, 5);
+        two = new JRadioButton("2 rows",true);
+        two.setBounds(10, 50, 10, 5);
+        three = new JRadioButton("3 rows");
+        three.setBounds(10, 60, 10, 5);
         four = new JRadioButton("4 rows");
-        four.setBounds(10, 60, 10, 5);
+        four.setBounds(10, 70, 10, 5);
         five = new JRadioButton("5 rows");
-        five.setBounds(10, 70, 10, 5);
+        five.setBounds(10, 80, 10, 5);
+        qiZiShuGroup.add(two);
         qiZiShuGroup.add(three);
         qiZiShuGroup.add(four);
         qiZiShuGroup.add(five);
+        jp.add(two);
         jp.add(three);
         jp.add(four);
         jp.add(five);
+        two.addActionListener(listener);
         three.addActionListener(listener);
         four.addActionListener(listener);
         five.addActionListener(listener);
