@@ -9,6 +9,7 @@ public class ChessBoard implements Serializable{
     private Square[][] grid;
     private int dimension;
     private int steps = 0;
+    private Color nextPlayer;
     public static Color color1 = Color.RED;
     public static Color color2 = Color.GREEN;
     public static Color color3 = Color.yellow;
@@ -82,7 +83,6 @@ public class ChessBoard implements Serializable{
             throw new IllegalArgumentException("Illegal halma move");
         }
         setChessPieceAt(dest, removeChessPieceAt(src));
-        steps++;
     }
 
     public int getDimension() {
@@ -91,6 +91,10 @@ public class ChessBoard implements Serializable{
 
     public int getSteps() {
         return this.steps;
+    }
+
+    public void setSteps(int steps) {
+        this.steps = steps;
     }
 
     public boolean isValidMove(ChessBoardLocation src, ChessBoardLocation dest) {
@@ -131,5 +135,12 @@ public class ChessBoard implements Serializable{
 
     public int getPricenumber() {
         return pricenumber;
+    }
+
+    public void setNextPlayer(Color nextPlayer) {
+        this.nextPlayer = nextPlayer;
+    }
+    public Color getNextPlayer() {
+        return nextPlayer;
     }
 }

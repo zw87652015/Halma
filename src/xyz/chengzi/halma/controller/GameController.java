@@ -43,6 +43,20 @@ public class GameController implements GameListener {
         this.stepsMap.put(ChessBoard.color4, 0);
         initGameState();
     }
+    
+    public GameController(ChessBoardComponent boardComponent, ChessBoard chessBoard, Color nextPlayer, boolean isReload) {
+        this.view = boardComponent;
+        this.model = chessBoard;
+        this.currentPlayer = nextPlayer;
+        gc=this;
+        mod = model;
+        view.registerListener( this );
+        this.stepsMap.put(ChessBoard.color1, 0);
+        this.stepsMap.put(ChessBoard.color2, 0);
+        this.stepsMap.put(ChessBoard.color3, 0);
+        this.stepsMap.put(ChessBoard.color4, 0);
+        initGameState();
+    }
 
     public void initGameState() {
         for (int row = 0; row < model.getDimension(); row++) {
@@ -98,6 +112,8 @@ public class GameController implements GameListener {
         }
         view.setTextField(GameFrame.isFourMan);
         view.setNextPlayerFigureField(GameFrame.isFourMan);
+        //model.setSteps(model.getSteps() + 1);
+        model.setNextPlayer(currentPlayer);
         view.repaint();
         return currentPlayer;
     }
@@ -184,41 +200,42 @@ public class GameController implements GameListener {
     }
 
     public void isVictory() {
+        if(currentPlayer.equals(null)) {return;}
         boolean b = true;
         ChessBoardLocation c;
         Judge:
         for (int i = 0; i < model.getPricenumber(); i++) {
             for (int j = 0; j < model.getPricenumber(); j++) {
                 if (i + j < model.getPricenumber()) {
-                    if (currentPlayer == model.color1) {
+                    if (currentPlayer.equals(model.color1)) {
                         c = new ChessBoardLocation( model.getDimension() - i - 1, model.getDimension() - j - 1 );
                         if(model.getChessPieceAt( c )==null){b=false;break Judge;}
-                        if (model.getChessPieceAt( c ).getColor() != model.color1) {
+                        if (model.getChessPieceAt( c ).getColor().equals(model.color1) == false) {
                             b = false;
                             break Judge;
                         }
                     }
-                    if (currentPlayer == model.color3) {
+                    if (currentPlayer.equals(model.color3)) {
                         c = new ChessBoardLocation( i, j );
                         if(model.getChessPieceAt( c )==null){b=false;break Judge;}
-                        if (model.getChessPieceAt( c ).getColor() != model.color3) {
+                        if (model.getChessPieceAt( c ).getColor().equals(model.color3) == false) {
                             b = false;
                             break Judge;
                         }
 
                     }
-                    if (currentPlayer == model.color2) {
+                    if (currentPlayer.equals(model.color2)) {
                         c = new ChessBoardLocation( i, model.getDimension() - j - 1 );
                         if(model.getChessPieceAt( c )==null){b=false;break Judge;}
-                        if (model.getChessPieceAt( c ).getColor() != model.color2) {
+                        if (model.getChessPieceAt( c ).getColor().equals(model.color2) == false) {
                             b = false;
                             break Judge;
                         }
                     }
-                    if (currentPlayer == model.color4) {
+                    if (currentPlayer.equals(model.color4)) {
                         c = new ChessBoardLocation( model.getDimension() - i - 1, j);
                         if(model.getChessPieceAt( c )==null){b=false;break Judge;}
-                        if (model.getChessPieceAt( c ).getColor() != model.color4) {
+                        if (model.getChessPieceAt( c ).getColor().equals(model.color4) == false) {
                             b = false;
                             break Judge;
                         }
@@ -228,10 +245,16 @@ public class GameController implements GameListener {
         }
         String winplayer=null;
         if(b==true){
-            if(currentPlayer==model.color1){winplayer="player1";}
-            if(currentPlayer==model.color2){winplayer="player2";}
-            if(currentPlayer==model.color3){winplayer="player3";}
-            if(currentPlayer==model.color4){winplayer="player4";}
-            showMessageDialog(null,"Congratulation: "+winplayer+"is win!!!");}
+            if(GameFrame.isFourMan) {
+                if(currentPlayer.equals(model.color1)){winplayer="player1";}
+                if(currentPlayer.equals(model.color2)){winplayer="player2";}
+                if(currentPlayer.equals(model.color3)){winplayer="player3";}
+                if(currentPlayer.equals(model.color4)){winplayer="player4";}
+            } else {
+                if(currentPlayer.equals(model.color1)){winplayer="player1";}
+                if(currentPlayer.equals(model.color3)){winplayer="player2";}
+            }
+            
+            showMessageDialog(null,"Congratulation: "+winplayer+" is win!!!");}
     }
 }
