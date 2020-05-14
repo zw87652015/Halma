@@ -10,6 +10,7 @@ import xyz.chengzi.halma.view.GameFrame;
 import xyz.chengzi.halma.view.SquareComponent;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import static javax.swing.JOptionPane.showMessageDialog;
@@ -25,6 +26,7 @@ public class GameController implements GameListener {
     private ChessPiece selectedPiece;
     private ChessBoardLocation selectedLocation;
     private HashMap<Color, Integer> stepsMap = new HashMap<>();
+    public ArrayList<ChessBoardLocation> locationList=new ArrayList<ChessBoardLocation>();
 
     public Color getCurrentPlayer() {return currentPlayer;}
     public HashMap<Color, Integer> getStepsMap() {return stepsMap;}
@@ -233,5 +235,81 @@ public class GameController implements GameListener {
             if(currentPlayer==model.color3){winplayer="player3";}
             if(currentPlayer==model.color4){winplayer="player4";}
             showMessageDialog(null,"Congratulation: "+winplayer+"is win!!!");}
+    }
+    public void canarrive(ChessBoardLocation location){
+        int x=location.getColumn();
+        int y=location.getRow();
+        ChessBoardLocation c=new ChessBoardLocation( x-1,y-1 );
+        if(x-1>=0){
+            if(y-1>=0){
+                jumplocation( c,-1,-1 );
+                if( jumpcontinue==false)
+                addLocation( c);}
+        }
+         c=new ChessBoardLocation( x-1,y );
+        if(x-1>=0){
+            jumplocation( c,-1,0);
+            if( jumpcontinue==false)
+                addLocation( c);
+        }
+        c=new ChessBoardLocation( x-1,y+1 );
+        if(x-1>=0){
+            if(y+1<model.getDimension()){
+                jumplocation( c,-1,1 );
+                if( jumpcontinue==false)
+                addLocation( c);}
+        }
+         c=new ChessBoardLocation( x,y-1 );
+            if(y-1>=0){
+                jumplocation( c,0,-1 );
+                if( jumpcontinue==false)
+                addLocation( c);
+        }
+         c=new ChessBoardLocation( x,y+1 );
+            if(y+1<model.getDimension()){
+                jumplocation( c,0,1 );
+                if( jumpcontinue==false)
+                addLocation( c);
+        }
+         c=new ChessBoardLocation( x+1,y-1 );
+        if(x+1<model.getDimension()){
+            if(y-1>=0){
+                jumplocation( c,1,-1 );
+                if( jumpcontinue==false)
+                addLocation( c);}
+        }
+        c=new ChessBoardLocation( x+1,y );
+        if(x+1<model.getDimension()){
+            jumplocation( c,1,0 );
+            if( jumpcontinue==false)
+                addLocation( c);
+        }
+         c=new ChessBoardLocation( x+1,y+1 );
+        if(x+1<model.getDimension()){
+            if(y+1>model.getDimension()){
+                jumplocation( c,1,1 );
+                if( jumpcontinue==false)
+                addLocation( c);}
+        }
+    }
+    public void addLocation(ChessBoardLocation location){
+        if(model.getChessPieceAt( location )!=null){return;}
+        if(locationList.size()!=0){
+        for(int i=0;i<locationList.size();i++){if(locationList.get( i )==location)return;}}
+        if(model.getChessPieceAt( location )==null)
+        locationList.add( location );
+    }
+    public void deleteLocation(){locationList=null;}
+    public void jumplocation(ChessBoardLocation location,int x,int y){
+        ChessBoardLocation k=new ChessBoardLocation( location.getRow()+x,location.getColumn()+y );
+        if(location.getColumn()+x<model.getDimension()||location.getRow()+x>=0||location.getColumn()+y>=0||location.getColumn()+y<model.getDimension()){
+        if(model.getChessPieceAt( location )==null){
+            return;
+        }else {
+            if(model.getChessPieceAt( k )==null){
+                addLocation( k );
+            }
+            return;
+        }}
     }
 }
