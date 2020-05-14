@@ -2,6 +2,7 @@ package xyz.chengzi.halma.view;
 
 import xyz.chengzi.halma.controller.DuDang;
 import xyz.chengzi.halma.controller.GameController;
+import xyz.chengzi.halma.model.Bgm;
 import xyz.chengzi.halma.model.ChessBoard;
 
 import javax.swing.*;
@@ -32,7 +33,7 @@ public class GameFrame extends JFrame {
     public GameFrame() {
         setTitle("2020 CS102A Project Demo");
         setSize(707, 574);
-        setLocationRelativeTo(null); // Center the window.
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -44,6 +45,7 @@ public class GameFrame extends JFrame {
 
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
+
 
         JMenu menu_Game = new JMenu("游戏");
         menuBar.add(menu_Game);
@@ -118,6 +120,7 @@ public class GameFrame extends JFrame {
 
     private class RadioButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent ae) {
+            Bgm.Music_button();
             if(ae.getSource() == shuangRen) {isFourMan = false;}
             if(ae.getSource() == siRen) {isFourMan = true;}
             if(ae.getSource() == two) {rowsOfPieces = 2;}
@@ -138,6 +141,7 @@ public class GameFrame extends JFrame {
                     GameFrame mainFrame = new GameFrame();
                     mainFrame.add(chessBoardComponent);
                     mainFrame.setVisible(true);
+                    Bgm.Music_start();
                 });
             }
             if(ae.getSource() == loadButton) {

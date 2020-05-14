@@ -1,8 +1,5 @@
 package xyz.chengzi.halma;
 
-import xyz.chengzi.halma.controller.GameController;
-import xyz.chengzi.halma.model.ChessBoard;
-import xyz.chengzi.halma.view.ChessBoardComponent;
 import xyz.chengzi.halma.view.GameFrame;
 
 import javax.swing.*;
