@@ -18,7 +18,7 @@ public class GameFrame extends JFrame {
     private JRadioButton shuangRen, siRen;
     private JTextField xuanZeChuShiQiZiShu;
     private ButtonGroup qiZiShuGroup;
-    private JRadioButton three, four, five;
+    private JRadioButton two, three, four, five;
     private JTextField weiDu;
     private ButtonGroup weiDuGroup;
     private JRadioButton seventeen, eighteen, nineteen, twenty, twenty_one;
@@ -26,7 +26,7 @@ public class GameFrame extends JFrame {
     
     public static JLabel statusLabel;
     public static boolean isFourMan = false;
-    public static int rowsOfPieces = 3;
+    public static int rowsOfPieces = 2;
     public static int dimension = 17;
 
     public GameFrame() {
@@ -76,12 +76,51 @@ public class GameFrame extends JFrame {
             }
         });
         menu_Game.add(menuItem_huiQi);
+
+
+        JMenu menu_about = new JMenu("关于");
+        menuBar.add(menu_about);
+
+        JMenuItem menuItem_rules = new JMenuItem("规则");
+        menuItem_rules.addActionListener((e) -> {
+            JFrame frame = new JFrame();
+            frame.setTitle("规则");
+            frame.setBounds(
+                    new Rectangle(
+                            (int) this.getBounds().getX() + 50,
+                            (int) this.getBounds().getY() + 50,
+                            (int) this.getBounds().getWidth(),
+                            (int) this.getBounds().getHeight()
+                    )
+            );
+            frame.setSize(400,300);
+            JLabel jl = new JLabel();
+            frame.add(jl);
+
+            jl.setText("<html><body>1、游戏人数：" +
+                    "<br />" +
+                    "<br />    2 人或者 4 人,2人时，玩家分别在左上角和右上角，4人时，一人一角。下棋顺序是从左上角玩家开始，顺时针依次进行。" +
+                    "<br />" +
+                    "<br />2、走子规则：" +
+                    "<br />" +
+                    "<br />    棋子的移动可以一步步在格子的八个方向进行,如果相邻位置上有任何方的一个棋子，该位置直线方向下一个位置是空的，则可以直接\"跳\"到该空位上，\"跳\"的过程中，只要相同条件满足就可以连续进行。" +
+                    "<br />" +
+                    "<br />3、获胜条件:" +
+                    "<br />" +
+                    "<br />    玩家所有的棋子占领对角线玩家的所有位置。");
+
+
+            frame.setVisible(true);
+        });
+        menu_about.add(menuItem_rules);
     }
+
 
     private class RadioButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent ae) {
             if(ae.getSource() == shuangRen) {isFourMan = false;}
             if(ae.getSource() == siRen) {isFourMan = true;}
+            if(ae.getSource() == two) {rowsOfPieces = 2;}
             if(ae.getSource() == three) {rowsOfPieces = 3;}
             if(ae.getSource() == four) {rowsOfPieces = 4;}
             if(ae.getSource() == five) {rowsOfPieces = 5;}
@@ -143,18 +182,23 @@ public class GameFrame extends JFrame {
         xuanZeChuShiQiZiShu.setBounds(100, 0, 10, 5);
         jp.add(xuanZeChuShiQiZiShu);
         qiZiShuGroup = new ButtonGroup();
-        three = new JRadioButton("3 rows",true);
-        three.setBounds(10, 50, 10, 5);
+        two = new JRadioButton("2 rows",true);
+        two.setBounds(10, 50, 10, 5);
+        three = new JRadioButton("3 rows");
+        three.setBounds(10, 60, 10, 5);
         four = new JRadioButton("4 rows");
-        four.setBounds(10, 60, 10, 5);
+        four.setBounds(10, 70, 10, 5);
         five = new JRadioButton("5 rows");
-        five.setBounds(10, 70, 10, 5);
+        five.setBounds(10, 80, 10, 5);
+        qiZiShuGroup.add(two);
         qiZiShuGroup.add(three);
         qiZiShuGroup.add(four);
         qiZiShuGroup.add(five);
+        jp.add(two);
         jp.add(three);
         jp.add(four);
         jp.add(five);
+        two.addActionListener(listener);
         three.addActionListener(listener);
         four.addActionListener(listener);
         five.addActionListener(listener);

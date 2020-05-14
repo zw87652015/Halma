@@ -15,7 +15,7 @@ public class DuDang {
             ChessBoard temp = (ChessBoard) ois.readObject();
             ois.close();
             SwingUtilities.invokeLater(() -> {
-                ChessBoardComponent chessBoardComponent = new ChessBoardComponent(507, temp.getDimension());
+                ChessBoardComponent chessBoardComponent = new ChessBoardComponent(507, temp.getDimension(), temp);
                 Color nextPlayer;
                 if(temp.fourman) {
                     if(temp.getSteps() %4 == 0) {
@@ -34,7 +34,7 @@ public class DuDang {
                         nextPlayer = ChessBoard.color2;
                     }
                 }
-                GameController controller = new GameController(chessBoardComponent, temp, nextPlayer);
+                GameController controller = new GameController(chessBoardComponent, temp, temp.getNextPlayer(), true);
 
                 GameFrame loadedFrame = new GameFrame();
                 loadedFrame.add(chessBoardComponent);
@@ -43,6 +43,7 @@ public class DuDang {
             });
         } catch (IOException | ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "读档失败。");
+            ;
         }
     }
 
