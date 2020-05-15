@@ -10,7 +10,7 @@ public class Bgm {
     static AudioClip ac;
 
     public static void Music_bgm() {
-        File f1 = new File("doudizhubgm.wav");
+        File f1 = new File("bgm\\doudizhubgm.wav");
         try {
             url = f1.toURL();
         } catch (MalformedURLException e) {
@@ -21,7 +21,7 @@ public class Bgm {
         ac.loop();
     }
     public static void Music_pa() {
-        File f1 = new File("pa.wav");
+        File f1 = new File("bgm\\pa.wav");
         try {
             url = f1.toURL();
         } catch (MalformedURLException e) {
@@ -31,7 +31,7 @@ public class Bgm {
         ac.play();
     }
     public static void Music_button() {
-        File f1 = new File("button.wav");
+        File f1 = new File("bgm\\button.wav");
         try {
             url = f1.toURL();
         } catch (MalformedURLException e) {
@@ -41,7 +41,7 @@ public class Bgm {
         ac.play();
     }
     public static void Music_win() {
-        File f1 = new File("win.wav");
+        File f1 = new File("bgm\\win.wav");
         try {
             url = f1.toURL();
         } catch (MalformedURLException e) {
@@ -51,7 +51,7 @@ public class Bgm {
         ac.play();
     }
     public static void Music_start() {
-        File f1 = new File("start.wav");
+        File f1 = new File("bgm\\start.wav");
         try {
             url = f1.toURL();
         } catch (MalformedURLException e) {
