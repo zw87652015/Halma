@@ -11,7 +11,6 @@ import xyz.chengzi.halma.view.SquareComponent;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 import static javax.swing.JOptionPane.showMessageDialog;
@@ -145,56 +144,6 @@ public class GameController implements GameListener {
     public Color lastPlayer(boolean isFourMan) {
         currentPlayer = model.getChainTable_color().get(model.getChainTable_color().size()-1);
         model.getChainTable_color().remove(model.getChainTable_color().size()-1);
-        /*
-        if (model.color1.equals( currentPlayer )) {
-            if (model.fourman) {
-                currentPlayer = model.color4;
-                view.setTextField(isFourMan, this.id);
-                view.setNextPlayerFigureField(isFourMan, this.id);
-                model.setStepsMap(stepsMap);
-                mod.setNextPlayer(currentPlayer);
-                view.repaint();
-                return currentPlayer;
-            } else {
-                currentPlayer = model.color3;
-            }
-        } else if (model.color2.equals( currentPlayer )) {
-            currentPlayer = model.color1;
-            view.setTextField(isFourMan, this.id);
-            view.setNextPlayerFigureField(isFourMan, this.id);
-            model.setStepsMap(stepsMap);
-            mod.setNextPlayer(currentPlayer);
-            view.repaint();
-            return currentPlayer;
-        } else if (model.color3.equals( currentPlayer )) {
-            if (model.fourman) {
-                currentPlayer = model.color2;
-                view.setTextField(isFourMan, this.id);
-                view.setNextPlayerFigureField(isFourMan, this.id);
-                model.setStepsMap(stepsMap);
-                mod.setNextPlayer(currentPlayer);
-                view.repaint();
-                return currentPlayer;
-            } else {
-                currentPlayer = model.color1;
-                view.setTextField(isFourMan, this.id);
-                view.setNextPlayerFigureField(isFourMan, this.id);
-                model.setStepsMap(stepsMap);
-                mod.setNextPlayer(currentPlayer);
-                view.repaint();
-                lastPlayer = currentPlayer;
-                return currentPlayer;
-            }
-        } else if (model.color4.equals( currentPlayer )) {
-            currentPlayer = model.color3;
-            view.setTextField(isFourMan, this.id);
-            view.setNextPlayerFigureField(isFourMan, this.id);
-            model.setStepsMap(stepsMap);
-            mod.setNextPlayer(currentPlayer);
-            view.repaint();
-            lastPlayer = currentPlayer;
-            return currentPlayer;
-        }*/
         view.setTextField(isFourMan, this.id);
         view.setNextPlayerFigureField(isFourMan, this.id);
         model.setNextPlayer(currentPlayer);
