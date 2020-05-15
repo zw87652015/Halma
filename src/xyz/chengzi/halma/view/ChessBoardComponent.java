@@ -15,76 +15,100 @@ public class ChessBoardComponent extends JComponent {
     private static final Color BOARD_COLOR_1 = new Color(255, 255, 204);
     private static final Color BOARD_COLOR_2 = new Color(170, 170, 170);
 
+    private int id = 0;
+    public static int idCount = 0;
     private List<GameListener> listenerList = new ArrayList<>();
     private SquareComponent[][] gridComponents;
     private int dimension;
     private int gridSize;
+    public static ArrayList<ChessBoardComponent> chessBoardComponentList = new ArrayList<>();
 
-    public void setTextField(boolean isFourMan) {
-        if(isFourMan) {
-            if(GameController.gc.getCurrentPlayer() == ChessBoard.color1) {
+    public void setTextField(boolean isFourMan, int id) {
+        if (isFourMan) {
+            if (GameController.controllerlList.get(id).getCurrentPlayer() == ChessBoard.color1) {
                 this.gridComponents[0][dimension].getCurrentPlayerText().setText("→");
                 this.gridComponents[1][dimension].getCurrentPlayerText().setText("");
                 this.gridComponents[2][dimension].getCurrentPlayerText().setText("");
                 this.gridComponents[3][dimension].getCurrentPlayerText().setText("");
 
-                this.gridComponents[0][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color1) );
-                this.gridComponents[1][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color2) );
-                this.gridComponents[2][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color3) );
-                this.gridComponents[3][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color4) );
+                this.gridComponents[0][dimension + 2].getCurrentPlayerText().setText(
+                        "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color1));
+                this.gridComponents[1][dimension + 2].getCurrentPlayerText().setText(
+                        "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color2));
+                this.gridComponents[2][dimension + 2].getCurrentPlayerText().setText(
+                        "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color3));
+                this.gridComponents[3][dimension + 2].getCurrentPlayerText().setText(
+                        "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color4));
             }
-            if(GameController.gc.getCurrentPlayer() == ChessBoard.color2) {
+            if (GameController.controllerlList.get(id).getCurrentPlayer() == ChessBoard.color2) {
                 this.gridComponents[0][dimension].getCurrentPlayerText().setText("");
                 this.gridComponents[1][dimension].getCurrentPlayerText().setText("→");
                 this.gridComponents[2][dimension].getCurrentPlayerText().setText("");
                 this.gridComponents[3][dimension].getCurrentPlayerText().setText("");
 
-                this.gridComponents[0][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color1) );
-                this.gridComponents[1][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color2) );
-                this.gridComponents[2][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color3) );
-                this.gridComponents[3][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color4) );
+                this.gridComponents[0][dimension + 2].getCurrentPlayerText().setText(
+                        "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color1));
+                this.gridComponents[1][dimension + 2].getCurrentPlayerText().setText(
+                        "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color2));
+                this.gridComponents[2][dimension + 2].getCurrentPlayerText().setText(
+                        "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color3));
+                this.gridComponents[3][dimension + 2].getCurrentPlayerText().setText(
+                        "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color4));
             }
-            if(GameController.gc.getCurrentPlayer() == ChessBoard.color3) {
+            if (GameController.controllerlList.get(id).getCurrentPlayer() == ChessBoard.color3) {
                 this.gridComponents[0][dimension].getCurrentPlayerText().setText("");
                 this.gridComponents[1][dimension].getCurrentPlayerText().setText("");
                 this.gridComponents[2][dimension].getCurrentPlayerText().setText("→");
                 this.gridComponents[3][dimension].getCurrentPlayerText().setText("");
 
-                this.gridComponents[0][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color1) );
-                this.gridComponents[1][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color2) );
-                this.gridComponents[2][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color3) );
-                this.gridComponents[3][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color4) );
+                this.gridComponents[0][dimension + 2].getCurrentPlayerText().setText(
+                        "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color1));
+                this.gridComponents[1][dimension + 2].getCurrentPlayerText().setText(
+                        "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color2));
+                this.gridComponents[2][dimension + 2].getCurrentPlayerText().setText(
+                        "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color3));
+                this.gridComponents[3][dimension + 2].getCurrentPlayerText().setText(
+                        "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color4));
             }
-            if(GameController.gc.getCurrentPlayer() == ChessBoard.color4) {
+            if (GameController.controllerlList.get(id).getCurrentPlayer() == ChessBoard.color4) {
                 this.gridComponents[0][dimension].getCurrentPlayerText().setText("");
                 this.gridComponents[1][dimension].getCurrentPlayerText().setText("");
                 this.gridComponents[2][dimension].getCurrentPlayerText().setText("");
                 this.gridComponents[3][dimension].getCurrentPlayerText().setText("→");
 
-                this.gridComponents[0][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color1) );
-                this.gridComponents[1][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color2) );
-                this.gridComponents[2][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color3) );
-                this.gridComponents[3][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color4) );
+                this.gridComponents[0][dimension + 2].getCurrentPlayerText().setText(
+                        "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color1));
+                this.gridComponents[1][dimension + 2].getCurrentPlayerText().setText(
+                        "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color2));
+                this.gridComponents[2][dimension + 2].getCurrentPlayerText().setText(
+                        "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color3));
+                this.gridComponents[3][dimension + 2].getCurrentPlayerText().setText(
+                        "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color4));
             }
         } else {
-            if(GameController.gc.getCurrentPlayer() == ChessBoard.color1) {
+            if (GameController.controllerlList.get(id).getCurrentPlayer() == ChessBoard.color1) {
                 this.gridComponents[0][dimension].getCurrentPlayerText().setText("→");
                 this.gridComponents[1][dimension].getCurrentPlayerText().setText("");
 
-                this.gridComponents[0][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color1) );
-                this.gridComponents[1][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color3) );
+                this.gridComponents[0][dimension + 2].getCurrentPlayerText().setText(
+                        "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color1));
+                this.gridComponents[1][dimension + 2].getCurrentPlayerText().setText(
+                        "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color3));
             }
-            if(GameController.gc.getCurrentPlayer() == ChessBoard.color3) {
+            if (GameController.controllerlList.get(id).getCurrentPlayer() == ChessBoard.color3) {
                 this.gridComponents[0][dimension].getCurrentPlayerText().setText("");
                 this.gridComponents[1][dimension].getCurrentPlayerText().setText("→");
 
-                this.gridComponents[0][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color1) );
-                this.gridComponents[1][dimension+2].getCurrentPlayerText().setText("MOVES: " + GameController.gc.getStepsMap().get(ChessBoard.color3) );
+                this.gridComponents[0][dimension + 2].getCurrentPlayerText().setText(
+                        "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color1));
+                this.gridComponents[1][dimension + 2].getCurrentPlayerText().setText(
+                        "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color3));
             }
         }
     }
+
     
-    public void setNextPlayerFigureField(boolean isFourMan) {
+    public void setNextPlayerFigureField(boolean isFourMan, int id) {
         if(isFourMan) {
             ChessBoardLocation lo = new ChessBoardLocation(0, dimension+1);
             setChessAtGrid(lo, ChessBoard.color1);
@@ -103,6 +127,8 @@ public class ChessBoardComponent extends JComponent {
     }
 
     public ChessBoardComponent(int size, int dimension) {
+        id = idCount;
+        idCount++;
         enableEvents(AWTEvent.MOUSE_EVENT_MASK);
         setLayout(null); // Use absolute layout.
         setSize(size+300, size+100);
@@ -110,10 +136,13 @@ public class ChessBoardComponent extends JComponent {
         this.gridComponents = new SquareComponent[dimension+3][dimension+3];
         this.dimension = dimension;
         this.gridSize = size / dimension;
+        ChessBoardComponent.chessBoardComponentList.add(this);
         initGridComponents(GameFrame.isFourMan);
     }
     
     public ChessBoardComponent(int size, int dimension, ChessBoard cb) {
+        id = idCount;
+        idCount++;
         enableEvents(AWTEvent.MOUSE_EVENT_MASK);
         setLayout(null); // Use absolute layout.
         setSize(size+300, size+100);
@@ -121,6 +150,7 @@ public class ChessBoardComponent extends JComponent {
         this.gridComponents = new SquareComponent[dimension+3][dimension+3];
         this.dimension = dimension;
         this.gridSize = size / dimension;
+        ChessBoardComponent.chessBoardComponentList.add(this);
         initGridComponents(cb.fourman, cb);
     }
 
@@ -253,7 +283,7 @@ public class ChessBoardComponent extends JComponent {
             gridComponents[1][dimension + 2].setLocation((dimension + 2) * gridSize, gridSize);
             add(gridComponents[1][dimension + 2]);
         }
-        this.setNextPlayerFigureField(isFourMan);
+        this.setNextPlayerFigureField(isFourMan, this.id);
     }
 
     private void initGridComponents(boolean isFourMan) {

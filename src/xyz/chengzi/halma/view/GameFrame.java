@@ -25,12 +25,17 @@ public class GameFrame extends JFrame {
     private JRadioButton seventeen, eighteen, nineteen, twenty, twenty_one;
     private JButton startButton, loadButton;
     
+    private int id = 0;
+    public static int idCount = 0;
     public static JLabel statusLabel;
     public static boolean isFourMan = false;
     public static int rowsOfPieces = 2;
     public static int dimension = 17;
 
     public GameFrame() {
+        this.id = idCount;
+        idCount++;
+
         setTitle("2020 CS102A Project Demo");
         setSize(707, 574);
         setLocationRelativeTo(null);
@@ -70,11 +75,12 @@ public class GameFrame extends JFrame {
         });
         menu_Game.add(menuItem_save);
         
-        JMenuItem menuItem_huiQi = new JMenuItem("悔棋(未完成)");
+        JMenuItem menuItem_huiQi = new JMenuItem("悔棋");
         menuItem_huiQi.addActionListener((e) -> {
             try{
-                DuDang.huiQi();
+                DuDang.huiQi(this.id - 1);
             } catch (Exception ex) {
+                System.out.println(11);
             }
         });
         menu_Game.add(menuItem_huiQi);
@@ -156,6 +162,8 @@ public class GameFrame extends JFrame {
 
     public GameFrame(String frameName) {
         super("HHHHHalma");
+        this.id = idCount;
+        idCount++;
         RadioButtonListener listener = new RadioButtonListener();
         setSize(300, 400);
         this.setLocationRelativeTo(null);

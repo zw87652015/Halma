@@ -2,6 +2,7 @@ package xyz.chengzi.halma.model;
 
 import java.awt.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ChessBoard implements Serializable{
@@ -18,7 +19,34 @@ public class ChessBoard implements Serializable{
     public static Color color4 = Color.blue;
     private int pricenumber=4;
     public boolean fourman=true;
+    private ArrayList< ArrayList<ChessBoardLocation> > chainTable = new ArrayList<>();//链表
+    private ArrayList<Color> chainTable_color = new ArrayList<>();//与链表对应的color
+    private ChessBoardLocation currentMove = new ChessBoardLocation();
+    private ChessBoardLocation lastMove = new ChessBoardLocation();
+    private int index = 0;
+
+    public int getPricenumber() {return pricenumber;}
+    public void setNextPlayer(Color nextPlayer) {this.nextPlayer = nextPlayer;}
+    public Color getNextPlayer() {return nextPlayer;}
+    public void setStepsMap(HashMap<Color, Integer> stepsMap) {this.stepsMap = stepsMap;}
+    public HashMap<Color, Integer> getStepsMap() {return stepsMap;}
+    public int getDimension() {return dimension;}
+    public int getSteps() {return this.steps;}
+    public void setSteps(int steps) {this.steps = steps;}
+    public Square[][] getGrid() {return grid;}
+    public void setChainTable(ArrayList<ArrayList<ChessBoardLocation>> chainTable) {this.chainTable = chainTable;}
+    public ArrayList<ArrayList<ChessBoardLocation>> getChainTable() {return chainTable;}
+    public void setCurrentMove(ChessBoardLocation currentMove) {this.currentMove = currentMove;}
+    public ChessBoardLocation getCurrentMove() {return currentMove;}
+    public void setLastMove(ChessBoardLocation lastMove) {this.lastMove = lastMove;}
+    public ChessBoardLocation getLastMove() {return lastMove;}
+    public void setIndex(int index) {this.index = index;}
+    public int getIndex() {return index;}
+    public void setChainTable_color(ArrayList<Color> chainTable_color) {this.chainTable_color = chainTable_color;}
+    public ArrayList<Color> getChainTable_color() {return chainTable_color;}
+
     public ChessBoard(int dimension,int pricenumber,boolean fourman) {
+        chainTable.add(new ArrayList<ChessBoardLocation>());
         this.grid = new Square[dimension][dimension];
         this.dimension = dimension;
         this.fourman=fourman;
@@ -58,10 +86,6 @@ public class ChessBoard implements Serializable{
         this.grid=meow.getGrid();
     }
 
-    public Square[][] getGrid() {
-        return grid;
-    }
-
     public Square getGridAt(ChessBoardLocation location) {
         return grid[location.getRow()][location.getColumn()];
     }
@@ -87,18 +111,6 @@ public class ChessBoard implements Serializable{
         setChessPieceAt(dest, removeChessPieceAt(src));
     }
 
-    public int getDimension() {
-        return dimension;
-    }
-
-    public int getSteps() {
-        return this.steps;
-    }
-
-    public void setSteps(int steps) {
-        this.steps = steps;
-    }
-
     public boolean isValidMove(ChessBoardLocation src, ChessBoardLocation dest) {
         /*if (getChessPieceAt(src) == null || getChessPieceAt(dest) != null) {
             return false;
@@ -114,6 +126,7 @@ public class ChessBoard implements Serializable{
         return false;*/
         return true;
     }
+
     public boolean isjumpmove(ChessBoardLocation src, ChessBoardLocation dest){
         int srcRow = src.getRow(), srcCol = src.getColumn(), destRow = dest.getRow(), destCol = dest.getColumn();
         int rowDistance = destRow - srcRow, colDistance = destCol - srcCol;
@@ -122,7 +135,9 @@ public class ChessBoard implements Serializable{
         }
         return false;
     }
+
     public boolean jumpdistance(int x){if(Math.abs( x )==0){return true;}if (Math.abs( x )==2){return true;}return false;}
+
     public boolean isjumpcanmove(ChessBoardLocation src, ChessBoardLocation dest){
         int srcRow = src.getRow(), srcCol = src.getColumn(), destRow = dest.getRow(), destCol = dest.getColumn();
         int rowDistance = destRow - srcRow, colDistance = destCol - srcCol;
@@ -133,22 +148,5 @@ public class ChessBoard implements Serializable{
         }else{
             return false;
         }
-    }
-
-    public int getPricenumber() {
-        return pricenumber;
-    }
-
-    public void setNextPlayer(Color nextPlayer) {
-        this.nextPlayer = nextPlayer;
-    }
-    public Color getNextPlayer() {
-        return nextPlayer;
-    }
-    public void setStepsMap(HashMap<Color, Integer> stepsMap) {
-        this.stepsMap = stepsMap;
-    }
-    public HashMap<Color, Integer> getStepsMap() {
-        return stepsMap;
     }
 }
