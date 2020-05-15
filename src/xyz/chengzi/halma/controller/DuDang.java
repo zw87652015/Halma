@@ -16,27 +16,20 @@ public class DuDang {
             ois.close();
             SwingUtilities.invokeLater(() -> {
                 ChessBoardComponent chessBoardComponent = new ChessBoardComponent(507, temp.getDimension(), temp);
-                Color nextPlayer;
+                Color nextPlayer = null, temp_color;
+                temp_color = temp.getChainTable_color().get(temp.getChainTable_color().size()-1);
                 if(temp.fourman) {
-                    if(temp.getSteps() %4 == 0) {
-                        nextPlayer = ChessBoard.color1;
-                    } else if(temp.getSteps() %4 == 1){
-                        nextPlayer = ChessBoard.color2;
-                    } else if(temp.getSteps() %4 == 2){
-                        nextPlayer = ChessBoard.color3;
-                    } else {
-                        nextPlayer = ChessBoard.color4;
-                    }
+                    if(temp_color.equals(ChessBoard.color1)) {nextPlayer = ChessBoard.color2;}
+                    if(temp_color.equals(ChessBoard.color2)) {nextPlayer = ChessBoard.color3;}
+                    if(temp_color.equals(ChessBoard.color3)) {nextPlayer = ChessBoard.color4;}
+                    if(temp_color.equals(ChessBoard.color4)) {nextPlayer = ChessBoard.color1;}
                 } else {
-                    if(temp.getSteps() %2 == 0) {
-                        nextPlayer = ChessBoard.color1;
-                    } else {
-                        nextPlayer = ChessBoard.color2;
-                    }
+                    if(temp_color.equals(ChessBoard.color1)) {nextPlayer = ChessBoard.color3;}
+                    if(temp_color.equals(ChessBoard.color3)) {nextPlayer = ChessBoard.color1;}
                 }
-                GameController controller = new GameController(chessBoardComponent, temp, temp.getNextPlayer(), true);
+                GameController controller = new GameController(chessBoardComponent, temp, nextPlayer, true);
 
-                GameFrame loadedFrame = new GameFrame();
+                GameFrame loadedFrame = new GameFrame(chessBoardComponent);
                 loadedFrame.add(chessBoardComponent);
                 JOptionPane.showMessageDialog(null, "读档成功！");
                 loadedFrame.setVisible(true);
@@ -67,8 +60,7 @@ public class DuDang {
         }
     }
 
-    public static void huiQi(int id) {
-        System.out.println(id);
+    public static void huiQi(String id) {
         GameController controller = GameController.controllerlList.get(id);
         ChessBoard model = GameController.controllerlList.get(id).getModel();
         ChessBoardComponent view = ChessBoardComponent.chessBoardComponentList.get(id);

@@ -9,23 +9,27 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class ChessBoardComponent extends JComponent {
     private static final Color BOARD_COLOR_1 = new Color(255, 255, 204);
     private static final Color BOARD_COLOR_2 = new Color(170, 170, 170);
 
-    private int id = 0;
-    public static int idCount = 0;
+    private String id = "";
     private List<GameListener> listenerList = new ArrayList<>();
     private SquareComponent[][] gridComponents;
     private int dimension;
     private int gridSize;
-    public static ArrayList<ChessBoardComponent> chessBoardComponentList = new ArrayList<>();
+    public static HashMap<String, ChessBoardComponent> chessBoardComponentList = new HashMap<>();
+    
+    public String getId() {return id;}
 
-    public void setTextField(boolean isFourMan, int id) {
+    public void setTextField(boolean isFourMan, String id) {
+        GameController temp_controller = GameController.controllerlList.get(id);
         if (isFourMan) {
-            if (GameController.controllerlList.get(id).getCurrentPlayer() == ChessBoard.color1) {
+            if (GameController.controllerlList.get(id).getCurrentPlayer().equals(ChessBoard.color1)) {
                 this.gridComponents[0][dimension].getCurrentPlayerText().setText("→");
                 this.gridComponents[1][dimension].getCurrentPlayerText().setText("");
                 this.gridComponents[2][dimension].getCurrentPlayerText().setText("");
@@ -40,7 +44,7 @@ public class ChessBoardComponent extends JComponent {
                 this.gridComponents[3][dimension + 2].getCurrentPlayerText().setText(
                         "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color4));
             }
-            if (GameController.controllerlList.get(id).getCurrentPlayer() == ChessBoard.color2) {
+            if (GameController.controllerlList.get(id).getCurrentPlayer().equals(ChessBoard.color2)) {
                 this.gridComponents[0][dimension].getCurrentPlayerText().setText("");
                 this.gridComponents[1][dimension].getCurrentPlayerText().setText("→");
                 this.gridComponents[2][dimension].getCurrentPlayerText().setText("");
@@ -55,7 +59,7 @@ public class ChessBoardComponent extends JComponent {
                 this.gridComponents[3][dimension + 2].getCurrentPlayerText().setText(
                         "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color4));
             }
-            if (GameController.controllerlList.get(id).getCurrentPlayer() == ChessBoard.color3) {
+            if (GameController.controllerlList.get(id).getCurrentPlayer().equals(ChessBoard.color3)) {
                 this.gridComponents[0][dimension].getCurrentPlayerText().setText("");
                 this.gridComponents[1][dimension].getCurrentPlayerText().setText("");
                 this.gridComponents[2][dimension].getCurrentPlayerText().setText("→");
@@ -70,7 +74,7 @@ public class ChessBoardComponent extends JComponent {
                 this.gridComponents[3][dimension + 2].getCurrentPlayerText().setText(
                         "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color4));
             }
-            if (GameController.controllerlList.get(id).getCurrentPlayer() == ChessBoard.color4) {
+            if (GameController.controllerlList.get(id).getCurrentPlayer().equals(ChessBoard.color4)) {
                 this.gridComponents[0][dimension].getCurrentPlayerText().setText("");
                 this.gridComponents[1][dimension].getCurrentPlayerText().setText("");
                 this.gridComponents[2][dimension].getCurrentPlayerText().setText("");
@@ -86,7 +90,7 @@ public class ChessBoardComponent extends JComponent {
                         "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color4));
             }
         } else {
-            if (GameController.controllerlList.get(id).getCurrentPlayer() == ChessBoard.color1) {
+            if (GameController.controllerlList.get(id).getCurrentPlayer().equals(ChessBoard.color1)) {
                 this.gridComponents[0][dimension].getCurrentPlayerText().setText("→");
                 this.gridComponents[1][dimension].getCurrentPlayerText().setText("");
 
@@ -95,7 +99,7 @@ public class ChessBoardComponent extends JComponent {
                 this.gridComponents[1][dimension + 2].getCurrentPlayerText().setText(
                         "MOVES: " + GameController.controllerlList.get(id).getStepsMap().get(ChessBoard.color3));
             }
-            if (GameController.controllerlList.get(id).getCurrentPlayer() == ChessBoard.color3) {
+            if (GameController.controllerlList.get(id).getCurrentPlayer().equals(ChessBoard.color3)) {
                 this.gridComponents[0][dimension].getCurrentPlayerText().setText("");
                 this.gridComponents[1][dimension].getCurrentPlayerText().setText("→");
 
@@ -108,7 +112,7 @@ public class ChessBoardComponent extends JComponent {
     }
 
     
-    public void setNextPlayerFigureField(boolean isFourMan, int id) {
+    public void setNextPlayerFigureField(boolean isFourMan, String id) {
         if(isFourMan) {
             ChessBoardLocation lo = new ChessBoardLocation(0, dimension+1);
             setChessAtGrid(lo, ChessBoard.color1);
@@ -127,8 +131,7 @@ public class ChessBoardComponent extends JComponent {
     }
 
     public ChessBoardComponent(int size, int dimension) {
-        id = idCount;
-        idCount++;
+        id = new Date().toString();
         enableEvents(AWTEvent.MOUSE_EVENT_MASK);
         setLayout(null); // Use absolute layout.
         setSize(size+300, size+100);
@@ -136,13 +139,12 @@ public class ChessBoardComponent extends JComponent {
         this.gridComponents = new SquareComponent[dimension+3][dimension+3];
         this.dimension = dimension;
         this.gridSize = size / dimension;
-        ChessBoardComponent.chessBoardComponentList.add(this);
+        ChessBoardComponent.chessBoardComponentList.put(id, this);
         initGridComponents(GameFrame.isFourMan);
     }
     
     public ChessBoardComponent(int size, int dimension, ChessBoard cb) {
-        id = idCount;
-        idCount++;
+        id = new Date().toString();
         enableEvents(AWTEvent.MOUSE_EVENT_MASK);
         setLayout(null); // Use absolute layout.
         setSize(size+300, size+100);
@@ -150,7 +152,7 @@ public class ChessBoardComponent extends JComponent {
         this.gridComponents = new SquareComponent[dimension+3][dimension+3];
         this.dimension = dimension;
         this.gridSize = size / dimension;
-        ChessBoardComponent.chessBoardComponentList.add(this);
+        ChessBoardComponent.chessBoardComponentList.put(id, this);
         initGridComponents(cb.fourman, cb);
     }
 

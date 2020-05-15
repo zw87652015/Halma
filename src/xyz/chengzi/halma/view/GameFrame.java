@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.Date;
 
 public class GameFrame extends JFrame {
 
@@ -25,16 +26,15 @@ public class GameFrame extends JFrame {
     private JRadioButton seventeen, eighteen, nineteen, twenty, twenty_one;
     private JButton startButton, loadButton;
     
-    private int id = 0;
+    private String id = "";
     public static int idCount = 0;
     public static JLabel statusLabel;
     public static boolean isFourMan = false;
     public static int rowsOfPieces = 2;
     public static int dimension = 17;
 
-    public GameFrame() {
-        this.id = idCount;
-        idCount++;
+    public GameFrame(ChessBoardComponent chessBoardComponent) {
+        this.id = chessBoardComponent.getId();
 
         setTitle("2020 CS102A Project Demo");
         setSize(707, 574);
@@ -108,7 +108,7 @@ public class GameFrame extends JFrame {
         /*JMenuItem menuItem_huiQi = new JMenuItem("悔棋");
         menuItem_huiQi.addActionListener((e) -> {
             try{
-                DuDang.huiQi(this.id - 1);
+                DuDang.huiQi(this.id);
             } catch (Exception ex) {
                 System.out.println(11);
             }
@@ -175,7 +175,7 @@ public class GameFrame extends JFrame {
                     ChessBoard chessBoard = new ChessBoard(dimension, rowsOfPieces, isFourMan);
                     GameController controller = new GameController(chessBoardComponent, chessBoard, ChessBoard.color1);
                     
-                    GameFrame mainFrame = new GameFrame();
+                    GameFrame mainFrame = new GameFrame(chessBoardComponent);
                     mainFrame.add(chessBoardComponent);
                     mainFrame.setVisible(true);
                     Bgm.Music_start();
@@ -193,8 +193,6 @@ public class GameFrame extends JFrame {
 
     public GameFrame(String frameName) {
         super("HHHHHalma");
-        this.id = idCount;
-        idCount++;
         RadioButtonListener listener = new RadioButtonListener();
         setSize(300, 400);
         this.setLocationRelativeTo(null);
