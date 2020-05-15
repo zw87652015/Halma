@@ -11,13 +11,13 @@ import xyz.chengzi.halma.view.SquareComponent;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class GameController implements GameListener {
-    private int id = 0;
-    public static int idCount = 0;
+    private String id = "";
     private ChessBoardComponent view;
     private ChessBoard model;
     private static ChessComponent chessComponent;
@@ -30,12 +30,12 @@ public class GameController implements GameListener {
     private ChessBoardLocation selectedLocation;
     private HashMap<Color, Integer> stepsMap = new HashMap<>();
     public ArrayList<ChessBoardLocation> locationList=new ArrayList<ChessBoardLocation>();
-    public static ArrayList<GameController> controllerlList = new ArrayList<>();
+    public static HashMap<String, GameController> controllerlList = new HashMap<>();
 
     public Color getCurrentPlayer() {return currentPlayer;}
     public HashMap<Color, Integer> getStepsMap() {return stepsMap;}
     public Color getLastPlayer() {return lastPlayer;}
-
+    public String getId() {return id;}
 
     public GameController(ChessBoardComponent boardComponent, ChessBoard chessBoard, Color nextPlayer) {
         this.view = boardComponent;
@@ -48,9 +48,8 @@ public class GameController implements GameListener {
         this.stepsMap.put(ChessBoard.color2, 0);
         this.stepsMap.put(ChessBoard.color3, 0);
         this.stepsMap.put(ChessBoard.color4, 0);
-        GameController.controllerlList.add(this);
-        this.id = idCount;
-        idCount++;
+        this.id = boardComponent.getId();
+        GameController.controllerlList.put(id, this);
         initGameState();
     }
     
@@ -62,9 +61,8 @@ public class GameController implements GameListener {
         mod = model;
         view.registerListener( this );
         this.stepsMap = chessBoard.getStepsMap();
-        GameController.controllerlList.add(this);
-        this.id = idCount;
-        idCount++;
+        this.id = boardComponent.getId();
+        GameController.controllerlList.put(id, this);
         initGameState();
     }
 
@@ -143,6 +141,7 @@ public class GameController implements GameListener {
         view.repaint();
         return currentPlayer;
     }
+
     public Color lastPlayer(boolean isFourMan) {
         currentPlayer = model.getChainTable_color().get(model.getChainTable_color().size()-1);
         model.getChainTable_color().remove(model.getChainTable_color().size()-1);
