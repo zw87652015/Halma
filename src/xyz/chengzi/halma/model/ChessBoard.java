@@ -61,7 +61,7 @@ public class ChessBoard implements Serializable{
     }
 
     public Square getGridAt(ChessBoardLocation location) {
-        return grid[location.getRow()][location.getColumn()];
+            return grid[location.getRow()][location.getColumn()];
     }
 
     public ChessPiece getChessPieceAt(ChessBoardLocation location) {

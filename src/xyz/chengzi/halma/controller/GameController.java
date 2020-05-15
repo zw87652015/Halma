@@ -132,6 +132,7 @@ public class GameController implements GameListener {
                 view.setChessAtGrid( location, selectedPiece.getColor() );
                 view.removeChessAtGrid( selectedLocation );
                 stepsMap.put(currentPlayer, stepsMap.get(currentPlayer) + 1);
+                //reflashArrarylist( location );
                 view.repaint();
                 mod = model;
                 selectedLocation = null;
@@ -148,6 +149,7 @@ public class GameController implements GameListener {
                     view.setChessAtGrid( location, selectedPiece.getColor() );
                     view.removeChessAtGrid( selectedLocation );
                     stepsMap.put(currentPlayer, stepsMap.get(currentPlayer) + 1);
+                    //reflashArrarylist( location );
                     view.repaint();
                     selectedPiece = null;
                     selectedLocation = null;
@@ -161,6 +163,7 @@ public class GameController implements GameListener {
                 view.setChessAtGrid( location, selectedPiece.getColor() );
                 view.removeChessAtGrid( selectedLocation );
                 stepsMap.put(currentPlayer, stepsMap.get(currentPlayer) + 1);
+                //reflashArrarylist( location );
                 view.repaint();
                 selectedLocation = location;
                 mod = model;
@@ -187,9 +190,11 @@ public class GameController implements GameListener {
                 if (selectedPiece == null) {
                     selectedPiece = piece;
                     selectedLocation = location;
+                   reflashArrarylist( location );
                 } else {
                     selectedPiece = null;
                     selectedLocation = null;
+                    //deleteLocation();
                 }
                 component.setSelected( !component.isSelected() );
                 component.repaint();
@@ -259,80 +264,97 @@ public class GameController implements GameListener {
             
             showMessageDialog(null,"Congratulation: "+winplayer+" is win!!!");}
     }
+    public void reflashArrarylist(ChessBoardLocation location){
+        try{
+        deleteLocation();
+        canarrive( location );
+        System.out.println( locationList.size() );
+        for(int i=0;i<locationList.size();i++){
+        System.out.println(locationList.get( i ).getRow()+"   "+locationList.get( i ).getColumn() );}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public void canarrive(ChessBoardLocation location){
         int x=location.getColumn();
         int y=location.getRow();
         ChessBoardLocation c=new ChessBoardLocation( x-1,y-1 );
         if(x-1>=0){
             if(y-1>=0){
-                jumplocation( c,-1,-1 );
                 if( jumpcontinue==false)
-                addLocation( c);}
+                addLocation( c);
+                jumplocation( c,-1,-1 );
+            }
         }
          c=new ChessBoardLocation( x-1,y );
         if(x-1>=0){
-            jumplocation( c,-1,0);
             if( jumpcontinue==false)
                 addLocation( c);
+            jumplocation( c,-1,0);
         }
         c=new ChessBoardLocation( x-1,y+1 );
         if(x-1>=0){
             if(y+1<model.getDimension()){
-                jumplocation( c,-1,1 );
                 if( jumpcontinue==false)
-                addLocation( c);}
+                addLocation( c);
+                jumplocation( c,-1,1 );
+            }
         }
          c=new ChessBoardLocation( x,y-1 );
             if(y-1>=0){
-                jumplocation( c,0,-1 );
                 if( jumpcontinue==false)
                 addLocation( c);
+                jumplocation( c,0,-1 );
         }
          c=new ChessBoardLocation( x,y+1 );
             if(y+1<model.getDimension()){
-                jumplocation( c,0,1 );
                 if( jumpcontinue==false)
                 addLocation( c);
+                jumplocation( c,0,1 );
         }
          c=new ChessBoardLocation( x+1,y-1 );
         if(x+1<model.getDimension()){
             if(y-1>=0){
-                jumplocation( c,1,-1 );
                 if( jumpcontinue==false)
-                addLocation( c);}
+                addLocation( c);
+                jumplocation( c,1,-1 );
+            }
         }
         c=new ChessBoardLocation( x+1,y );
         if(x+1<model.getDimension()){
-            jumplocation( c,1,0 );
             if( jumpcontinue==false)
                 addLocation( c);
+            jumplocation( c,1,0 );
         }
          c=new ChessBoardLocation( x+1,y+1 );
         if(x+1<model.getDimension()){
-            if(y+1>model.getDimension()){
-                jumplocation( c,1,1 );
+            if(y+1<model.getDimension()){
                 if( jumpcontinue==false)
-                addLocation( c);}
+                {addLocation( c);}
+                jumplocation( c,1,1 );
+                }
         }
     }
     public void addLocation(ChessBoardLocation location){
-        if(model.getChessPieceAt( location )!=null){return;}
         if(locationList.size()!=0){
         for(int i=0;i<locationList.size();i++){if(locationList.get( i )==location)return;}}
         if(model.getChessPieceAt( location )==null)
         locationList.add( location );
     }
-    public void deleteLocation(){locationList=null;}
+    public void deleteLocation(){locationList=null;locationList=new ArrayList<ChessBoardLocation>();}
     public void jumplocation(ChessBoardLocation location,int x,int y){
         ChessBoardLocation k=new ChessBoardLocation( location.getRow()+x,location.getColumn()+y );
-        if(location.getColumn()+x<model.getDimension()||location.getRow()+x>=0||location.getColumn()+y>=0||location.getColumn()+y<model.getDimension()){
         if(model.getChessPieceAt( location )==null){
             return;
         }else {
+            if(k.getRow()<0){return;}
+            if(k.getColumn()<0){return;}
+            if(k.getRow()>=model.getDimension()){return;}
+            if(k.getColumn()>=model.getDimension()){return;}
             if(model.getChessPieceAt( k )==null){
                 addLocation( k );
             }
             return;
-        }}
+        }
     }
 }
