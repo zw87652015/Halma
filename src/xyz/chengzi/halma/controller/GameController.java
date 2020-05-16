@@ -27,12 +27,13 @@ public class GameController implements GameListener {
     private ChessBoardLocation selectedLocation;
     private HashMap<Color, Integer> stepsMap = new HashMap<>();
     public ArrayList<ChessBoardLocation> locationList=new ArrayList<ChessBoardLocation>();
-
+    public ArrayList<Color> virturepeople;
     public Color getCurrentPlayer() {return currentPlayer;}
     public HashMap<Color, Integer> getStepsMap() {return stepsMap;}
 
 
     public GameController(ChessBoardComponent boardComponent, ChessBoard chessBoard, Color nextPlayer) {
+        virturepeople=new ArrayList<Color>(  );
         this.view = boardComponent;
         this.model = chessBoard;
         this.currentPlayer =null;
@@ -47,6 +48,7 @@ public class GameController implements GameListener {
     }
     
     public GameController(ChessBoardComponent boardComponent, ChessBoard chessBoard, Color nextPlayer, boolean isReload) {
+        virturepeople=new ArrayList<Color>(  );
         this.view = boardComponent;
         this.model = chessBoard;
         this.currentPlayer = nextPlayer;
@@ -81,7 +83,8 @@ public class GameController implements GameListener {
                 view.setTextField(GameFrame.isFourMan);
                 view.setNextPlayerFigureField(GameFrame.isFourMan);
                 view.repaint();
-                return currentPlayer;
+                if(checkplayer()){
+                return currentPlayer;}
             } else {
                 currentPlayer = model.color3;
             }
@@ -90,14 +93,16 @@ public class GameController implements GameListener {
             view.setTextField(GameFrame.isFourMan);
             view.setNextPlayerFigureField(GameFrame.isFourMan);
             view.repaint();
-            return currentPlayer;
+            if(checkplayer()){
+                return currentPlayer;}
         } else if (model.color3.equals( currentPlayer )) {
             if (model.fourman) {
                 currentPlayer = model.color4;
                 view.setTextField(GameFrame.isFourMan);
                 view.setNextPlayerFigureField(GameFrame.isFourMan);
                 view.repaint();
-                return currentPlayer;
+                if(checkplayer()){
+                    return currentPlayer;}
             } else {
                 currentPlayer = model.color1;
                 view.setTextField(GameFrame.isFourMan);
@@ -110,14 +115,17 @@ public class GameController implements GameListener {
             view.setTextField(GameFrame.isFourMan);
             view.setNextPlayerFigureField(GameFrame.isFourMan);
             view.repaint();
-            return currentPlayer;
+            if(checkplayer()){
+            return currentPlayer;}
         }
         view.setTextField(GameFrame.isFourMan);
         view.setNextPlayerFigureField(GameFrame.isFourMan);
         //model.setSteps(model.getSteps() + 1);
         model.setNextPlayer(currentPlayer);
         view.repaint();
-        return currentPlayer;
+        if(checkplayer()){
+        return currentPlayer;}
+        return nextPlayer();
     }
 
     public boolean isjump(ChessBoardLocation location) {
@@ -249,15 +257,21 @@ public class GameController implements GameListener {
             }
         }
         String winplayer=null;
-        if(b==true){currentPlayer=null;
+        if(b==true){
             if(GameFrame.isFourMan) {
                 if(currentPlayer.equals(model.color1)){winplayer="player1";}
                 if(currentPlayer.equals(model.color2)){winplayer="player2";}
                 if(currentPlayer.equals(model.color3)){winplayer="player3";}
                 if(currentPlayer.equals(model.color4)){winplayer="player4";}
+                virturepeople.add( currentPlayer );
+                if(virturepeople.size()==4){currentPlayer=null;}
+
             } else {
                 if(currentPlayer.equals(model.color1)){winplayer="player1";}
                 if(currentPlayer.equals(model.color3)){winplayer="player2";}
+                virturepeople.add( currentPlayer );
+                if(virturepeople.size()==2){currentPlayer=null;}
+
             }
             showMessageDialog(null,"Congratulation: "+winplayer+" is win!!!");}
     }
@@ -350,5 +364,11 @@ public class GameController implements GameListener {
             }
             return;
         }
+    }
+    public boolean checkplayer(){
+        for(int i=0;i<virturepeople.size();i++){
+            if(virturepeople.get( i )==currentPlayer){return false;}
+        }
+        return true;
     }
 }
