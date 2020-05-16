@@ -40,7 +40,7 @@ public class ChessBoard implements Serializable{
     private void initPieces() {
         for(int i=0;i<pricenumber;i++){
             for (int j=0;j<pricenumber;j++){
-                if(i+j<pricenumber)
+                if(i+j<pricenumber&&Math.abs(  (i-j) )<pricenumber-1)
                 {grid[i][j].setPiece(new ChessPiece(color1));
                 grid[dimension-i-1][dimension-j-1].setPiece(new ChessPiece(color3));
                 if(fourman){
