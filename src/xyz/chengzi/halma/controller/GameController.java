@@ -163,11 +163,11 @@ public class GameController implements GameListener {
                 view.setChessAtGrid( location, selectedPiece.getColor() );
                 view.removeChessAtGrid( selectedLocation );
                 stepsMap.put(currentPlayer, stepsMap.get(currentPlayer) + 1);
-                //reflashArrarylist( location );
                 view.repaint();
                 selectedLocation = location;
                 mod = model;
                 jumpcontinue = true;
+                reflashArrarylist( location );
             } else {
                 if (jumpcontinue) {
                     selectedLocation = null;
@@ -251,7 +251,7 @@ public class GameController implements GameListener {
             }
         }
         String winplayer=null;
-        if(b==true){
+        if(b==true){currentPlayer=null;
             if(GameFrame.isFourMan) {
                 if(currentPlayer.equals(model.color1)){winplayer="player1";}
                 if(currentPlayer.equals(model.color2)){winplayer="player2";}
@@ -261,23 +261,19 @@ public class GameController implements GameListener {
                 if(currentPlayer.equals(model.color1)){winplayer="player1";}
                 if(currentPlayer.equals(model.color3)){winplayer="player2";}
             }
-            
             showMessageDialog(null,"Congratulation: "+winplayer+" is win!!!");}
     }
     public void reflashArrarylist(ChessBoardLocation location){
-        try{
+
         deleteLocation();
         canarrive( location );
         System.out.println( locationList.size() );
         for(int i=0;i<locationList.size();i++){
         System.out.println(locationList.get( i ).getRow()+"   "+locationList.get( i ).getColumn() );}
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
     public void canarrive(ChessBoardLocation location){
-        int x=location.getColumn();
-        int y=location.getRow();
+        int x=location.getRow();
+        int y=location.getColumn();
         ChessBoardLocation c=new ChessBoardLocation( x-1,y-1 );
         if(x-1>=0){
             if(y-1>=0){
@@ -303,27 +299,27 @@ public class GameController implements GameListener {
          c=new ChessBoardLocation( x,y-1 );
             if(y-1>=0){
                 if( jumpcontinue==false)
-                addLocation( c);
+                {addLocation( c);}
                 jumplocation( c,0,-1 );
         }
          c=new ChessBoardLocation( x,y+1 );
             if(y+1<model.getDimension()){
                 if( jumpcontinue==false)
-                addLocation( c);
+                {addLocation( c);}
                 jumplocation( c,0,1 );
         }
          c=new ChessBoardLocation( x+1,y-1 );
         if(x+1<model.getDimension()){
             if(y-1>=0){
                 if( jumpcontinue==false)
-                addLocation( c);
+                {addLocation( c);}
                 jumplocation( c,1,-1 );
             }
         }
         c=new ChessBoardLocation( x+1,y );
         if(x+1<model.getDimension()){
             if( jumpcontinue==false)
-                addLocation( c);
+            { addLocation( c);}
             jumplocation( c,1,0 );
         }
          c=new ChessBoardLocation( x+1,y+1 );
