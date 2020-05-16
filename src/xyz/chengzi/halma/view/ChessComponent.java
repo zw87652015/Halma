@@ -31,16 +31,16 @@ public class ChessComponent extends JComponent {
     private void paintChess(Graphics g) {
         int spacing = (int) (getWidth() * 0.05);
         if(color.equals(ChessBoard.color1)) {
-            g.drawImage(new ImageIcon(getClass().getResource("images\\" + "A.png")).getImage(), spacing, spacing, getWidth()-spacing*2, getWidth()-spacing*2, this);
+            g.drawImage(new ImageIcon(getClass().getResource("images\\" + "OCEANICS.png")).getImage(), spacing, spacing, getWidth()-spacing*2, getWidth()-spacing*2, this);
         }
         if(color.equals(ChessBoard.color2)) {
-            g.drawImage(new ImageIcon(getClass().getResource("images\\" + "B.png")).getImage(), spacing, spacing, getWidth()-spacing*2, getWidth()-spacing*2, this);
+            g.drawImage(new ImageIcon(getClass().getResource("images\\" + "GALACTIC.png")).getImage(), spacing, spacing, getWidth()-spacing*2, getWidth()-spacing*2, this);
         }
         if(color.equals(ChessBoard.color3)) {
-            g.drawImage(new ImageIcon(getClass().getResource("images\\" + "C.png")).getImage(), spacing, spacing, getWidth()-spacing*2, getWidth()-spacing*2, this);
+            g.drawImage(new ImageIcon(getClass().getResource("images\\" + "CHAOS.png")).getImage(), spacing, spacing, getWidth()-spacing*2, getWidth()-spacing*2, this);
         }
         if(color.equals(ChessBoard.color4)) {
-            g.drawImage(new ImageIcon(getClass().getResource("images\\" + "D.png")).getImage(), spacing, spacing, getWidth()-spacing*2, getWidth()-spacing*2, this);
+            g.drawImage(new ImageIcon(getClass().getResource("images\\" + "PINKIES.png")).getImage(), spacing, spacing, getWidth()-spacing*2, getWidth()-spacing*2, this);
         }
 
         /*((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -50,7 +50,7 @@ public class ChessComponent extends JComponent {
         g.fillOval(spacing, spacing, getWidth() - 2 * spacing, getHeight() - 2 * spacing);*/
 
         if (selected) { // Draw a + sign in the center of the piece.
-            g.setColor(new Color(255 - color.getRed(), 255 - color.getGreen(), 255 - color.getBlue()));
+            g.setColor(Color.WHITE);
             g.drawLine(getWidth() / 2, getHeight() / 4, getWidth() / 2, getHeight() * 3 / 4);
             g.drawLine(getWidth() / 4, getHeight() / 2, getWidth() * 3 / 4, getHeight() / 2);
         }
