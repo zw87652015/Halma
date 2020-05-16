@@ -125,6 +125,7 @@ public class GameController implements GameListener {
         view.repaint();
         if(checkplayer()){
         return currentPlayer;}
+        if(currentPlayer==null){return null;}
         return nextPlayer();
     }
 
