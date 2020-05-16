@@ -14,12 +14,12 @@ import java.util.List;
 public class ChessBoardComponent extends JComponent {
     private static final Color BOARD_COLOR_1 = new Color(255, 255, 204);
     private static final Color BOARD_COLOR_2 = new Color(170, 170, 170);
-
+    private boolean canArrive;
     private List<GameListener> listenerList = new ArrayList<>();
     private SquareComponent[][] gridComponents;
     private int dimension;
     private int gridSize;
-
+    public boolean setcanArrive(boolean canArrive){this.canArrive=canArrive;return canArrive;}
     public void setTextField(boolean isFourMan) {
         if(isFourMan) {
             if(GameController.gc.getCurrentPlayer() == ChessBoard.color1) {
@@ -255,4 +255,14 @@ public class ChessBoardComponent extends JComponent {
 
     public void unregisterListener(GameListener listener) { listenerList.remove(listener);
     }
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        paintChess(g);
+    }
+    private void paintChess(Graphics g) {
+        if (canArrive) { // Draw a + sign in the center of the piece.
+            g.setColor(Color.black);
+            g.drawLine(getWidth() / 2, getHeight() / 4, getWidth() / 2, getHeight() * 3 / 4);
+            g.drawLine(getWidth() / 4, getHeight() / 2, getWidth() * 3 / 4, getHeight() / 2);
+        }}
 }

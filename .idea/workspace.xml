@@ -264,7 +264,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/xyz/chengzi/halma/controller/GameController.java</url>
-          <line>169</line>
+          <line>167</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>

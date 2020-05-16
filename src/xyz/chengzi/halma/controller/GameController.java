@@ -132,7 +132,6 @@ public class GameController implements GameListener {
                 view.setChessAtGrid( location, selectedPiece.getColor() );
                 view.removeChessAtGrid( selectedLocation );
                 stepsMap.put(currentPlayer, stepsMap.get(currentPlayer) + 1);
-                //reflashArrarylist( location );
                 view.repaint();
                 mod = model;
                 selectedLocation = null;
@@ -149,7 +148,6 @@ public class GameController implements GameListener {
                     view.setChessAtGrid( location, selectedPiece.getColor() );
                     view.removeChessAtGrid( selectedLocation );
                     stepsMap.put(currentPlayer, stepsMap.get(currentPlayer) + 1);
-                    //reflashArrarylist( location );
                     view.repaint();
                     selectedPiece = null;
                     selectedLocation = null;
