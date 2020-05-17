@@ -1,6 +1,7 @@
 package xyz.chengzi.halma.controller;
 
 import xyz.chengzi.halma.listener.GameListener;
+import xyz.chengzi.halma.model.Bgm;
 import xyz.chengzi.halma.model.ChessBoard;
 import xyz.chengzi.halma.model.ChessBoardLocation;
 import xyz.chengzi.halma.model.ChessPiece;
@@ -335,6 +336,7 @@ public class GameController implements GameListener {
                 if(virturepeople.size()==2){currentPlayer=null;}
 
             }
+            Bgm.Music_win();
             showMessageDialog(null,"Congratulation: "+winplayer+" is win!!!");}
     }
     public void reflashArrarylist(ChessBoardLocation location){

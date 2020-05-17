@@ -2,6 +2,7 @@ package xyz.chengzi.halma.view;
 
 import xyz.chengzi.halma.controller.DuDang;
 import xyz.chengzi.halma.controller.GameController;
+import xyz.chengzi.halma.model.Bgm;
 import xyz.chengzi.halma.model.ChessBoard;
 
 import javax.swing.*;
@@ -53,7 +54,7 @@ public class GameFrame extends JFrame {
         huiqi.addActionListener((e) -> {
             Bgm.Music_button();
             try{
-                DuDang.huiQi(this.id - 1);
+                DuDang.huiQi(this.id );
             } catch (Exception ex) {
                 System.out.println(11);
             }
@@ -78,6 +79,7 @@ public class GameFrame extends JFrame {
 
         JMenuItem menuItem_load = new JMenuItem("读取存档...");
         menuItem_load.addActionListener((e) -> {
+            Bgm.Music_button();
             JFileChooser jfc = new JFileChooser();
             jfc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
             jfc.showOpenDialog(new JLabel());
@@ -88,6 +90,7 @@ public class GameFrame extends JFrame {
         
         JMenuItem menuItem_save = new JMenuItem("保存游戏...");
         menuItem_save.addActionListener((e) -> {
+            Bgm.Music_button();
             JFileChooser jfc = new JFileChooser();
             jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             jfc.showSaveDialog(new JLabel());
@@ -98,6 +101,7 @@ public class GameFrame extends JFrame {
 
         JMenuItem menuItem_endgame = new JMenuItem("退出游戏");
         menuItem_endgame.addActionListener((e) -> {
+            Bgm.Music_button();
             dispose();
         });
         menu_Game.add(menuItem_endgame);
@@ -153,6 +157,7 @@ public class GameFrame extends JFrame {
 
     private class RadioButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent ae) {
+            Bgm.Music_button();
             if(ae.getSource() == shuangRen) {isFourMan = false;}
             if(ae.getSource() == siRen) {isFourMan = true;}
             if(ae.getSource() == four) {rowsOfPieces = 4;}
@@ -165,6 +170,7 @@ public class GameFrame extends JFrame {
             if(ae.getSource() == twenty_one) {dimension = 21;}
             if(ae.getSource() == startButton) {
                 SwingUtilities.invokeLater(() -> {
+                    Bgm.Music_start();
                     dispose();
                     ChessBoardComponent chessBoardComponent = new ChessBoardComponent(500, dimension);
                     ChessBoard chessBoard = new ChessBoard(dimension, rowsOfPieces, isFourMan, chessBoardComponent);
