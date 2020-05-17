@@ -134,7 +134,7 @@ public class GameController implements GameListener {
             currentPlayer = model.color1;
             view.setTextField(isFourMan, this.id);
             view.setNextPlayerFigureField(isFourMan, this.id);
-            model.setNextPlayer(currentPlayer);
+            //model.setNextPlayer(currentPlayer);
             mod.setNextPlayer(currentPlayer);
             model.setStepsMap(stepsMap);
             view.repaint();
@@ -145,6 +145,8 @@ public class GameController implements GameListener {
         view.setNextPlayerFigureField(isFourMan, this.id);
         //model.setSteps(model.getSteps() + 1);
         model.setNextPlayer(currentPlayer);
+        mod.setNextPlayer(currentPlayer);
+        model.setStepsMap(stepsMap);
         view.repaint();
         if(checkplayer()){
         return currentPlayer;}

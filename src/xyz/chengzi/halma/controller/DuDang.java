@@ -60,6 +60,7 @@ public class DuDang {
             model.moveChessPiece( model.getChainTable().get(model.getIndex()-1).get(1), model.getChainTable().get(model.getIndex()-1).get(0) );
             view.setChessAtGrid( model.getChainTable().get(model.getIndex()-1).get(0), model.getChainTable_color().get(model.getIndex() - 1) ); 
             view.removeChessAtGrid( model.getChainTable().get(model.getIndex()-1).get(1) );
+            model.getChainTable().remove(model.getChainTable().size()-2);
             controller.lastPlayer(model.fourman);
             controller.getStepsMap().put(controller.getLastPlayer(), controller.getStepsMap().get(controller.getLastPlayer()) - 1);
             model.setIndex(model.getIndex()-1);
