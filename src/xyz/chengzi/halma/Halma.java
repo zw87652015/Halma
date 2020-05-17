@@ -9,7 +9,7 @@ import javax.swing.*;
 
 public class Halma {
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {            
+        SwingUtilities.invokeLater(() -> {
             GameFrame starterFrame = new GameFrame("starterFrame");
             starterFrame.setVisible(true);
         });

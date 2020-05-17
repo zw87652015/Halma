@@ -23,13 +23,17 @@ public class GameFrame extends JFrame {
     private ButtonGroup weiDuGroup;
     private JRadioButton seventeen, eighteen, nineteen, twenty, twenty_one;
     private JButton startButton, loadButton;
-    
+
+    private String id = "";
+    public static int idCount = 0;
     public static JLabel statusLabel;
     public static boolean isFourMan = false;
     public static int rowsOfPieces = 2;
     public static int dimension = 17;
 
-    public GameFrame() {
+    public GameFrame(ChessBoardComponent chessBoardComponent) {
+        this.id = chessBoardComponent.getId();
+
         setTitle("2020 CS102A Project Demo");
         setSize(707, 574);
         setLocationRelativeTo(null); // Center the window.
@@ -68,11 +72,12 @@ public class GameFrame extends JFrame {
         });
         menu_Game.add(menuItem_save);
         
-        JMenuItem menuItem_huiQi = new JMenuItem("悔棋(未完成)");
+        JMenuItem menuItem_huiQi = new JMenuItem("悔棋");
         menuItem_huiQi.addActionListener((e) -> {
             try{
-                DuDang.huiQi();
+                DuDang.huiQi(this.id);
             } catch (Exception ex) {
+                System.out.println("huiQi failed");
             }
         });
         menu_Game.add(menuItem_huiQi);
@@ -135,7 +140,7 @@ public class GameFrame extends JFrame {
                     ChessBoard chessBoard = new ChessBoard(dimension, rowsOfPieces, isFourMan);
                     GameController controller = new GameController(chessBoardComponent, chessBoard, ChessBoard.color1);
                     
-                    GameFrame mainFrame = new GameFrame();
+                    GameFrame mainFrame = new GameFrame(chessBoardComponent);
                     mainFrame.add(chessBoardComponent);
                     mainFrame.setVisible(true);
                 });

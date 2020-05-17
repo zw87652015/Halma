@@ -15,13 +15,6 @@ public class ChessPiece implements Serializable{
 
     public ChessPiece(Color color) {
         this.color = color;
-        /*if(color == ChessBoard.color1) {this.pieceIcon = new ImageIcon("A.png");}
-        if(color == ChessBoard.color2) {this.pieceIcon = new ImageIcon("B.png");}
-        if(color == ChessBoard.color3) {this.pieceIcon = new ImageIcon("C.png");}
-        if(color == ChessBoard.color4) {this.pieceIcon = new ImageIcon("D.png");}
-        iconLabel = new JLabel(pieceIcon);
-        iconFrame.add(iconLabel);
-        iconFrame.setSize(pieceIcon.getIconWidth(), pieceIcon.getIconHeight());*/
     }
 
     public Color getColor() {

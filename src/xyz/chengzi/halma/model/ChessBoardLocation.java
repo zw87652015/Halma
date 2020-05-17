@@ -10,6 +10,10 @@ public class ChessBoardLocation implements Serializable{
         this.column = column;
     }
 
+    public ChessBoardLocation() {
+        
+    }
+    
     public int getRow() {
         return row;
     }

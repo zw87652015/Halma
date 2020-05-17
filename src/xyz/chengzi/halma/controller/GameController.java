@@ -16,6 +16,7 @@ import java.util.HashMap;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class GameController implements GameListener {
+    private String id = "";
     private ChessBoardComponent view;
     private ChessBoard model;
     private static ChessComponent chessComponent;
@@ -23,14 +24,19 @@ public class GameController implements GameListener {
     private boolean jumpcontinue=false;
     public static GameController gc;
     private Color currentPlayer;
+    private Color lastPlayer;
     private ChessPiece selectedPiece;
     private ChessBoardLocation selectedLocation;
     private HashMap<Color, Integer> stepsMap = new HashMap<>();
     public ArrayList<ChessBoardLocation> locationList=new ArrayList<ChessBoardLocation>();
     public ArrayList<Color> virturepeople;
+    public static HashMap<String, GameController> controllerlList = new HashMap<>();
+
     public Color getCurrentPlayer() {return currentPlayer;}
     public HashMap<Color, Integer> getStepsMap() {return stepsMap;}
-
+    public Color getLastPlayer() {return lastPlayer;}
+    public ChessBoard getModel() {return model;}
+    public String getId() {return id;}
 
     public GameController(ChessBoardComponent boardComponent, ChessBoard chessBoard, Color nextPlayer) {
         virturepeople=new ArrayList<Color>(  );
@@ -44,6 +50,8 @@ public class GameController implements GameListener {
         this.stepsMap.put(ChessBoard.color2, 0);
         this.stepsMap.put(ChessBoard.color3, 0);
         this.stepsMap.put(ChessBoard.color4, 0);
+        this.id = boardComponent.getId();
+        GameController.controllerlList.put(id, this);
         initGameState();
     }
     
@@ -55,10 +63,9 @@ public class GameController implements GameListener {
         gc=this;
         mod = model;
         view.registerListener( this );
-        this.stepsMap.put(ChessBoard.color1, 0);
-        this.stepsMap.put(ChessBoard.color2, 0);
-        this.stepsMap.put(ChessBoard.color3, 0);
-        this.stepsMap.put(ChessBoard.color4, 0);
+        this.stepsMap = chessBoard.getStepsMap();
+        this.id = boardComponent.getId();
+        GameController.controllerlList.put(id, this);
         initGameState();
     }
 
@@ -75,14 +82,18 @@ public class GameController implements GameListener {
         view.repaint();
     }
 
-    public Color nextPlayer() {
+    public Color nextPlayer(boolean isFourMan) {
         isVictory();
+        lastPlayer = currentPlayer;
         if (model.color1.equals( currentPlayer )) {
             if (model.fourman) {
                 currentPlayer = model.color2;
-                view.setTextField(GameFrame.isFourMan);
-                view.setNextPlayerFigureField(GameFrame.isFourMan);
+                view.setTextField(isFourMan, this.id);
+                view.setNextPlayerFigureField(isFourMan, this.id);
+                model.setStepsMap(stepsMap);
+                mod.setNextPlayer(currentPlayer);
                 view.repaint();
+                lastPlayer = currentPlayer;
                 if(checkplayer()){
                 return currentPlayer;}
             } else {
@@ -90,43 +101,67 @@ public class GameController implements GameListener {
             }
         } else if (model.color2.equals( currentPlayer )) {
             currentPlayer = model.color3;
-            view.setTextField(GameFrame.isFourMan);
-            view.setNextPlayerFigureField(GameFrame.isFourMan);
+            view.setTextField(isFourMan, this.id);
+            view.setNextPlayerFigureField(isFourMan, this.id);
+            model.setStepsMap(stepsMap);
+            mod.setNextPlayer(currentPlayer);
             view.repaint();
+            lastPlayer = currentPlayer;
             if(checkplayer()){
                 return currentPlayer;}
         } else if (model.color3.equals( currentPlayer )) {
             if (model.fourman) {
                 currentPlayer = model.color4;
-                view.setTextField(GameFrame.isFourMan);
-                view.setNextPlayerFigureField(GameFrame.isFourMan);
+                view.setTextField(isFourMan, this.id);
+                view.setNextPlayerFigureField(isFourMan, this.id);
+                model.setStepsMap(stepsMap);
+                mod.setNextPlayer(currentPlayer);
                 view.repaint();
+                lastPlayer = currentPlayer;
                 if(checkplayer()){
                     return currentPlayer;}
             } else {
                 currentPlayer = model.color1;
-                view.setTextField(GameFrame.isFourMan);
-                view.setNextPlayerFigureField(GameFrame.isFourMan);
+                view.setTextField(isFourMan, this.id);
+                view.setNextPlayerFigureField(isFourMan, this.id);
+                model.setStepsMap(stepsMap);
+                mod.setNextPlayer(currentPlayer);
                 view.repaint();
                 return currentPlayer;
             }
         } else if (model.color4.equals( currentPlayer )) {
             currentPlayer = model.color1;
-            view.setTextField(GameFrame.isFourMan);
-            view.setNextPlayerFigureField(GameFrame.isFourMan);
+            view.setTextField(isFourMan, this.id);
+            view.setNextPlayerFigureField(isFourMan, this.id);
+            model.setNextPlayer(currentPlayer);
+            mod.setNextPlayer(currentPlayer);
+            model.setStepsMap(stepsMap);
             view.repaint();
             if(checkplayer()){
             return currentPlayer;}
         }
-        view.setTextField(GameFrame.isFourMan);
-        view.setNextPlayerFigureField(GameFrame.isFourMan);
+        view.setTextField(isFourMan, this.id);
+        view.setNextPlayerFigureField(isFourMan, this.id);
         //model.setSteps(model.getSteps() + 1);
         model.setNextPlayer(currentPlayer);
         view.repaint();
         if(checkplayer()){
         return currentPlayer;}
         if(currentPlayer==null){return null;}
-        return nextPlayer();
+        return nextPlayer(model.fourman);
+    }
+
+    public Color lastPlayer(boolean isFourMan) {
+        currentPlayer = model.getChainTable_color().get(model.getChainTable_color().size()-1);
+        model.getChainTable_color().remove(model.getChainTable_color().size()-1);
+        view.setTextField(isFourMan, this.id);
+        view.setNextPlayerFigureField(isFourMan, this.id);
+        model.setNextPlayer(currentPlayer);
+        mod.setNextPlayer(currentPlayer);
+        model.setStepsMap(stepsMap);
+        view.repaint();
+        lastPlayer = currentPlayer;
+        return currentPlayer;
     }
 
     public boolean isjump(ChessBoardLocation location) {
@@ -138,6 +173,15 @@ public class GameController implements GameListener {
         if (jumpcontinue) {
             if (location.equals( selectedLocation )) {
                 model.moveChessPiece( selectedLocation, location );
+
+                model.setLastMove(model.getCurrentMove());
+                model.setCurrentMove(selectedLocation);
+                model.getChainTable().add(new ArrayList<ChessBoardLocation>());
+                model.getChainTable().get(model.getIndex()).add(selectedLocation);
+                model.getChainTable().get(model.getIndex()).add(location);
+                model.getChainTable_color().add(selectedPiece.getColor());
+                model.setIndex(model.getIndex() + 1);
+
                 view.setChessAtGrid( location, selectedPiece.getColor() );
                 view.removeChessAtGrid( selectedLocation );
                 stepsMap.put(currentPlayer, stepsMap.get(currentPlayer) + 1);
@@ -146,7 +190,7 @@ public class GameController implements GameListener {
                 selectedLocation = null;
                 selectedPiece = null;
                 jumpcontinue = false;
-                nextPlayer();
+                nextPlayer(model.fourman);
                 return;
             }
         }
@@ -154,6 +198,15 @@ public class GameController implements GameListener {
             if (jumpcontinue == false) {
                 if (selectedLocation != null && model.isValidMove( selectedLocation, location )) {
                     model.moveChessPiece( selectedLocation, location );
+
+                    model.setLastMove(model.getCurrentMove());
+                    model.setCurrentMove(selectedLocation);
+                    model.getChainTable().add(new ArrayList<ChessBoardLocation>());
+                    model.getChainTable().get(model.getIndex()).add(selectedLocation);
+                    model.getChainTable().get(model.getIndex()).add(location);
+                    model.getChainTable_color().add(selectedPiece.getColor());
+                    model.setIndex(model.getIndex() + 1);
+
                     view.setChessAtGrid( location, selectedPiece.getColor() );
                     view.removeChessAtGrid( selectedLocation );
                     stepsMap.put(currentPlayer, stepsMap.get(currentPlayer) + 1);
@@ -161,12 +214,21 @@ public class GameController implements GameListener {
                     selectedPiece = null;
                     selectedLocation = null;
                     mod = model;
-                    nextPlayer();
+                    nextPlayer(model.fourman);
                 }
             }
         } else {
             if (model.isjumpcanmove( selectedLocation, location )) {
                 model.moveChessPiece( selectedLocation, location );
+
+                model.setLastMove(model.getCurrentMove());
+                model.setCurrentMove(selectedLocation);
+                model.getChainTable().add(new ArrayList<ChessBoardLocation>());
+                model.getChainTable().get(model.getIndex()).add(selectedLocation);
+                model.getChainTable().get(model.getIndex()).add(location);
+                model.getChainTable_color().add(selectedPiece.getColor());
+                model.setIndex(model.getIndex() + 1);
+
                 view.setChessAtGrid( location, selectedPiece.getColor() );
                 view.removeChessAtGrid( selectedLocation );
                 stepsMap.put(currentPlayer, stepsMap.get(currentPlayer) + 1);
@@ -181,7 +243,7 @@ public class GameController implements GameListener {
                     selectedPiece = null;
                     mod = model;
                     jumpcontinue = false;
-                    nextPlayer();
+                    nextPlayer(model.fourman);
                 }
             }
         }
