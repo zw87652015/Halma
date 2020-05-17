@@ -57,15 +57,6 @@ public class DuDang {
             JOptionPane.showMessageDialog(null, "存档失败。");
         }
     }
-    
-    public static void save(ChessBoard currentChessBoard) {
-        try{
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("temp.save"));
-            oos.writeObject(currentChessBoard);
-            oos.close();
-        } catch (IOException e) {
-        }
-    }
 
     public static void huiQi() {
         try {

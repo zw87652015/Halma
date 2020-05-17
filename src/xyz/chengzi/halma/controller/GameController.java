@@ -192,7 +192,6 @@ public class GameController implements GameListener {
         if (jumpcontinue == false) {
             ChessPiece piece = model.getChessPieceAt( location );
             if(currentPlayer==null){currentPlayer=piece.getColor();}
-            DuDang.save( GameController.getChessBoard() );
             if (piece.getColor().equals( currentPlayer ) && (selectedPiece == piece || selectedPiece == null)) {
                 if (selectedPiece == null) {
                     selectedPiece = piece;
