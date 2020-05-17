@@ -46,11 +46,35 @@ public class GameFrame extends JFrame {
         statusLabel.setSize(200, 10);
         add(statusLabel);
 
+        JButton huiqi = new JButton("悔棋");
+        huiqi.setSize(60,50);
+        huiqi.setLocation(520,100);
+        add(huiqi);
+        huiqi.addActionListener((e) -> {
+            Bgm.Music_button();
+            try{
+                DuDang.huiQi(this.id - 1);
+            } catch (Exception ex) {
+                System.out.println(11);
+            }
+        });
+
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
 
         JMenu menu_Game = new JMenu("游戏");
         menuBar.add(menu_Game);
+
+        JMenuItem menuItem_newgame = new JMenuItem("新游戏");
+        menuItem_newgame.addActionListener((e) -> {
+            Bgm.Music_button();
+            dispose();
+            SwingUtilities.invokeLater(() -> {
+                GameFrame starterFrame = new GameFrame("starterFrame");
+                starterFrame.setVisible(true);
+            });
+        });
+        menu_Game.add(menuItem_newgame);
 
         JMenuItem menuItem_load = new JMenuItem("读取存档...");
         menuItem_load.addActionListener((e) -> {
@@ -71,8 +95,14 @@ public class GameFrame extends JFrame {
             DuDang.save(GameController.getChessBoard(), file.getPath());
         });
         menu_Game.add(menuItem_save);
+
+        JMenuItem menuItem_endgame = new JMenuItem("退出游戏");
+        menuItem_endgame.addActionListener((e) -> {
+            dispose();
+        });
+        menu_Game.add(menuItem_endgame);
         
-        JMenuItem menuItem_huiQi = new JMenuItem("悔棋");
+        /*JMenuItem menuItem_huiQi = new JMenuItem("悔棋");
         menuItem_huiQi.addActionListener((e) -> {
             try{
                 DuDang.huiQi(this.id);
@@ -80,7 +110,7 @@ public class GameFrame extends JFrame {
                 System.out.println("huiQi failed");
             }
         });
-        menu_Game.add(menuItem_huiQi);
+        menu_Game.add(menuItem_huiQi);*/
 
 
         JMenu menu_about = new JMenu("关于");
@@ -135,6 +165,7 @@ public class GameFrame extends JFrame {
             if(ae.getSource() == twenty_one) {dimension = 21;}
             if(ae.getSource() == startButton) {
                 SwingUtilities.invokeLater(() -> {
+                    dispose();
                     ChessBoardComponent chessBoardComponent = new ChessBoardComponent(500, dimension);
                     ChessBoard chessBoard = new ChessBoard(dimension, rowsOfPieces, isFourMan, chessBoardComponent);
                     GameController controller = new GameController(chessBoardComponent, chessBoard, ChessBoard.color1);
