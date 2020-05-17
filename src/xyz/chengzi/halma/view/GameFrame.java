@@ -18,7 +18,7 @@ public class GameFrame extends JFrame {
     private JRadioButton shuangRen, siRen;
     private JTextField xuanZeChuShiQiZiShu;
     private ButtonGroup qiZiShuGroup;
-    private JRadioButton two, three, four, five;
+    private JRadioButton four, five, six;
     private JTextField weiDu;
     private ButtonGroup weiDuGroup;
     private JRadioButton seventeen, eighteen, nineteen, twenty, twenty_one;
@@ -28,13 +28,13 @@ public class GameFrame extends JFrame {
     public static int idCount = 0;
     public static JLabel statusLabel;
     public static boolean isFourMan = false;
-    public static int rowsOfPieces = 2;
+    public static int rowsOfPieces = 4;
     public static int dimension = 17;
 
-    public GameFrame(ChessBoardComponent chessBoardComponent) {
+    public GameFrame(ChessBoardComponent chessBoardComponent, ChessBoard chessBoard) {
         this.id = chessBoardComponent.getId();
 
-        setTitle("2020 CS102A Project Demo");
+        setTitle("Halma - Game id: " + chessBoard.getId());
         setSize(707, 574);
         setLocationRelativeTo(null); // Center the window.
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -125,10 +125,9 @@ public class GameFrame extends JFrame {
         public void actionPerformed(ActionEvent ae) {
             if(ae.getSource() == shuangRen) {isFourMan = false;}
             if(ae.getSource() == siRen) {isFourMan = true;}
-            if(ae.getSource() == two) {rowsOfPieces = 2;}
-            if(ae.getSource() == three) {rowsOfPieces = 3;}
             if(ae.getSource() == four) {rowsOfPieces = 4;}
             if(ae.getSource() == five) {rowsOfPieces = 5;}
+            if(ae.getSource() == five) {rowsOfPieces = 6;}
             if(ae.getSource() == seventeen) {dimension = 17;}
             if(ae.getSource() == eighteen) {dimension = 18;}
             if(ae.getSource() == nineteen) {dimension = 19;}
@@ -137,10 +136,10 @@ public class GameFrame extends JFrame {
             if(ae.getSource() == startButton) {
                 SwingUtilities.invokeLater(() -> {
                     ChessBoardComponent chessBoardComponent = new ChessBoardComponent(500, dimension);
-                    ChessBoard chessBoard = new ChessBoard(dimension, rowsOfPieces, isFourMan);
+                    ChessBoard chessBoard = new ChessBoard(dimension, rowsOfPieces, isFourMan, chessBoardComponent);
                     GameController controller = new GameController(chessBoardComponent, chessBoard, ChessBoard.color1);
                     
-                    GameFrame mainFrame = new GameFrame(chessBoardComponent);
+                    GameFrame mainFrame = new GameFrame(chessBoardComponent, chessBoard);
                     mainFrame.add(chessBoardComponent);
                     mainFrame.setVisible(true);
                 });
@@ -187,26 +186,21 @@ public class GameFrame extends JFrame {
         xuanZeChuShiQiZiShu.setBounds(100, 0, 10, 5);
         jp.add(xuanZeChuShiQiZiShu);
         qiZiShuGroup = new ButtonGroup();
-        two = new JRadioButton("2 rows",true);
-        two.setBounds(10, 50, 10, 5);
-        three = new JRadioButton("3 rows");
-        three.setBounds(10, 60, 10, 5);
-        four = new JRadioButton("4 rows");
-        four.setBounds(10, 70, 10, 5);
+        four = new JRadioButton("4 rows", true);
+        four.setBounds(10, 50, 10, 5);
         five = new JRadioButton("5 rows");
-        five.setBounds(10, 80, 10, 5);
-        qiZiShuGroup.add(two);
-        qiZiShuGroup.add(three);
+        five.setBounds(10, 60, 10, 5);
+        six = new JRadioButton("6 rows");
+        six.setBounds(10, 70, 10, 5);
         qiZiShuGroup.add(four);
         qiZiShuGroup.add(five);
-        jp.add(two);
-        jp.add(three);
+        qiZiShuGroup.add(six);
         jp.add(four);
         jp.add(five);
-        two.addActionListener(listener);
-        three.addActionListener(listener);
+        jp.add(six);
         four.addActionListener(listener);
         five.addActionListener(listener);
+        six.addActionListener(listener);
         
         weiDu = new JTextField("Select dimension");
         weiDu.setEditable(false);

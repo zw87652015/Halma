@@ -29,7 +29,7 @@ public class DuDang {
                 }
                 GameController controller = new GameController(chessBoardComponent, temp, nextPlayer, true);
 
-                GameFrame loadedFrame = new GameFrame(chessBoardComponent);
+                GameFrame loadedFrame = new GameFrame(chessBoardComponent, temp);
                 loadedFrame.add(chessBoardComponent);
                 JOptionPane.showMessageDialog(null, "读档成功！");
                 loadedFrame.setVisible(true);

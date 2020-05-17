@@ -5,9 +5,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import xyz.chengzi.halma.view.ChessBoardComponent;
+
 public class ChessBoard implements Serializable{
 
     private static final long serialVersionUID = 1546070631726276643L;
+    private String id = "";
     private Square[][] grid;
     private int dimension;
     private int steps = 0;
@@ -44,9 +47,11 @@ public class ChessBoard implements Serializable{
     public int getIndex() {return index;}
     public void setChainTable_color(ArrayList<Color> chainTable_color) {this.chainTable_color = chainTable_color;}
     public ArrayList<Color> getChainTable_color() {return chainTable_color;}
+    public String getId() {return id;}
     
-    public ChessBoard(int dimension,int pricenumber,boolean fourman) {
+    public ChessBoard(int dimension,int pricenumber,boolean fourman, ChessBoardComponent chessBoardComponent) {
         chainTable.add(new ArrayList<ChessBoardLocation>());
+        this.id = chessBoardComponent.getId();
         this.grid = new Square[dimension][dimension];
         this.dimension = dimension;
         this.fourman=fourman;
