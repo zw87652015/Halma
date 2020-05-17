@@ -49,7 +49,7 @@ public class GameFrame extends JFrame {
 
         JButton huiqi = new JButton("悔棋");
         huiqi.setSize(60,50);
-        huiqi.setLocation(520,100);
+        huiqi.setLocation(520,125);
         add(huiqi);
         huiqi.addActionListener((e) -> {
             Bgm.Music_button();
