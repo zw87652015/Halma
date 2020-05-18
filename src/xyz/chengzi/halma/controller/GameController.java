@@ -252,9 +252,42 @@ public class GameController implements GameListener {
             }
         }
     }
+    public boolean chreckjumpLocation(ChessBoardLocation location){
+        int x=selectedLocation.getRow();
+        int y=selectedLocation.getColumn();
+        int xArrive=0;
+        int YArrive=0;
+        if(currentPlayer.equals( model.color1 )){
+            xArrive=model.getDimension()-1;
+            YArrive=model.getDimension()-1;
+        }
+        if(currentPlayer.equals( model.color2 )){
+            xArrive=model.getDimension()-1;
+            YArrive=0;
+        }
+        if(currentPlayer.equals( model.color3)){
+            xArrive=0;
+            YArrive=0;
+        }
+        if(currentPlayer.equals( model.color2 )){
+            xArrive=0;
+            YArrive=model.getDimension()-1;
+        }
+        int xdistance=Math.abs( x-xArrive );
+        int ydistance=Math.abs( y-YArrive );
+        if(xdistance+ydistance<model.getPricenumber()&&Math.abs( xdistance-ydistance )<model.getPricenumber()){
+            return false;
+        }
+        xdistance=location.getRow()-xArrive;
+        ydistance=location.getColumn()-YArrive;
+        if(xdistance+ydistance<model.getPricenumber()&&Math.abs( xdistance-ydistance )<model.getPricenumber()){
+            return true;
+        }else {return false;}
 
+    }
     @Override
     public void onPlayerClickChessPiece(ChessBoardLocation location, ChessComponent component) {
+            if(chreckjumpLocation( location )==false){return;}
         if (jumpcontinue == false) {
             ChessPiece piece = model.getChessPieceAt( location );
             if(currentPlayer==null){currentPlayer=piece.getColor();}
