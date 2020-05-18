@@ -81,12 +81,27 @@ public class GameController implements GameListener {
         }
         view.repaint();
     }
-    
+    public void nextcolorcheck(){
+        Color colorcheck=Color.BLACK;
+        Color l;
+        if(currentPlayer.equals( model.color1 )){colorcheck=model.color2;}
+        if(currentPlayer.equals( model.color2 )){colorcheck=model.color3;}
+        if(currentPlayer.equals( model.color3 )){colorcheck=model.color4;}
+        if(currentPlayer.equals( model.color4 )){colorcheck=model.color1;}
+        for(int i=0;i<virturepeople.size();i++)
+        {l=virturepeople.get( i );
+            if(virturepeople.get( i ).equals( colorcheck ))
+            {next=true;}}
+
+
+    }
     public Color nextPlayer(boolean isFourMan) {
-        if(next==true){}else {
-        isVictory();next=false;
+        nextcolorcheck();
+        if(next==true){next=false;}else {
+        isVictory();
+            lastPlayer = currentPlayer;
+        }
         reflashArrarylist(true);
-        lastPlayer = currentPlayer;}
         if (model.color1.equals( currentPlayer )) {
             if (model.fourman) {
                 currentPlayer = model.color2;
@@ -277,7 +292,7 @@ public class GameController implements GameListener {
         }
         int xdistance=Math.abs( x-xArrive );
         int ydistance=Math.abs( y-YArrive );
-        if(xdistance+ydistance<model.getPricenumber()&&Math.abs( xdistance-ydistance )<model.getPricenumber()){
+        if(xdistance+ydistance<model.getPricenumber()&&Math.abs( xdistance-ydistance )<model.getPricenumber()-1){
         }else {return true;}
         xdistance=Math.abs( location.getRow()-xArrive );
         ydistance=Math.abs( location.getColumn()-YArrive );

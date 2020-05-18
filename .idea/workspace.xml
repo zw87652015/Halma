@@ -151,7 +151,7 @@
       <workItem from="1589286084653" duration="4065000" />
       <workItem from="1589380584484" duration="9505000" />
       <workItem from="1589545338309" duration="7043000" />
-      <workItem from="1589809356073" duration="5035000" />
+      <workItem from="1589809356073" duration="8866000" />
     </task>
     <servers />
   </component>
@@ -200,46 +200,46 @@
     </state>
     <state x="458" y="143" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1588682913272" />
     <state x="549" y="175" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1588474887166" />
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1589814031487">
+    <state width="1237" height="293" key="GridCell.Tab.0.bottom" timestamp="1589818001098">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1589814031487" />
+    <state width="1237" height="293" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1589818001098" />
     <state width="1342" height="198" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1585643052309" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589706490808" />
-    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1589814031485">
+    <state width="1237" height="293" key="GridCell.Tab.0.center" timestamp="1589818001097">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1589814031485" />
+    <state width="1237" height="293" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1589818001097" />
     <state width="1342" height="198" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1585643052308" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589706490808" />
-    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1589814031485">
+    <state width="1237" height="293" key="GridCell.Tab.0.left" timestamp="1589818001095">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1589814031485" />
+    <state width="1237" height="293" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1589818001095" />
     <state width="1342" height="198" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1585643052308" />
     <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589706490808" />
-    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1589814031486">
+    <state width="1237" height="293" key="GridCell.Tab.0.right" timestamp="1589818001097">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1589814031486" />
+    <state width="1237" height="293" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1589818001097" />
     <state width="1342" height="198" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1585643052309" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589706490808" />
-    <state width="1237" height="293" key="GridCell.Tab.1.bottom" timestamp="1589813364744">
+    <state width="1237" height="293" key="GridCell.Tab.1.bottom" timestamp="1589818043985">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="293" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1589813364744" />
-    <state width="1237" height="293" key="GridCell.Tab.1.center" timestamp="1589813364744">
+    <state width="1237" height="293" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1589818043985" />
+    <state width="1237" height="293" key="GridCell.Tab.1.center" timestamp="1589818043985">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="293" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1589813364744" />
-    <state width="1237" height="293" key="GridCell.Tab.1.left" timestamp="1589813364744">
+    <state width="1237" height="293" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1589818043985" />
+    <state width="1237" height="293" key="GridCell.Tab.1.left" timestamp="1589818043985">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="293" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1589813364744" />
-    <state width="1237" height="293" key="GridCell.Tab.1.right" timestamp="1589813364744">
+    <state width="1237" height="293" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1589818043985" />
+    <state width="1237" height="293" key="GridCell.Tab.1.right" timestamp="1589818043985">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="293" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1589813364744" />
+    <state width="1237" height="293" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1589818043985" />
     <state x="540" y="262" key="IDE.errors.dialog" timestamp="1585398785373">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -271,13 +271,23 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/xyz/chengzi/halma/controller/GameController.java</url>
-          <line>281</line>
+          <line>296</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/xyz/chengzi/halma/controller/GameController.java</url>
-          <line>322</line>
-          <option name="timeStamp" value="6" />
+          <line>525</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/xyz/chengzi/halma/controller/GameController.java</url>
+          <line>169</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/xyz/chengzi/halma/controller/GameController.java</url>
+          <line>92</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
