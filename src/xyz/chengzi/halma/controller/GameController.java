@@ -276,7 +276,7 @@ public class GameController implements GameListener {
         int xdistance=Math.abs( x-xArrive );
         int ydistance=Math.abs( y-YArrive );
         if(xdistance+ydistance<model.getPricenumber()&&Math.abs( xdistance-ydistance )<model.getPricenumber()){
-            return false;
+            return true;
         }
         xdistance=location.getRow()-xArrive;
         ydistance=location.getColumn()-YArrive;
