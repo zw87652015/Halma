@@ -59,8 +59,8 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
@@ -162,9 +162,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="495" y="70" key="#Halma_(1)/0.0.1536.834@0.0.1536.834" timestamp="1585637842345" />
-    <state x="451" y="99" key="#Project_Structure" timestamp="1589388042079">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="301" y="4" key="#Project_Structure" timestamp="1589719437151">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="301" y="4" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1589719437151" />
     <state x="361" y="79" key="#Project_Structure/0.0.1536.834@0.0.1536.834" timestamp="1585637791607" />
     <state x="451" y="99" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1589388042079" />
     <state x="548" y="109" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1585637833814">
@@ -179,10 +180,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585395139700" />
-    <state x="776" y="385" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1589703249056">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="517" y="252" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1589719440565">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="517" y="252" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1589286118232" />
+    <state x="517" y="252" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.680@0.0.1280.680" timestamp="1589719440565" />
     <state x="620" y="309" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.834@0.0.1536.834" timestamp="1589127196608" />
     <state x="776" y="385" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589703249056" />
     <state x="714" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585389620799">
