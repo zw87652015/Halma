@@ -222,8 +222,8 @@ public class GameController implements GameListener {
                 }
             }
         } else {
-            if(chreckjumpLocation( location )==false){return;}
             if (model.isjumpcanmove( selectedLocation, location )) {
+                if(chreckjumpLocation( location )==false){return;}
                 model.moveChessPiece( selectedLocation, location );
 
                 model.setLastMove(model.getCurrentMove());
