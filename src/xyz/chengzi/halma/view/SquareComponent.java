@@ -10,6 +10,15 @@ import java.awt.*;
 public class SquareComponent extends JPanel {
     private Color color;
     private JTextField currentPlayerText;
+    private boolean canArrive = false;
+
+    public void setCanArrive(boolean canArrive) {
+        this.canArrive = canArrive;
+    }
+    
+    public boolean isCanArrive() {
+        return canArrive;
+    }
 
     public JTextField getCurrentPlayerText() {return currentPlayerText;}
     public void setCurrentPlayerText(JTextField currentPlayerText) {this.currentPlayerText = currentPlayerText;}
@@ -51,5 +60,9 @@ public class SquareComponent extends JPanel {
         g.fillRect(0, 0, getWidth(), getHeight());
         g.setColor(Color.BLACK);
         g.drawRect(0, 0, getWidth(), getHeight());
+        if (canArrive) { // Draw a + sign in the center of the piece.
+            g.setColor(Color.GREEN);
+            g.drawOval(1, 1, 27, 27);
+        }
     }
 }

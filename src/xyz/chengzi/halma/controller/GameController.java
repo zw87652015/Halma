@@ -85,6 +85,7 @@ public class GameController implements GameListener {
 
     public Color nextPlayer(boolean isFourMan) {
         isVictory();
+        reflashArrarylist(true);
         lastPlayer = currentPlayer;
         if (model.color1.equals( currentPlayer )) {
             if (model.fourman) {
@@ -261,10 +262,11 @@ public class GameController implements GameListener {
                 if (selectedPiece == null) {
                     selectedPiece = piece;
                     selectedLocation = location;
-                   reflashArrarylist( location );
+                    reflashArrarylist( location );
                 } else {
                     selectedPiece = null;
                     selectedLocation = null;
+                    reflashArrarylist( true );
                     //deleteLocation();
                 }
                 component.setSelected( !component.isSelected() );
@@ -343,11 +345,23 @@ public class GameController implements GameListener {
     }
     public void reflashArrarylist(ChessBoardLocation location){
 
+        for(int i=0;i<locationList.size();i++){
+            view.getGridAt(locationList.get(i)).setCanArrive(false);
+        }
         deleteLocation();
         canarrive( location );
-        System.out.println( locationList.size() );
+        for(int i=0;i<locationList.size();i++) {
+            view.getGridAt(locationList.get(i)).setCanArrive(true);
+            view.getGridAt(locationList.get(i)).repaint();
+        }
+    }
+    
+    public void reflashArrarylist(boolean hahaha){
         for(int i=0;i<locationList.size();i++){
-        System.out.println(locationList.get( i ).getRow()+"   "+locationList.get( i ).getColumn() );}
+            view.getGridAt(locationList.get(i)).setCanArrive(false);
+            view.getGridAt(locationList.get(i)).repaint();
+        }
+        deleteLocation();
     }
     public void canarrive(ChessBoardLocation location){
         int x=location.getRow();
