@@ -49,7 +49,7 @@ public class GameFrame extends JFrame {
 
         JButton huiqi = new JButton("悔棋");
         huiqi.setSize(60,50);
-        huiqi.setLocation(520,125);
+        huiqi.setLocation(540,125);
         add(huiqi);
         huiqi.addActionListener((e) -> {
             Bgm.Music_button();
@@ -59,6 +59,25 @@ public class GameFrame extends JFrame {
                 System.out.println(11);
             }
         });
+
+        JButton bgmstart = new JButton("播放bgm");
+        bgmstart.setSize(120,50);
+        bgmstart.setLocation(518,225);
+        add(bgmstart);
+        bgmstart.addActionListener((e) -> {
+            Bgm.Music_bgm();
+        });
+
+        JButton bgmstop = new JButton("停止bgm");
+        bgmstop.setSize(120,50);
+        bgmstop.setLocation(518,325);
+        add(bgmstop);
+        bgmstop.addActionListener((e) -> {
+            Bgm.Music_bgmstop();
+        });
+
+
+
 
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);

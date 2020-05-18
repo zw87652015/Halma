@@ -7,6 +7,7 @@ import xyz.chengzi.halma.model.ChessBoardLocation;
 import xyz.chengzi.halma.model.ChessPiece;
 import xyz.chengzi.halma.view.ChessBoardComponent;
 import xyz.chengzi.halma.view.ChessComponent;
+import xyz.chengzi.halma.view.Ranklist;
 import xyz.chengzi.halma.view.SquareComponent;
 
 import java.awt.*;
@@ -29,14 +30,21 @@ public class GameController implements GameListener {
     private ChessBoardLocation selectedLocation;
     private HashMap<Color, Integer> stepsMap = new HashMap<>();
     public ArrayList<ChessBoardLocation> locationList=new ArrayList<ChessBoardLocation>();
-    public ArrayList<Color> virturepeople;
+    public static ArrayList<Color> virturepeople;
     public static HashMap<String, GameController> controllerlList = new HashMap<>();
     public boolean next=false;
+
+
     public Color getCurrentPlayer() {return currentPlayer;}
     public HashMap<Color, Integer> getStepsMap() {return stepsMap;}
     public Color getLastPlayer() {return lastPlayer;}
     public ChessBoard getModel() {return model;}
     public String getId() {return id;}
+
+
+    public static ArrayList<Color> getVirturepeople() {
+        return virturepeople;
+    }
 
     public GameController(ChessBoardComponent boardComponent, ChessBoard chessBoard, Color nextPlayer) {
         virturepeople=new ArrayList<Color>(  );
@@ -209,6 +217,7 @@ public class GameController implements GameListener {
                 selectedLocation = null;
                 selectedPiece = null;
                 jumpcontinue = false;
+                Bgm.Music_pa();
                 nextPlayer(model.fourman);
                 return;
             }
@@ -234,6 +243,7 @@ public class GameController implements GameListener {
                     selectedPiece = null;
                     selectedLocation = null;
                     mod = model;
+                    Bgm.Music_pa();
                     nextPlayer(model.fourman);
                 }
             }
@@ -415,11 +425,17 @@ public class GameController implements GameListener {
                 if(currentPlayer.equals( model.color1 )){
                     virturepeople.add( model.color3 );
                     currentPlayer=Color.BLACK;
+
                 }else {virturepeople.add( model.color1 );
                 currentPlayer=Color.BLACK;}
             }
             Bgm.Music_win();
-            showMessageDialog(null,"Congratulation: "+winplayer+" is win!!!");}
+            showMessageDialog(null,"Congratulation: "+winplayer+" is win!!!");
+            if(virturepeople.size()==4){
+                Ranklist rl = new Ranklist();
+            }
+
+        }
     }
     public void reflashArrarylist(ChessBoardLocation location){
 
@@ -442,6 +458,7 @@ public class GameController implements GameListener {
         deleteLocation();
     }
     public void canarrive(ChessBoardLocation location){
+        Bgm.Music_pa();
         int x=location.getRow();
         int y=location.getColumn();
         ChessBoardLocation c=new ChessBoardLocation( x-1,y-1 );

@@ -8,18 +8,27 @@ import java.net.URL;
 public class Bgm {
     static URL url;
     static AudioClip ac;
+    private static AudioClip ac1;
+    private static URL url1;
+
 
     public static void Music_bgm() {
-        File f1 = new File("bgm\\doudizhubgm.wav");
+        File f2 = new File("bgm\\doudizhubgm.wav");
         try {
-            url = f1.toURL();
+            url1 = f2.toURL();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        ac = Applet.newAudioClip(url);
-        ac.play();
-        ac.loop();
+        ac1 = Applet.newAudioClip(url1);
+        ac1.play();
+        ac1.loop();
     }
+
+    public static void Music_bgmstop() {
+        ac1.stop();
+    }
+
+
     public static void Music_pa() {
         File f1 = new File("bgm\\pa.wav");
         try {
