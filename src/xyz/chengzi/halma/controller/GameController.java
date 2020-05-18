@@ -330,6 +330,9 @@ public class GameController implements GameListener {
 
     public void isVictory() {
         if(currentPlayer.equals(null)) {return;}
+        for(int i=0;i<virturepeople.size();i++){
+            if(currentPlayer.equals( virturepeople.get( i ) )){return;}
+        }
         boolean b = true;
         ChessBoardLocation c;
         Judge:
