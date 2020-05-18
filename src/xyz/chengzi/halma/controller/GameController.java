@@ -174,6 +174,7 @@ public class GameController implements GameListener {
         
     @Override
     public void onPlayerClickSquare(ChessBoardLocation location, SquareComponent component) {
+        if(chreckjumpLocation( location )==false){return;}
         if (jumpcontinue) {
             if (location.equals( selectedLocation )) {
                 model.moveChessPiece( selectedLocation, location );
@@ -261,7 +262,7 @@ public class GameController implements GameListener {
             xArrive=model.getDimension()-1;
             YArrive=model.getDimension()-1;
         }
-        if(currentPlayer.equals( model.color2 )){
+        if(currentPlayer.equals( model.color4 )){
             xArrive=model.getDimension()-1;
             YArrive=0;
         }
@@ -276,10 +277,9 @@ public class GameController implements GameListener {
         int xdistance=Math.abs( x-xArrive );
         int ydistance=Math.abs( y-YArrive );
         if(xdistance+ydistance<model.getPricenumber()&&Math.abs( xdistance-ydistance )<model.getPricenumber()){
-            return true;
-        }
-        xdistance=location.getRow()-xArrive;
-        ydistance=location.getColumn()-YArrive;
+        }else {return true;}
+        xdistance=Math.abs( location.getRow()-xArrive );
+        ydistance=Math.abs( location.getColumn()-YArrive );
         if(xdistance+ydistance<model.getPricenumber()&&Math.abs( xdistance-ydistance )<model.getPricenumber()){
             return true;
         }else {return false;}
@@ -287,7 +287,7 @@ public class GameController implements GameListener {
     }
     @Override
     public void onPlayerClickChessPiece(ChessBoardLocation location, ChessComponent component) {
-            if(chreckjumpLocation( location )==false){return;}
+           // if(chreckjumpLocation( location )==false){return;}
         if (jumpcontinue == false) {
             ChessPiece piece = model.getChessPieceAt( location );
             if(currentPlayer==null){currentPlayer=piece.getColor();}
