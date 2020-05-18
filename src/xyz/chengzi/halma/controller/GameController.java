@@ -7,7 +7,6 @@ import xyz.chengzi.halma.model.ChessBoardLocation;
 import xyz.chengzi.halma.model.ChessPiece;
 import xyz.chengzi.halma.view.ChessBoardComponent;
 import xyz.chengzi.halma.view.ChessComponent;
-import xyz.chengzi.halma.view.GameFrame;
 import xyz.chengzi.halma.view.SquareComponent;
 
 import java.awt.*;
@@ -32,7 +31,7 @@ public class GameController implements GameListener {
     public ArrayList<ChessBoardLocation> locationList=new ArrayList<ChessBoardLocation>();
     public ArrayList<Color> virturepeople;
     public static HashMap<String, GameController> controllerlList = new HashMap<>();
-
+    public boolean next=false;
     public Color getCurrentPlayer() {return currentPlayer;}
     public HashMap<Color, Integer> getStepsMap() {return stepsMap;}
     public Color getLastPlayer() {return lastPlayer;}
@@ -82,11 +81,12 @@ public class GameController implements GameListener {
         }
         view.repaint();
     }
-
+    
     public Color nextPlayer(boolean isFourMan) {
-        isVictory();
+        if(next==true){}else {
+        isVictory();next=false;
         reflashArrarylist(true);
-        lastPlayer = currentPlayer;
+        lastPlayer = currentPlayer;}
         if (model.color1.equals( currentPlayer )) {
             if (model.fourman) {
                 currentPlayer = model.color2;
@@ -176,6 +176,7 @@ public class GameController implements GameListener {
     public void onPlayerClickSquare(ChessBoardLocation location, SquareComponent component) {
         if (jumpcontinue) {
             if (location.equals( selectedLocation )) {
+                if(chreckjumpLocation( location )==false){return;}
                 model.moveChessPiece( selectedLocation, location );
                 model.setLastMove(model.getCurrentMove());
                 model.setCurrentMove(selectedLocation);
@@ -280,7 +281,7 @@ public class GameController implements GameListener {
         }else {return true;}
         xdistance=Math.abs( location.getRow()-xArrive );
         ydistance=Math.abs( location.getColumn()-YArrive );
-        if(xdistance+ydistance<model.getPricenumber()&&Math.abs( xdistance-ydistance )<model.getPricenumber()){
+        if(xdistance+ydistance<model.getPricenumber()&&Math.abs( xdistance-ydistance )<model.getPricenumber()-1){
             return true;
         }else {return false;}
 
@@ -358,7 +359,7 @@ public class GameController implements GameListener {
         }
         String winplayer=null;
         if(b==true){
-            if(GameFrame.isFourMan) {
+            if(model.fourman) {
                 if(currentPlayer.equals(model.color1)){winplayer="player1";}
                 if(currentPlayer.equals(model.color2)){winplayer="player2";}
                 if(currentPlayer.equals(model.color3)){winplayer="player3";}
@@ -387,7 +388,7 @@ public class GameController implements GameListener {
                     if(iscolor2win==false){virturepeople.add( model.color2 );}
                     if(iscolor3win==false){virturepeople.add( model.color3 );}
                     if(iscolor4win==false){virturepeople.add( model.color4 );}
-                    currentPlayer=null;}
+                    currentPlayer=Color.BLACK;}
 
             } else {
                 if(currentPlayer.equals(model.color1)){winplayer="player1";}
@@ -395,9 +396,9 @@ public class GameController implements GameListener {
                 virturepeople.add( currentPlayer );
                 if(currentPlayer.equals( model.color1 )){
                     virturepeople.add( model.color3 );
-                    currentPlayer=null;
+                    currentPlayer=Color.BLACK;
                 }else {virturepeople.add( model.color1 );
-                currentPlayer=null;}
+                currentPlayer=Color.BLACK;}
             }
             Bgm.Music_win();
             showMessageDialog(null,"Congratulation: "+winplayer+" is win!!!");}
