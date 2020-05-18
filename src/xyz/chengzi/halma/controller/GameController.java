@@ -319,7 +319,7 @@ public class GameController implements GameListener {
         Judge:
         for (int i = 0; i < model.getPricenumber(); i++) {
             for (int j = 0; j < model.getPricenumber(); j++) {
-                if (i + j < model.getPricenumber()&&Math.abs( i-j )<model.getPricenumber()) {
+                if (i + j < model.getPricenumber()&&Math.abs( i-j )<model.getPricenumber()-1) {
                     if (currentPlayer.equals(model.color1)) {
                         c = new ChessBoardLocation( model.getDimension() - i - 1, model.getDimension() - j - 1 );
                         if(model.getChessPieceAt( c )==null){b=false;break Judge;}
