@@ -4,6 +4,7 @@ import xyz.chengzi.halma.controller.GameController;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Ranklist extends JFrame {
     private String[][] data = {{"第一名",null},{"第二名",null},{"第三名",null},{"第四名",null}};
@@ -11,23 +12,41 @@ public class Ranklist extends JFrame {
     private JTable jtable = new JTable(data, dataTitle);
     private JScrollPane jscrollpane = new JScrollPane(jtable);
 
-    public Ranklist(){
+    public Ranklist() {
         setTitle("排行榜");
         setVisible(true);
-        //setSize(300,300);
-        setBounds(
-                new Rectangle(607+50, 233+50, 300, 300)
-        );
+        setBounds(new Rectangle(607 + 50, 233 + 50, 300, 200));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        add(jscrollpane,BorderLayout.CENTER);
-        setFont(new Font("宋体", Font.PLAIN, 25));
-
-        data[0][1] = String.valueOf(GameController.getVirturepeople().get(0));
-        data[1][1] = String.valueOf(GameController.getVirturepeople().get(1));
-        data[2][1] = String.valueOf(GameController.getVirturepeople().get(2));
-        data[3][1] = String.valueOf(GameController.getVirturepeople().get(3));
+        add(jscrollpane, BorderLayout.CENTER);
 
 
 
+        /*GameController.setVirturepeople(Color.red);
+        GameController.setVirturepeople(Color.green);
+        GameController.setVirturepeople(Color.yellow);  //用于测试 */
+
+
+        if (GameController.virturepeople.size()==3){
+            if (GameController.virturepeople.contains(Color.red)==false){GameController.virturepeople.add(Color.red);}
+            if (GameController.virturepeople.contains(Color.green)==false){GameController.virturepeople.add(Color.green);}
+            if (GameController.virturepeople.contains(Color.yellow)==false){GameController.virturepeople.add(Color.yellow);}
+            if (GameController.virturepeople.contains(Color.blue)==false){GameController.virturepeople.add(Color.blue);}
+
+        }
+
+        ArrayList<Color> ccc = new ArrayList<>(4);
+        ccc.add(Color.red);
+        ccc.add(Color.green);
+        ccc.add(Color.yellow);
+        ccc.add(Color.blue);
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (GameController.getVirturepeople().get(i)== ccc.get(j)) {
+                    int x = j + 1;
+                    data[i][1] = "player" + x;
+                }
+            }
+        }
     }
 }

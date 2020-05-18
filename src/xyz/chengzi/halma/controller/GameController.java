@@ -40,6 +40,10 @@ public class GameController implements GameListener {
         return virturepeople;
     }
 
+    /*public static  void setVirturepeople(Color c1){
+        virturepeople.add(c1);
+    }*/
+
     public GameController(ChessBoardComponent boardComponent, ChessBoard chessBoard, Color nextPlayer) {
         virturepeople=new ArrayList<Color>(  );
         this.view = boardComponent;
@@ -343,9 +347,7 @@ public class GameController implements GameListener {
             }
             Bgm.Music_win();
             showMessageDialog(null,"Congratulation: "+winplayer+" is win!!!");}
-            if (showranklist()){
-                Ranklist rl = new Ranklist();
-            }
+
     }
 
     public boolean showranklist (){
