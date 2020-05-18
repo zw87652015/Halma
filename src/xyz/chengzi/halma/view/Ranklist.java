@@ -16,7 +16,7 @@ public class Ranklist extends JFrame {
         setTitle("排行榜");
         setVisible(true);
         setBounds(new Rectangle(607 + 50, 233 + 50, 300, 200));
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         add(jscrollpane, BorderLayout.CENTER);
 
 

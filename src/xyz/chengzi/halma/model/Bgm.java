@@ -13,7 +13,7 @@ public class Bgm {
 
 
     public static void Music_bgm() {
-        File f2 = new File("bgm\\doudizhubgm.wav");
+        File f2 = new File("bgm\\bgm.wav");
         try {
             url1 = f2.toURL();
         } catch (MalformedURLException e) {

@@ -121,20 +121,10 @@ public class GameFrame extends JFrame {
         JMenuItem menuItem_endgame = new JMenuItem("退出游戏");
         menuItem_endgame.addActionListener((e) -> {
             Bgm.Music_button();
-            dispose();
+            System.exit(0);
+
         });
         menu_Game.add(menuItem_endgame);
-        
-        /*JMenuItem menuItem_huiQi = new JMenuItem("悔棋");
-        menuItem_huiQi.addActionListener((e) -> {
-            try{
-                DuDang.huiQi(this.id);
-            } catch (Exception ex) {
-                System.out.println("huiQi failed");
-            }
-        });
-        menu_Game.add(menuItem_huiQi);*/
-
 
         JMenu menu_about = new JMenu("关于");
         menuBar.add(menu_about);
@@ -157,11 +147,11 @@ public class GameFrame extends JFrame {
 
             jl.setText("<html><body>1、游戏人数：" +
                     "<br />" +
-                    "<br />    2 人或者 4 人,2人时，玩家分别在左上角和右上角，4人时，一人一角。下棋顺序是从左上角玩家开始，顺时针依次进行。" +
+                    "<br />    2 人或者 4 人，2人时，玩家分别在左上角和右上角，4人时，一人一角。下棋顺序是第一个被点击的棋子先走，顺时针依次进行。" +
                     "<br />" +
                     "<br />2、走子规则：" +
                     "<br />" +
-                    "<br />    棋子的移动可以一步步在格子的八个方向进行,如果相邻位置上有任何方的一个棋子，该位置直线方向下一个位置是空的，则可以直接\"跳\"到该空位上，\"跳\"的过程中，只要相同条件满足就可以连续进行。" +
+                    "<br />    棋子的移动可以一步步在格子的八个方向进行，如果相邻位置上有任何方的一个棋子，该位置直线方向下一个位置是空的，则可以直接\"跳\"到该空位上，\"跳\"的过程中，只要相同条件满足就可以连续进行。" +
                     "<br />" +
                     "<br />3、获胜条件:" +
                     "<br />" +
