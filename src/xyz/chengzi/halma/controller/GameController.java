@@ -174,11 +174,9 @@ public class GameController implements GameListener {
         
     @Override
     public void onPlayerClickSquare(ChessBoardLocation location, SquareComponent component) {
-        if(chreckjumpLocation( location )==false){return;}
         if (jumpcontinue) {
             if (location.equals( selectedLocation )) {
                 model.moveChessPiece( selectedLocation, location );
-
                 model.setLastMove(model.getCurrentMove());
                 model.setCurrentMove(selectedLocation);
                 model.getChainTable().add(new ArrayList<ChessBoardLocation>());
@@ -201,6 +199,7 @@ public class GameController implements GameListener {
         }
         if (isjump( location ) == false) {
             if (jumpcontinue == false) {
+                if(chreckjumpLocation( location )==false){return;}
                 if (selectedLocation != null && model.isValidMove( selectedLocation, location )) {
                     model.moveChessPiece( selectedLocation, location );
 
@@ -223,6 +222,7 @@ public class GameController implements GameListener {
                 }
             }
         } else {
+            if(chreckjumpLocation( location )==false){return;}
             if (model.isjumpcanmove( selectedLocation, location )) {
                 model.moveChessPiece( selectedLocation, location );
 
