@@ -5,10 +5,7 @@ import xyz.chengzi.halma.model.Bgm;
 import xyz.chengzi.halma.model.ChessBoard;
 import xyz.chengzi.halma.model.ChessBoardLocation;
 import xyz.chengzi.halma.model.ChessPiece;
-import xyz.chengzi.halma.view.ChessBoardComponent;
-import xyz.chengzi.halma.view.ChessComponent;
-import xyz.chengzi.halma.view.GameFrame;
-import xyz.chengzi.halma.view.SquareComponent;
+import xyz.chengzi.halma.view.*;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -30,7 +27,7 @@ public class GameController implements GameListener {
     private ChessBoardLocation selectedLocation;
     private HashMap<Color, Integer> stepsMap = new HashMap<>();
     public ArrayList<ChessBoardLocation> locationList=new ArrayList<ChessBoardLocation>();
-    public ArrayList<Color> virturepeople;
+    public static ArrayList<Color> virturepeople;
     public static HashMap<String, GameController> controllerlList = new HashMap<>();
 
     public Color getCurrentPlayer() {return currentPlayer;}
@@ -38,6 +35,10 @@ public class GameController implements GameListener {
     public Color getLastPlayer() {return lastPlayer;}
     public ChessBoard getModel() {return model;}
     public String getId() {return id;}
+
+    public static ArrayList<Color> getVirturepeople() {
+        return virturepeople;
+    }
 
     public GameController(ChessBoardComponent boardComponent, ChessBoard chessBoard, Color nextPlayer) {
         virturepeople=new ArrayList<Color>(  );
@@ -342,7 +343,18 @@ public class GameController implements GameListener {
             }
             Bgm.Music_win();
             showMessageDialog(null,"Congratulation: "+winplayer+" is win!!!");}
+            if (showranklist()){
+                Ranklist rl = new Ranklist();
+            }
     }
+
+    public boolean showranklist (){
+        if (virturepeople.size() == 3){return true;}
+        else return false;
+
+
+    }
+
     public void reflashArrarylist(ChessBoardLocation location){
 
         for(int i=0;i<locationList.size();i++){
@@ -367,24 +379,25 @@ public class GameController implements GameListener {
         int x=location.getRow();
         int y=location.getColumn();
         ChessBoardLocation c=new ChessBoardLocation( x-1,y-1 );
+        Bgm.Music_pa();
         if(x-1>=0){
             if(y-1>=0){
                 if( jumpcontinue==false)
-                addLocation( c);
+                {addLocation( c);}
                 jumplocation( c,-1,-1 );
             }
         }
          c=new ChessBoardLocation( x-1,y );
         if(x-1>=0){
             if( jumpcontinue==false)
-                addLocation( c);
+            {addLocation( c);}
             jumplocation( c,-1,0);
         }
         c=new ChessBoardLocation( x-1,y+1 );
         if(x-1>=0){
             if(y+1<model.getDimension()){
                 if( jumpcontinue==false)
-                addLocation( c);
+                {addLocation( c);}
                 jumplocation( c,-1,1 );
             }
         }

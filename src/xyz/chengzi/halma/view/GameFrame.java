@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+
 public class GameFrame extends JFrame {
 
     private JPanel jp;
@@ -132,6 +133,7 @@ public class GameFrame extends JFrame {
                             (int) this.getBounds().getHeight()
                     )
             );
+
             frame.setSize(400,300);
             JLabel jl = new JLabel();
             frame.add(jl);
@@ -280,5 +282,29 @@ public class GameFrame extends JFrame {
         loadButton.addActionListener(listener);
 
         add(jp);
+    }
+
+    public void showranklist() {
+        JFrame ranklist = new JFrame("排行榜");
+        //ranklist.setSize(300,300);
+        ranklist.setBounds(
+                new Rectangle(607+50, 233+50, 300, 300)
+        );
+        ranklist.setVisible(true);
+        JLabel jl = new JLabel("排行榜");
+        jl.setFont(new Font("宋体", Font.PLAIN, 10));
+        JLabel jl1 = new JLabel();
+        JLabel jl2 = new JLabel();
+        JLabel jl3 = new JLabel();
+        JLabel jl4 = new JLabel();
+        ranklist.add(jl);
+        ranklist.add(jl2);
+        ranklist.add(jl3);
+        ranklist.add(jl4);
+        ranklist.add(jl1);
+        jl.setLocation(125,30);
+
+        jl1.setSize(40,50);
+
     }
 }
