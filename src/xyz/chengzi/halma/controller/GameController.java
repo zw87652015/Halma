@@ -364,14 +364,40 @@ public class GameController implements GameListener {
                 if(currentPlayer.equals(model.color3)){winplayer="player3";}
                 if(currentPlayer.equals(model.color4)){winplayer="player4";}
                 virturepeople.add( currentPlayer );
-                if(virturepeople.size()==4){currentPlayer=null;}
+                boolean iscolor1win=false;
+                boolean iscolor2win=false;
+                boolean iscolor3win=false;
+                boolean iscolor4win=false;
+                if(virturepeople.size()==3){
+                    for(int i=0;i<virturepeople.size();i++){
+                        if(virturepeople.get( i ).equals( model.color1 )){
+                            iscolor1win=true;
+                        }
+                        if(virturepeople.get( i ).equals( model.color2 )){
+                            iscolor2win=true;
+                        }
+                        if(virturepeople.get( i ).equals( model.color3 )){
+                            iscolor3win=true;
+                        }
+                        if(virturepeople.get( i ).equals( model.color4 )){
+                            iscolor4win=true;
+                        }
+                    }
+                    if(iscolor1win==false){virturepeople.add( model.color1 );}
+                    if(iscolor2win==false){virturepeople.add( model.color2 );}
+                    if(iscolor3win==false){virturepeople.add( model.color3 );}
+                    if(iscolor4win==false){virturepeople.add( model.color4 );}
+                    currentPlayer=null;}
 
             } else {
                 if(currentPlayer.equals(model.color1)){winplayer="player1";}
                 if(currentPlayer.equals(model.color3)){winplayer="player2";}
                 virturepeople.add( currentPlayer );
-                if(virturepeople.size()==2){currentPlayer=null;}
-
+                if(currentPlayer.equals( model.color1 )){
+                    virturepeople.add( model.color3 );
+                    currentPlayer=null;
+                }else {virturepeople.add( model.color1 );
+                currentPlayer=null;}
             }
             Bgm.Music_win();
             showMessageDialog(null,"Congratulation: "+winplayer+" is win!!!");}
